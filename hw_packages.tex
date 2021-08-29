@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Package preset for homework
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{float}
+% Math
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{commath}
+\usepackage{amsthm}
+\usepackage{bbold}
+\usepackage{bm}
+% Physics
+\usepackage{physics}
+\usepackage{siunitx}
+% Code typesetting
+\usepackage{listings}
+% Citation
+\usepackage[authoryear]{natbib}
+\usepackage{appendix}
+% Title & name
+\title{Homework}
+\author{Tien Vo}
+\date{\today}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   User-defined commands and environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% SI unit
+\sisetup{load-configurations=abbreviations}
+
+%%% Bold sets & abbrv
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\HH}{\mathcal{H}}
+
+%%% Unit vectors
+\newcommand{\xhat}{\vb{\hat{x}}}
+\newcommand{\yhat}{\vb{\hat{y}}}
+\newcommand{\zhat}{\vb{\hat{z}}}
+\newcommand{\rhat}{\vb{\hat{r}}}
+\newcommand{\phihat}{\vb{\hat{\phi}}}
+\newcommand{\thetahat}{\vb{\hat{\theta}}}
+
+%%% Other math stuff
+\providecommand{\units}[1]{\,\ensuremath{\mathrm{#1}}\xspace}
+% Set new style for problem
+\newtheoremstyle{problemstyle}  % <name>
+        {10pt}                   % <space above>
+        {10pt}                   % <space below>
+        {\normalfont}           % <body font>
+        {}                      % <indent amount}
+        {\bfseries\itshape}     % <theorem head font>
+        {\normalfont\bfseries:} % <punctuation after theorem head>
+        {.5em}                  % <space after theorem head>
+        {}                      % <theorem head spec (can be left empty, 
+                                % meaning `normal')>
+
+% Set problem environment
+\theoremstyle{problemstyle}
+\newtheorem{problemenv}{Problem}[section]
+\newenvironment{problem}[1]{%
+  \renewcommand\theproblemenv{#1}%
+  \problemenv
+}{\endproblemenv}
+% Set solution environment
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%%% Page format
+\setlength{\parindent}{0.5cm}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+%%% Code environments
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+\lstset{
+  language=Mathematica,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=5pt,
+  breaklines=true,
+  captionpos={t},
+  frame={lines},
+  rulecolor=\color{black},
+  framerule=0.5pt,
+  columns=flexible,
+  tabsize=2
+}
