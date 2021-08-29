@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+
+\input{$HOME/.config/latex/preamble.tex}
+
+
+\title{Homework 1: PHYS 7310 (Fall 2021)}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}[Problem 1.1]{(Properties of conductors)}
+
+Use Gauss' theorem [and (1.21) if necessary] to prove the following:
+
+(a) Any excess charge placed on a conductor must lie entirely on its surface. (A
+conductor by definition contains charges capable of moving freely under the
+action of applied electric fields.)
+
+(b) A closed, hollow conductor shields its interior from fields due to charges
+outside, but does not shield its exterior from the fields due to charges placed
+inside it.
+
+(c) The electric field at the surface of a conductor is normal to the surface
+and has a magnitude $\sigma/\epsilon_0$, where $\sigma$ is the charge density
+per unit area on the surface.
+
+\end{problem}
+
+
+\begin{problem}[Problem 1.2]{(A neutral hydrogen atom)}
+
+The time-averaged potential of a neutral hydrogen atom is given by
+\begin{equation}
+    \Phi=\frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}}{r}\qty(1+\frac{\alpha
+    r}{2}) 
+\end{equation}
+where $q$ is the magnitude of the electronic charge, and $\alpha^{-1}=a_0/2$,
+$a_0$ being the Bohr radius. Find the distribution of charge (both continuous
+and discrete) that will give this potential and interpret your results
+physically.
+
+\end{problem}
+
+
+\begin{problem}[Problem 1.3]{(Capacitors)}
+
+A simple capacitor is a device formed by two insulated conductors adjacent to
+each other. If equal and opposite charges are placed on the conductors, there
+will be a certain difference of potential between them. The ratio of the
+magnitude of the charge on one conductor to the magnitude of the potential
+difference is called the capacitance (in SI units it is measured in farads).
+Using Gauss Law, calculate the capacitance of
+
+(a) two large, flat, conducting sheets of area $A$, separated by a small
+distance $d$;
+
+(b) two concentric conducting spheres with radii $a,b$ ($b>a$);
+
+(c) two concentric conducting cylinders of length $L$, large compared to their
+radii $a,b$ ($b>a$).
+    
+\end{problem}
+
+
+\begin{problem}[Problem 1.4]{(Green's reciprocation theorem and grounded
+    parallel plates)}
+
+(a) Prove \textit{Green's reciprocation theorem}: If $\Phi$ is the potential due
+to a volume-charge density $\rho$ within a volume $V$ and a surface-charge
+$\sigma$ on the conducting surface $S$ bounding the volume $V$, while $\Phi'$ is
+the potential due to another charge distribution $\rho'$ and $\sigma'$, then
+\begin{equation}
+    \int_V\rho\Phi'd^3x+\int_S\sigma\Phi' da=\int_V\rho'\Phi
+    d^3x+\int_S\sigma'\Phi da 
+\end{equation}
+
+
+(b) Two infinite grounded parallel conducting planes are separated by a distance
+$d$. A point charge $q$ is placed between the planes. Use the reciprocation
+theorem of Green to prove that the total induced charge on one of the plane is
+equal to $(-q)$ times the fractional perpendicular distance of the point charge
+from the other plane. (\textit{Hint}: As your comparison electrostatic problem
+with the same surfaces choose one whose charge densities and potential are known
+and simple.)
+    
+\end{problem}
+    
+\end{document}
