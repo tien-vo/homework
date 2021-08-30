@@ -286,33 +286,37 @@ and simple.)
     \begin{subequations}\label{eq:bc1}
         \begin{align}
             \rho&=q\delta(x-d')\\
-            \sigma&=\sigma_1\delta(x)+\sigma_2\delta(x-d)\\
+            \sigma&=\sigma_1\delta_{x,0}+\sigma_2\delta_{x,d}\\
             \Phi&=0,\qquad x\in\qty{0,d}
         \end{align} 
     \end{subequations}
-    where $\delta$ is the Dirac delta function, the potential $\Phi$ is zero
-    at the locations of the grounded plates, and $\sigma_1,\sigma_2$ are
-    the surface charge densities in the first and second plate, respectively, 
-    due to induction from the point charge $q$ (see figure below).\\[2in]
+    where $\delta$ is the Dirac delta function, $\delta_{x,0}$ is the
+    Kronecker delta function ($\delta_{x,0}=1$ when $x=0$), the potential 
+    $\Phi$ is zero at the locations of the grounded plates, and
+    $\sigma_1,\sigma_2$ are the surface charge densities in the first and 
+    second plate, respectively, due to induction from the point charge $q$ (see 
+    figure below).\\[2in]
 
     Let the primed density distribution and potential be those corresponding to 
     an infinite, parallel plate capacitor
     \begin{subequations}\label{eq:bc2}
         \begin{align}
             \rho'&=0\\
-            \sigma'&=-\sigma_0\delta(x)+\sigma_0\delta(x-d)\\
+            \sigma'&=-\sigma_0\delta_{x,0}+\sigma_0\delta_{x,d}\\
             \Phi'&=Ex=\frac{\sigma_0}{\epsilon_0}x
         \end{align} 
     \end{subequations}
     where the charge densities on the first and second plate are $-\sigma_0$ and
     $\sigma_0$. The potential at the first plate is zero, so the potential
-    difference between the two plates is $\Phi'(d)=\sigma_0 d/\epsilon_0$.
+    difference between the two plates is $\Phi'(d)=\sigma_0
+    d/\epsilon_0$ (see figure below).\\[2in]
+
     Now, applying \eqref{eq:bc1} and \eqref{eq:bc2} to \eqref{eq:wts}, it 
     follows that
     \begin{equation}
         \frac{\sigma_0}{\epsilon_0}\qty(\int_0^d q\delta(x-d')xdx
-        +\oint_{\R^2}\sigma_1\delta(x)x da
-        +\oint_{\R^2}\sigma_2\delta(x-d)xda)=0
+        +\oint_{\R^2}\sigma_1\delta_{x,0}x da
+        +\oint_{\R^2}\sigma_2\delta_{x,d}xda)=0
     \end{equation}
     This implies that
     \begin{equation}\label{eq:almost}
