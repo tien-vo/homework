@@ -1,17 +1,17 @@
 \documentclass[12pt]{article}
 
 
-\input{$HOME/.config/latex/preamble.tex}
+\input{../../../hw_packages.tex}
 
 
-\title{Homework 1: PHYS 7310 (Fall 2021)}
+\title{Homework 1: Phys 7310 (Fall 2021)}
 
 
 \begin{document}
 
 \maketitle
 
-\begin{problem}[Problem 1.1]{(Properties of conductors)}
+\begin{problem}{1.1}[Properties of conductors]\label{p1}
 
 Use Gauss' theorem [and (1.21) if necessary] to prove the following:
 
@@ -27,10 +27,69 @@ inside it.
 and has a magnitude $\sigma/\epsilon_0$, where $\sigma$ is the charge density
 per unit area on the surface.
 
+\begin{solution}
+(a)\\[2in]
+Pick a volume $V$ within the conductor bounded by a surface $S=\partial V$.
+Then, if there is any charge $q\in V$, there is a non-zero electric field
+$\vb{E}$ such that
+\begin{equation}
+    \oint_S\vb{E}\vdot\nhat da=q/\epsilon_0\tag{Gauss Law}
+\end{equation}
+and there would be no static equilibrium (charges would be accelerated). Thus,
+assuming static equilibrium, $\vb{E}=\vb{0}$ inside any volume $V$ in a 
+conductor, in which there is no charge $q$. Any excess charge must then be
+located on the surface of the conductor.
+\newpage
+
+(b)\\[2in]
+First, assume there is no charge inside the cavity of a conductor. Then,
+pick a closed curve $C=C_1+C_2$ that is partly in the cavity ($C_1$) and partly 
+in the conductor ($C_2$). It follows that
+\begin{equation}
+    \oint_C\vb{E}\vdot d\vb{l}=\qty(\int_{C_1}+\int_{C_2})\vb{E}\vdot d\vb{l}=0 
+    \Rightarrow\int_{C_1}\vb{E}_{\text{cavity}}\vdot d\vb{l}
+    =-\int_{C_1}\vb{E}_{\text{conductor}}\vdot d\vb{l}
+\end{equation}
+where $\vb{E}_{\text{cavity}},\vb{E}_{\text{conductor}}$ are the
+electric fields inside the cavity and inside the conductor, respectively.
+However, $\vb{E}_{\text{conductor}}=\vb{0}$ via Gauss Law. So it must be the
+case that $\vb{E}_{\text{cavity}}=\vb{0}$, irrespective of the charge
+distribution outside the conductor. Thus, the interior is shielded from charges
+out in the world.\\[2in]
+
+Now, assume there is a charge $q$ inside the cavity. If we pick a Gaussian
+surface outside of the conductor, then the total enclosed charge is $q$
+(assuming the conductor is neutrally charged), so there has to be a non-zero 
+electric field due to the charge in the cavity. Thus, the exterior is not
+shielded. There are some induced charge on the surface of the cavity
+($q_{\text{cavity}}=-q$) to ensure that $\vb{E}_{\text{conductor}}=\vb{0}$.
+However, the outer surface must have charge $q$ because the conductor is 
+neutrally charged. So the enclosed charge from outside of the conductor is still
+$q_{\text{enclosed}}=q+(-q)+q=q$.
+\newpage
+
+(c)\\[2in]
+In class, we have shown that because $\oint\vb{E}\vdot
+d\vb{l}=0$, $\vb{E}_{\|,\text{out}}=\vb{E}_{\|,\text{in}}$ where
+$\vb{E}_{\|,\text{out}},\vb{E}_{\|,\text{in}}$ are the electric fields inside
+and outside of the conductor, respectively. But $\vb{E}_{\|,\text{in}}=\vb{0}$
+for a conductor, so $\vb{E}_{\|,\text{out}}=\vb{0}$. Now,
+the normal field satisfies (1.22, Jackson)
+\begin{equation}
+    \vb{E}_{\perp,\text{out}}-\vb{E}_{\perp,\text{in}}
+    =\frac{\sigma}{\epsilon_0}\nhat 
+\end{equation}
+where $\sigma$ is the surface charge density of the conductor. But similarly, 
+$\vb{E}_{\perp,\text{in}}=\vb{0}$ in a conductor. So
+$\vb{E}_{\perp,\text{out}}=(\sigma/\epsilon_0)\nhat$.
+
+\end{solution}
+
 \end{problem}
 
 
-\begin{problem}[Problem 1.2]{(A neutral hydrogen atom)}
+
+\begin{problem}{1.2}[A neutral hydrogen atom]
 
 The time-averaged potential of a neutral hydrogen atom is given by
 \begin{equation}
@@ -42,10 +101,34 @@ $a_0$ being the Bohr radius. Find the distribution of charge (both continuous
 and discrete) that will give this potential and interpret your results
 physically.
 
+\begin{solution}
+    First note that we can expand $e^{-\alpha r}$ in a Taylor series for
+    $r\to0$ as
+    \begin{equation}
+        e^{-\alpha r}=1-\alpha r+\frac{\alpha^2r^2}{2}+\order{r^3}.
+    \end{equation}
+    Then it follows that
+    \begin{equation}
+        \Phi
+        =\frac{q}{4\pi\epsilon_0}\qty(\frac1r+\frac{\alpha}{2})
+            \qty[1-\alpha r+\frac{\alpha^2r^2}{2}+\order{r^3}]
+        =\frac{q}{4\pi\epsilon_0}\qty[\frac1r-\frac\alpha2+\order{r^2}].
+    \end{equation}
+    For $r\to0$, $\order{r^2}\to0$, so from Poisson's equation (1.28, Jackson),
+    we can write the density as
+    \begin{equation}
+        \rho=-\epsilon_0\laplacian{\Phi}=-\frac{q}{4\pi}
+            \laplacian{\qty(\frac1{r})}.
+    \end{equation}
+    Applying (1.31, Jackson), the density is then $\rho=q\delta^3(r)$ where
+    $\delta^3$ is the 3-D Dirac delta function. This is a point charge $q$ 
+    located at $r=0$ (the hydrogen ion).
+\end{solution}
+
 \end{problem}
 
 
-\begin{problem}[Problem 1.3]{(Capacitors)}
+\begin{problem}{1.3}[Capacitors]
 
 A simple capacitor is a device formed by two insulated conductors adjacent to
 each other. If equal and opposite charges are placed on the conductors, there
@@ -61,20 +144,111 @@ distance $d$;
 
 (c) two concentric conducting cylinders of length $L$, large compared to their
 radii $a,b$ ($b>a$).
+
+\begin{solution}
+   
+    (a) Since the separation between two plates are small, if one plate is given
+    a charge $Q>0$, the density on its surface is approximately uniform
+    $\sigma=Q/A$. The other plate is similarly distributed, but with a surface
+    density $-\sigma$, from the assumption of equal and opposite charge on each
+    conductor. Draw a Gaussian cylinder $S$ normal to the positively charged 
+    plate  along its length with a circular cross-section $a$ such that half of 
+    $S$ is inside the capacitor, and the other half is outside. By Gauss Law, 
+    the electric flux through the two ends of the cylinder $S$ is
+    \begin{equation}
+        \oint_S\vb{E}\vdot\nhat da=Ea=\frac{\sigma a}{\epsilon_0}
+    \end{equation}
+    By symmetry, it follows that the electric field contribution inside the 
+    capacitor due to the positive plate is
+    $\vb{E}_+=(\sigma/2\epsilon_0)\nhat_+$, where $\nhat_+$
+    is the vector normal to the positive plate pointing inside the capacitor
+    (see below figure). \\[2in]
+
+    Similarly, we can write the contribution due to the negative plate as
+    $\vb{E}_-=(-\sigma/2\epsilon_0)\nhat_-$. Since $\nhat_-=-\nhat_+$, we can
+    write the total field inside the capacitor as
+    \begin{equation}
+        \vb{E}=\vb{E}_++\vb{E}_-=\frac{\sigma}{\epsilon_0}\nhat_+ 
+    \end{equation}
+    
+    Since $\vb{E}=-\grad V$, we can integrate for the potential difference
+    between the positive and negative plates, letting $\nhat_+=-\xhat$,
+    \begin{equation}
+        \Delta V\equiv V_+-V_-=-\int_-^+\vb{E}\vdot\nhat_+dx=\sigma d/\epsilon_0
+    \end{equation}
+    Then, we can calculate the capacitance
+    \begin{equation}
+        C=\frac{Q}{\Delta V}=\frac{\sigma A}{\sigma
+        d/\epsilon_0}=\frac{\epsilon_0 A}{d} 
+    \end{equation}
+
+    (b)\\[3in]Let the inner sphere be positively charged (with $Q>0$) and the
+    outer sphere be negatively charged (with $-Q$). Draw a spherical
+    Gaussian surface $S$ with $a\leq r\leq b$ (see above figure), the electric 
+    flux through it satisfies
+    \begin{equation}
+        \oint_S\vb{E}\vdot\rhat da=E4\pi r^2=\frac{Q}{\epsilon_0}
+    \end{equation}
+    Thus, by spherical symmetry, the electric field inside the capacitor
+    (between the conductors) is
+    \begin{equation}
+        \vb{E}=E\rhat=\frac{Q}{4\pi\epsilon_0}\frac1{r^2}\rhat 
+    \end{equation}
+    Then the potential difference (between $r=a$ and $r=b$) is
+    \begin{equation}
+        \Delta
+        V=V(a)-V(b)=-\int_b^aEdr=\frac{Q}{4\pi\epsilon_0}
+            \qty(\frac{1}{a}-\frac{1}{b})
+    \end{equation}
+    The capacitance is then
+    \begin{equation}
+        C=\frac{Q}{\Delta V}=4\pi\epsilon_0\frac{ab}{b-a} 
+    \end{equation}
+
+    (c) Since $L\gg a,b$, the charge distribution along the length of
+    the cylindrical conductors is approximately uniform. Assume the inner 
+    cylinder $(r=a)$ is positively charged ($Q>0$), and the outer cylinder 
+    ($r=b$) is negatively charged ($-Q$). Then the (linear) charge densities 
+    along their length are $\lambda=Q/L$ and $-\lambda$,
+    respectively.
+    \newpage
+    ~\\[2in]
+
+    Now, draw a cylindrical Gaussian surface $S$ with the same length $L$ and 
+    radius $r$ such that $a\leq r\leq b$. The charge enclosed is $Q$, and the 
+    electric flux normal to the cylindrical part of $S$ is
+    \begin{equation}
+        \oint_S\vb{E}\vdot\nhat da=E2\pi rL=\frac{\lambda L}{\epsilon_0}
+    \end{equation}
+    Thus, by symmetry, the electric field inside the capacitor is
+    \begin{equation}
+        \vb{E}=\frac{\lambda}{2\pi\epsilon_0}\frac1r\rhat 
+    \end{equation}
+    The potential difference (between $r=a$ and $r=b$) is
+    \begin{equation}
+        \Delta V=V(a)-V(b)=-\int_b^aEdr=\frac{\lambda}{2\pi\epsilon_0}
+            \ln\qty(\frac{b}{a})
+    \end{equation}
+    Then the capacitance is
+    \begin{equation}
+        C=\frac{Q}{\Delta V}=-2\pi\epsilon_0L\ln\qty(\frac{a}{b})
+    \end{equation}
+
+\end{solution}
     
 \end{problem}
 
 
-\begin{problem}[Problem 1.4]{(Green's reciprocation theorem and grounded
-    parallel plates)}
+\begin{problem}{1.4}[Green's reciprocation theorem and grounded
+    parallel plates]~\\
 
 (a) Prove \textit{Green's reciprocation theorem}: If $\Phi$ is the potential due
 to a volume-charge density $\rho$ within a volume $V$ and a surface-charge
 $\sigma$ on the conducting surface $S$ bounding the volume $V$, while $\Phi'$ is
 the potential due to another charge distribution $\rho'$ and $\sigma'$, then
-\begin{equation}
-    \int_V\rho\Phi'd^3x+\int_S\sigma\Phi' da=\int_V\rho'\Phi
-    d^3x+\int_S\sigma'\Phi da 
+\begin{equation}\label{eq:wts}
+    \int_V\rho\Phi'd^3x+\oint_S\sigma\Phi' da=\int_V\rho'\Phi
+    d^3x+\oint_S\sigma'\Phi da 
 \end{equation}
 
 
@@ -85,7 +259,71 @@ equal to $(-q)$ times the fractional perpendicular distance of the point charge
 from the other plane. (\textit{Hint}: As your comparison electrostatic problem
 with the same surfaces choose one whose charge densities and potential are known
 and simple.)
+
+\begin{solution}
+    (a) To prove \eqref{eq:wts}, it suffices to show that
+    \begin{equation}
+        \int_V\qty(\rho\Phi'-\rho'\Phi)d^3x
+        =\oint_S\qty(\sigma'\Phi-\sigma\Phi')da
+    \end{equation}
+    From Poisson's equation ($\rho=-\epsilon_0\laplacian\Phi$), we can write 
+    \begin{equation}
+        LHS=-\epsilon_0\int_V
+        \qty(\Phi'\laplacian\Phi-\Phi\laplacian{\Phi'})d^3x
+        =-\epsilon_0\oint_S\qty(
+        \Phi'\frac{\partial\Phi}{\partial n}-\Phi\frac{\partial\Phi'}{\partial
+        n})da
+    \end{equation}
+    where we have applied Green's theorem (1.35, Jackson) to the last equality.
+    Now, since $S$ is a conductor, it follows that $E=\partial\Phi/\partial
+    n=\sigma/\epsilon_0$ (in the notation in Section 1.8 of Jackson) and
+    \begin{equation}
+        LHS=\oint_S\qty(\sigma'\Phi-\sigma\Phi')da=RHS   
+    \end{equation}
+
+    (b) Let the un-primed density distribution and potential be as described by
+    the problem:
+    \begin{subequations}\label{eq:bc1}
+        \begin{align}
+            \rho&=q\delta(x-d')\\
+            \sigma&=\sigma_1\delta(x)+\sigma_2\delta(x-d)\\
+            \Phi&=0
+        \end{align} 
+    \end{subequations}
+    where $\delta$ is the Dirac delta function, the potential $\Phi$ is zero
+    everywhere because the plates are grounded, and $\sigma_1,\sigma_2$ are
+    the charge densities in the first and second plate, respectively, due to
+    induction from the point charge $q$ (see figure below).\\[2in]
+
+    Let the primed density distribution and potential be that of an
+    infinite, parallel plate capacitor
+    \begin{subequations}\label{eq:bc2}
+        \begin{align}
+            \rho'&=0\\
+            \sigma'&=-\sigma_0\delta(x)+\sigma_0\delta(x-d)\\
+            \Phi'&=Ex=\frac{\sigma_0}{\epsilon_0}x
+        \end{align} 
+    \end{subequations}
+    where the charge densities on the first and second plate are $-\sigma_0$ and
+    $\sigma_0$. The potential at the first plate is zero, so the potential
+    difference between the two plates is $V_0=\Phi'(d)=\sigma_0 d/\epsilon_0$.
+    Now, applying \eqref{eq:bc1} and \eqref{eq:bc2} to \eqref{eq:wts}, it 
+    follows that
+    \begin{equation}
+        \frac{\sigma_0}{\epsilon_0}\qty(\int_0^d q\delta(x-d')xdx
+        +\oint_{\R^2}\sigma_1\delta(x)x da
+        +\oint_{\R^2}\sigma_2\delta(x-d)xda)=0
+    \end{equation}
+    This implies that
+    \begin{equation}\label{eq:almost}
+        qd'+d\oint_{\R^2}\sigma_2da=qd'+q_2d=0
+    \end{equation}
+    where $q_2=\oint_{\R^2}\sigma_2da$ is the induced charge on the
+    second plate due to the point charge $q$. Inverting \eqref{eq:almost}, we 
+    get $q_2=(-q)(d'/d)$.
+\end{solution}
     
 \end{problem}
-    
+
+
 \end{document}

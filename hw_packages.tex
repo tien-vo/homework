@@ -36,7 +36,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                   User-defined commands and environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% SI unit
+%%% Misc
 \sisetup{load-configurations=abbreviations}
 
 %%% Bold sets & abbrv
@@ -51,6 +51,7 @@
 \newcommand{\xhat}{\vb{\hat{x}}}
 \newcommand{\yhat}{\vb{\hat{y}}}
 \newcommand{\zhat}{\vb{\hat{z}}}
+\newcommand{\nhat}{\vb{\hat{n}}}
 \newcommand{\rhat}{\vb{\hat{r}}}
 \newcommand{\phihat}{\vb{\hat{\phi}}}
 \newcommand{\thetahat}{\vb{\hat{\theta}}}
@@ -77,7 +78,10 @@
   \problemenv
 }{\endproblemenv}
 % Set solution environment
-\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+\newenvironment{solution}{
+    \begin{proof}[Solution]$ $\par\nobreak\ignorespaces
+}{\end{proof}}
+\numberwithin{equation}{problemenv}
 
 %%% Page format
 \setlength{\parindent}{0.5cm}
