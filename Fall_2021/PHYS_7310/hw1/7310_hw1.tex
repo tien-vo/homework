@@ -145,6 +145,10 @@ distance $d$;
 (c) two concentric conducting cylinders of length $L$, large compared to their
 radii $a,b$ ($b>a$).
 
+(d) What is the inner diameter of the outer conductor in an air-filled coaxial
+cable whose center conductor is a cylindrical wire of diameter 1\,\si{mm} and
+whose capacitance is $3\times10^{-11}$\,\si{F/m}? $3\times10^{-12}$\,\si{F/m}?
+
 \begin{solution}
    
     (a) Since the separation between two plates are small, if one plate is given
@@ -233,6 +237,15 @@ radii $a,b$ ($b>a$).
     \begin{equation}
         C=\frac{Q}{\Delta V}=-2\pi\epsilon_0L\ln\qty(\frac{a}{b})
     \end{equation}
+
+    (d) The capacitance of this coaxial cable is the same as that calculated in
+    part (c). Given $C/L$, we can calculate the inner diameter of the outer
+    conductor as
+    \begin{equation}
+        d=2b=2a\exp\qty(\frac1{2\pi\epsilon_0}\frac{C}{L}) 
+    \end{equation}
+    For $C/L=3\times10^{-11}$\,\si{F/m}, $d=3.4$\,\si{mm}. For
+    $C/L=3\times10^{-12}$\,\si{F/m}, $d=2.1$\,\si{mm}.
 
 \end{solution}
     
