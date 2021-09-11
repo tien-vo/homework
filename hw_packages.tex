@@ -5,6 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{indentfirst}
+\usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{xr-hyper}
 \usepackage{hyperref}
@@ -44,6 +45,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\LL}{\mathcal{L}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\HH}{\mathcal{H}}
 
@@ -77,6 +79,9 @@
   \renewcommand\theproblemenv{#1}%
   \problemenv
 }{\endproblemenv}
+% Set lemma environment
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 % Set solution environment
 \newenvironment{solution}{
     \begin{proof}[Solution]$ $\par\nobreak\ignorespaces

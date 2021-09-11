@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 2: Astr 5140 (Fall 2021)}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[$\vb{J}\times\vb{B}$ force]
+Using the two-fluid equations, calculate the Lorentz force per unit volume on a
+quasi-neutral (MHD) plasma using the definition of $\vb{J}$. Separate the
+electric force ($\vb{F}_E$) from the magnetic force ($\vb{F}_B$). Show that if
+the plasma is quasi-neutral, then $\vb{F}$ reduces to the standard MHD result.
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[EM review: Waves in a plasma]
+Using Maxwell's equations and setting the current to be the electron motion 
+only 
+\begin{equation}
+    \frac{\partial\vb{J}}{\partial t}=\frac{ne^2E}{m_e} 
+\end{equation}
+Show that the solution of a transverse light wave becomes:
+\begin{equation}
+    \omega^2=\omega_{pe}^2+k^2c^2 
+\end{equation}
+where $\omega_{pe}^2=ne^2/\epsilon_0m_e$.
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{3}[Pick-up Ion at Mars]
+Suppose an $O$ atom that escaped from Mars is at rest (in our frame) at
+$x=0,y=0$. It is photo-ionized (charge $e$) at $t=0$ in the solar wind
+($v_{sw}=350$\,\si{km/s} in the $x$ direction) with a magnetic field
+$\vb{B}=10$\,\si{nT} in the $z$ direction (see diagram). Assume that the
+photo-ionization does not move the $O^+$ ion.
+
+(1) Describe the subsequent motion of the $O^+$ ion, $x(t),y(t),v_x(t),v_y(t)$,
+in our rest frame (not the plasma frame). \textit{Hint}: What is the solar wind
+electric field? Calculate $v_x(t)$ and $v_y(t)$ then integrate. Apply boundary
+conditions, $x(t=0)=0,y(t=0)=0,v_x(t=0)=0,v_y(t=0)=0$ to get an exact solution.
+
+(2) Sketch the $O^+$ path.
+
+(3) The drift and gyration cause the $O^+$ ion to slow down and speed up in our
+rest frame. What is the drift speed? What is the gyration speed? What is the
+maximum velocity (\si{km/s}) and energy (\si{keV}) that the $O^+$ ion reaches?
+
+(4) Using the gyration speed only, what is the perpendicular (to $\vb{B}$)
+temperature of that ion in $^\circ$\,\si{K}? (In 2D, temperature and energy are
+equal.)
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{4}[Current sheet]
+A current sheet is such that $\vb{J}$ is in the $y$ direction and $\vb{B}$ is in
+the $z$ direction. $\vb{B},\vb{J}$, and $P$ vary only with $x$ (see diagram).
+Derive a solution for $\vb{B}$, and $\vb{J}$ under the condition $\vb{J}\sim P$
+that is valid for $-L<x<L$. Make sure that your solution satisfies the boundary
+conditions of $\vb{B}(x=L)=-B_0\zhat$, and $\vb{B}(x=0)=\vb{0}$. $L$
+is a characteristic length. Sketch your results.
+
+\textit{Hint}: There is more than one possible solution -- just give any valid
+solution. Be careful, the condition $\vb{J}^2\sim P$ is NOT the same as in the
+Harris solution. 
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5}[Magnetic diffusion]
+Consider a magnetic field $\vb{B}=B_z(x,t)\zhat$ where
+$B_z(x,t=0)=B_0\cos(k_1x)+B_0\cos(k_2x)$ in a resistive plasma with $k_2\gg
+k_1$.
+
+(a) Find the solution for $B_z(x,t)$.
+
+(b) Sketch (accurate plot not needed) the solution for $t=0$ and $t>0$. What
+happens to the high-$k$ wave?
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
