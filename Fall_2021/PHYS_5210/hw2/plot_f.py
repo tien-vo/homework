@@ -1,6 +1,5 @@
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
-import ptrace as pt
 import numpy as np
 
 
@@ -26,7 +25,8 @@ theta = np.linspace(0, 2 * np.pi, 1000)
 X, THETA = np.meshgrid(x, theta, indexing="ij")
 
 
-pt.mpl(tex=True)
+plt.rc("text", usetex=True)
+plt.rc("font", **dict(family="serif", size=16))
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 6))
 fig.suptitle(r"$\lambda(\xi,\theta)$")
@@ -48,7 +48,7 @@ ax.set_xticks([0, 0.5, 1, 1.5, 2])
 ax.set_xticklabels(["0", "$\pi/2$", r"$\pi$", r"$3\pi/2$", r"$2\pi$"])
 ax.set_xlabel(r"$\theta$")
 ax.set_ylabel(r"$\xi=m/M$")
-ax.tick_params(**pt.params)
+ax.tick_params(direction="in", top=True, bottom=True, right=True, left=True)
 
 
 #plt.show()
