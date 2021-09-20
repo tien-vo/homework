@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 3: Astr 5140 (Fall 2021)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[Generalized Ohm's Law]
+The MHD force equation is derived by a linear combination of the electron and
+ion fluid equations. Generalized Ohm's law is, simply stated, a different linear
+combination.
+
+We begin by multiplying the ion force equation by $m_e$ and the electron force
+equation by $m_i$, then subtract
+\begin{subequations}
+    \begin{align}
+        m_em_in\frac{D\vb{u}_i}{D t}
+        &=-m_e\grad P_i+nm_ee(\vb{E}+\vb{u}_i\times\vb{B})
+            -m_em_in\nu_{ie}(\vb{u}_i-\vb{u}_e)\\
+        m_im_en\frac{D\vb{u}_e}{D t}
+        &=-m_i\grad P_e-nm_ie(\vb{E}+\vb{u}_e\times\vb{B})
+            -m_em_in\nu_{ei}(\vb{u}_e-\vb{u}_i)
+    \end{align}
+\end{subequations}
+We use quasi-neutrality and bundle the convective derivative into the symbol
+$D$.
+\begin{align}
+    m_em_in\qty(\frac{D\vb{u}_i}{Dt}-\frac{D\vb{u}_e}{Dt})
+    &=\qty(-m_e\grad P_i+m_i\grad P_e)
+    +en\vb{E}(m_e+m_i)\notag\\
+    &\qquad+en\qty(m_e\vb{u}_i+m_i\vb{u}_e)\times\vb{B}
+    -m_em_in(\nu_{ei}+\nu_{ie})(\vb{u}_i-\vb{u}_e)
+\end{align}
+
+(a) Divide each term by $en(m_i+m_e)$.
+
+(b) Show that Term 1 can be re-written in the limit of $m_i\gg m_e$ as
+\begin{equation}
+    \frac{m_e}{e^2}\frac{D(\vb{J}/n)}{Dt} 
+\end{equation}
+
+(c) Argue that since $m_i\gg m_e$ that, unless $P_i\gg P_e$ (very rare), Term 2
+becomes
+\begin{equation}
+    \frac{\grad P_e}{en} 
+\end{equation}
+
+(d) Term 3 is trivial. Term 4 is tricky as it must be broken into two parts. Add
+$\vb{u}=(m_i\vb{u}_i+m_e\vb{u}_e) /(m_i+m_e)$, separate $\vb{u}\times\vb{B}$,
+then subtract ($m_i\vb{u}_i+m_e\vb{u}_e) /(m_i+m_e)$. Show that the remaining
+four terms ($m_i\gg m_e$) can be approximated as
+\begin{equation}
+    \frac{-\vb{J}\times\vb{B}}{en} 
+\end{equation}
+
+(e) Show that Term 5 can be written as $\vb{J}/\sigma$. Define $\sigma$.
+
+In the end, you should arrive at
+\begin{equation}
+    \vb{E}+\vb{u}\times\vb{B}=\frac{\vb{J}}{\sigma}+\frac{\vb{J}\times\vb{B}}{en}-\frac{\grad
+    P_e}{en}+\frac{m_e}{ne^2}\frac{D\vb{J}}{Dt}+\text{small terms} 
+\end{equation}
+
+\textbf{Note}: If done exactly (full convective derivative and keeping small
+terms), $n$ is not inside the derivative and furthermore, some of the
+''leftovers'' from Term 1 cancel ''leftovers'' in Term 4.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[Scale height in the solar corona]
+The surface gravity of the Sun is $274$\,\si{m/s\tothe{2}}. Assume that the
+corona is entirely protons with $T_{\text{corona}}=10^6$\,$^\circ$\si{K}.
+Derive the isothermal scale height of the solar corona from the MHD equations
+assuming $\vb{g}$ is constant (use 1D). How does this value compare with the
+radius of the Sun (what \% of $R_{\text{sun}}$ is $H_0$)? Does your answer agree
+with hat is seen in UV or X-ray images?
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{4}[Magnetic tension]
+This problem is to develop an intuition for magnetic tension. Examine the
+diagram, which shows a field line if $\vb{B}=B_0[(z /z_0)\xhat+\zhat$. Examine
+the field line and convince yourself that the equation represents a curved
+magnetic field line. Derive the tension force at $z=0$. What is the direction of
+the tension force? Argue that $z_0$ is the local radius of curvature.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
