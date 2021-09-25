@@ -1,11 +1,11 @@
 import numpy as np
 
-
+V = 1
 a = 1
 x = a / 2
 y = a / 2
 z = 0
-V = 1
+
 
 def Phi_nm(n, m):
     g = np.pi / a * np.sqrt(n ** 2 + m ** 2)
@@ -25,6 +25,5 @@ def Phi(N=1, M=1):
 
 for N in range(1, 7):
     for M in range(1, 7):
-        print(N, M, Phi(N, M))
+        print(f"(N,M)=({N},{M}): Phi={Phi(N,M):.5f}")
 
-print(V / 3)
