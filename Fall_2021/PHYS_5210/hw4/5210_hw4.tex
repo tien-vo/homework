@@ -18,6 +18,28 @@ released and allowed to fall into each other.
 
 Prove that they collide after a time $\tau /(4\sqrt{2})$.
 \begin{solution}
+From the general solution derived in class, a circular orbit has a radius
+\begin{equation}
+    R=\frac1{x_+}=\frac1{x_-}=\frac{l^2}{\mu\alpha} 
+\end{equation}
+where $l=\mu R^2\omega$ is the angular momentum. Then the period is
+\begin{equation}
+    \tau=\frac{2\pi}{\omega}=2\pi\frac{l^3}{\mu\alpha^2} 
+\end{equation}
+Now, the particle is set to free fall with an intial energy
+$E_0=-\alpha /R$. By energy conservation,
+\begin{equation}
+    \frac12\mu\dot{r}^2-\frac{\alpha}{r}=E_0=-\frac{\alpha}{R} 
+\end{equation}
+Thus, we can write the differential equation
+\begin{equation}
+    dt=\sqrt{\frac{\mu}{2\alpha}}\qty(\frac1r-\frac1R)^{-1/2}dr
+\end{equation}
+Integrating both sides, we can find the time for the particles collide as
+\begin{equation}
+    \tau'=\sqrt{\frac{\mu}{2\alpha}}\int_0^R\qty(\frac1r-\frac1R)^{-1/2}dr 
+    =\frac\pi2\sqrt{\frac{\mu}{2\alpha}}R^{3/2}=\frac\pi{2\sqrt2}\frac{l^3}{\mu\alpha^2}=\frac{\tau}{4\sqrt2}
+\end{equation}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,6 +74,71 @@ $\varphi$ to $s$.
 (d) Finally, find the differential cross section $d\sigma /d\Omega$ where
 $d\Omega=2\pi\sin(\theta)d\theta$ for a particle scattering in this potential.
 \begin{solution}
+(a) The angular momentum is defined as $\vb{L}=\vb{r}\times\vb{p}$. At the point
+of impact (when the particle enters the potential field $U$), the radius is 
+$r=a$. Also, let $v_0$ be the initial velocity. Then the initial angular 
+momentum is
+\begin{equation}
+    L=mav_0\sin\varphi 
+\end{equation}
+Let $v$ be the velocity briefly after it has entered $U$. The radius is still
+$a$, but the angle between $\vb{r}$ and $\vb{p}$ is $\tilde\varphi$ and the
+angular momentum is
+\begin{equation}
+    L=mav\sin\varphi 
+\end{equation}
+From conservation of the angular momentum, we can write
+\begin{equation}
+    v=v_0\frac{\sin\varphi}{\sin\tilde\varphi} 
+\end{equation}
+From energy conservation and the above result, we can write
+\begin{equation}
+    E_0=\frac12mv_0^2=\frac12mv^2-U_0=\frac12mv_0^2\frac{\sin^2\varphi}{\sin^2\tilde\varphi}-U_0
+\end{equation}
+Inverting, we can write
+\begin{equation}\label{p2:a}
+    \sin\tilde\varphi=\qty(1+\frac{U_0}{E_0})^{-1/2}\sin\varphi 
+\end{equation}
+From geometry, $\sin\varphi=s /a$, so we can write $\tilde\varphi$ as
+\begin{equation}
+    \tilde\varphi=\sin^{-1}\qty[\frac{s}{a}\qty(1+\frac{U_0}{E_0})^{-1/2}] 
+\end{equation}
+
+(b) From geometry, we can also write
+$\theta=2(\varphi-\tilde\varphi)\Rightarrow\tilde\varphi=\varphi-\theta /2$.
+
+(c) From part (b), we can rewrite \eqref{p2:a} as
+\begin{equation}
+    \sin\qty(\varphi-\frac\theta2)
+    =\sin\varphi\cos\qty(\frac\theta2)-\cos\varphi\sin\qty(\frac\theta2)
+    =\qty(1+\frac{U_0}{E_0})^{-1/2}\sin\varphi
+\end{equation}
+Solving for $\varphi$, we have
+\begin{equation}
+    \tan\varphi=f(\theta)=\frac{\sin(\theta
+    /2)}{\cos(\theta/2)-(1+U_0/E_0)^{-1/2}}=\frac{s}{\sqrt{a^2-s^2}}
+\end{equation}
+Inverting, we can write $s$ as a function of $\theta$
+\begin{equation}\label{p2:c}
+    s^2=a^2\frac{f^2(\theta)}{1+f^2(\theta)} 
+    =a^2\frac{\sin^2(\theta/2)}{1+C^2-2C\cos(\theta/2)}
+\end{equation}
+where $C=\sqrt{E_0 /(E_0+U)}$.  
+
+(d) Taking the derivative of \eqref{p2:c} with Mathematica, we can write the
+differential cross section as
+\begin{equation}
+    \sigma_{\text{diff}}
+    =\frac1{2\sin\theta}\frac{ds^2}{d\theta}
+    =\frac{a^2}{4}\frac{1+C^2-C[\cos(\theta/2)+\sec(\theta/2)]}{[1+C^2-2C\cos(\theta/2)]^2}
+\end{equation}
+Let $n=1 /C$, this can be simplified into
+\begin{align}
+    \sigma_{\text{diff}}
+    &=\frac{a^2}{4}\frac{1+\frac1{n^2}-\frac1n\qty[\cos(\theta/2)+\sec(\theta/2)]}{[1+\frac1{n^2}-\frac2n\cos(\theta/2)]^2}\notag\\
+    &=\frac{n^2a^2}{4}\frac{n^2+1-n\cos(\theta/2)-\frac{n}{\cos(\theta/2)}}{[n^2+1-2n\cos(\theta/2)]^2}\notag\\
+    &=\frac{n^2a^2}{4}\frac{(n\cos(\theta/2)-1)(n-\cos(\theta/2))}{(n^2+1-2n\cos(\theta/2))^2}
+\end{align}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
