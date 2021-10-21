@@ -1,0 +1,267 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 5: Phys 7310 (Fall 2021)}
+
+\begin{document}
+\maketitle 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5.1}[Spherical harmonic addition theorem]
+(a) A unit vector in spherical coordinates may be written as
+\begin{equation}
+    \nhat\equiv\qty(n_x,n_y,n_z)=\qty(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta) 
+\end{equation}
+For vectors $\vb{x}$ and $\vb{x}'$ with associated unit vectors $\nhat$ and
+$\nhat'$, show that
+\begin{equation}
+    \cos\gamma=\cos\theta\cos\theta'+\sin\theta\sin\theta'\cos(\phi-\phi') 
+\end{equation}
+where $\gamma$ is the angle between $\vb{x}$ and $\vb{x}'$. Now show that the
+$l=1$ case of the spherical harmonic addition theorem (Jackson 3.62) reduces to
+the same relation.
+
+(b) Using the explicit forms of the spherical harmonics given on Jackson page
+109, verify the ``sum rule" (Jackson 3.69) that is a special case of the addition
+theorem, for $l=2$ and $l=3$.
+\begin{solution}
+    (a) Given $\nhat=\vb{x}/\abs{\vb{x}}$ and $\nhat'=\vb{x}'/\abs{\vb{x}'}$, 
+    we can calculate
+    \begin{align}\label{p1a:cos}
+    \cos\gamma
+    &=\nhat\vdot\nhat'\notag\\
+    &=\sin\theta\cos\varphi\sin\theta'\cos\varphi'
+    +\sin\theta\sin\varphi\sin\theta'\sin\varphi'
+    +\cos\theta\cos\varphi'\notag\\
+    &=\sin\theta\sin\theta'\qty(\cos\varphi\cos\varphi'+\sin\varphi\sin\varphi')
+    +\cos\theta\cos\theta'\notag\\
+    &=\sin\theta\sin\theta'\cos(\varphi-\varphi')+\cos\theta\cos\theta'
+\end{align}
+Now, from (Jackson 3.62), $P_1(\cos\gamma)=\cos\gamma$ and
+\begin{align}
+    \cos\gamma
+    &=\frac{4\pi}{3}\sum_{m=-1}^1\frac{3}{4\pi}
+    \frac{(1-m)!}{(1+m)!}P_1^m(\cos\theta)P_1^m(\cos\theta')e^{-im\varphi'}e^{im\varphi}\notag\\
+    &=\frac12e^{-i(\varphi-\varphi)'}\sin\theta\sin\theta'
+    +\cos\theta\cos\theta'+\frac12e^{i(\varphi-\varphi')}\sin\theta\sin\theta'\notag\\
+    &=\cos\theta\cos\theta'+\sin\theta\sin\theta'\cos(\varphi-\varphi')
+\end{align}
+We get the same result as \eqref{p1a:cos}.
+
+(b) For $l=2$, the sum rule is
+\begin{align}
+    \frac{5}{4\pi}
+    &=\sum_{m=-2}^2\abs{Y_{2m}(\Omega)}^2\notag\\
+    &=\abs{Y_{20}(\Omega)}^2+2\sum_{m=1}^2\abs{Y_{2m}(\Omega)}^2
+        \tag{by symmetry}\\
+    &=\frac5{4\pi}\qty(\frac32\cos^2\theta-\frac12)^2
+    +\frac{15}{4\pi}\sin^2\theta\cos^2\theta+\frac{15}{16\pi}\sin^4\theta\notag\\
+    &=\frac{5}{4\pi}\frac{9\cos^4\theta-6\cos^2\theta+1+12\sin^2\theta\cos^2\theta+3\sin^4\theta}{4}\notag\\
+    &=\frac{5}{4\pi}
+\end{align}
+where we have used Mathematica to simplify in the last equality. For $l=3$,
+\begin{align}
+    \frac{7}{4\pi}
+    &=\abs{Y_{30}(\Omega)}^2+2\sum_{m=1}^3\abs{Y_{3m}(\Omega)}^2\notag\\
+    &=\frac{7}{4\pi}\qty(\frac52\cos^3\theta-\frac32\cos\theta)^2
+    +\frac{21}{32\pi}\sin^2\theta(5\cos^2\theta-1)^2
+    +\frac{105}{16\pi}\sin^4\theta\cos^2\theta+\frac{35}{32\pi}\sin^6\theta\notag\\
+    &=\frac{7}{4\pi}\Bigg[\frac{25}{4}\cos^9\theta
+        -\frac{15}{2}\cos^4\theta+\frac94\cos^2\theta+\frac{75}{8}\sin^2\theta\cos^4\theta-\frac{15}{4}\sin^2\theta\cos^2\theta\notag\\
+    &\qquad+\frac38\sin^2\theta+\frac{15}{4}\sin^4\theta\cos^2\theta+\frac58\sin^6\theta\Bigg]\notag\\
+    &=\frac{7}{4\pi}
+\end{align}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5.2}[A dipole in spherical harmonics]
+Two point charges $q$ and $-q$ are located on the $z$ axis at $z=a$ and $z=-a$,
+respectively.
+
+(a) Find the electrostatic potential as an expansion in spherical harmonics and
+powers of $r$ for both $r>a$ and $r<a$.
+
+(b) Keeping the product $qa\equiv p /2$ constant, take the limit of $a\to 0$ and
+find the potential for $r\neq 0$. This is by definition a dipole along the $z$
+axis and its potential.
+
+(c) Suppose now that the dipole of part (b) is surrounded by a \textit{grounded}
+spherical shell of radius $b$ concentric with the origin. By linear
+superposition find the potential everywhere inside the shell.
+\begin{solution}
+(a) The potential due to the two point charges is
+\begin{align}\label{p2a:Phi1}
+    \Phi&=\frac{q}{4\pi\epsilon_0}\qty[\frac1{\abs{\vb{x}-a\zhat}}-\frac1{\abs{\vb{x}+a\zhat}}]\notag\\
+    &=\frac{q}{\epsilon_0}\sum_{l=0}^\infty\sum_{m=-l}^l
+    \frac1{2l+1}\frac{r_<^l}{r_>^{l+1}}\qty[
+    Y_{lm}^\star(\theta'=0,\phi')-Y_{lm}^\star(\theta'=\pi,\phi')
+    ]Y_{lm}(\Omega)
+\end{align}
+Now, note that by definition,
+\begin{align}
+    Y_{lm}^\star(\theta'=0,\phi')-Y_{lm}^\star(\theta'=\pi,\phi')
+    &=\sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}\qty[1-(-1)^{l+m}]P_l^m(1)e^{-im\phi'}
+\end{align}
+But $P_l^m(1)$ is only non-zero for $m=1$. Thus, the finite sum over $m$ in
+\eqref{p2a:Phi1} reduces to only one term with
+\begin{equation}
+    Y_{l0}^\star(\theta'=0,\phi')-Y_{l0}^\star(\theta'=\pi,\phi') 
+    =\sqrt{\frac{2l+1}{4\pi}}\qty[1-(-1)^l]P_l(1)
+\end{equation}
+Then we can write \eqref{p2a:Phi1} as
+\begin{align}\label{p2a:Phi2}
+    \Phi&=\frac{q}{4\pi\epsilon_0}\sum_{l=0}^\infty
+        \frac{r_<^l}{r_>^{l+1}}\qty[1-(-1)^l]P_l(\cos\theta)\notag\\
+    &=\begin{cases}
+    (q/4\pi\epsilon_0)(1/a)\sum_{l=0}^\infty\qty(r/a)^l
+    \qty[1-(-1)^l]P_l(\cos\theta) & r<a\\
+    (q/4\pi\epsilon_0)(1/r)\sum_{l=0}^\infty\qty(a/r)^l
+    \qty[1-(-1)^l]P_l(\cos\theta) & r>a
+    \end{cases}
+\end{align}
+(b) From \eqref{p2a:Phi2} for $r>a$, we can write
+\begin{align}
+    \Phi_{r>a}&=\frac{p}{8\pi\epsilon_0}\sum_{l=0}^\infty 
+    \frac{a^{l-1}}{r^{l+1}}\qty[1-(-1)^l]P_l(\cos\theta)\tag{$p=2qa$}\\
+    &=\frac{p}{8\pi\epsilon_0}\qty[
+        \frac{2}{r^2}P_1(\cos\theta)+\frac{2a^3}{r^4}P_3(\cos\theta)+\hdots]\notag\\
+    &\approx\frac{p\cos\theta}{4\pi\epsilon_0r^2}\notag\\
+    &=\frac{\vb{p}\vdot\rhat}{4\pi\epsilon_0r^2}
+\end{align}
+(c) The dipole induces some charge on the shell. Thus, the total potential is
+\begin{equation}
+    \Phi=\frac{p\cos\theta}{4\pi\epsilon_0r^2}+\sum_{l=0}^\infty
+    A_lr^lP_l(\cos\theta) 
+\end{equation}
+where we have set $B_l=0$ in the general solution in spherical coordinates
+because $r^{-(l+1)}\to\infty$ as $r\to 0$. At $r=b$, $\Phi=0$, so we can write
+\begin{equation}
+    \sum_{l=0}^\infty
+    A_lb^lP_l(\cos\theta)=-\frac{p\cos\theta}{4\pi\epsilon_0r^2} 
+\end{equation}
+By orthogonality, the coefficients $A_l$ are 
+\begin{equation}
+    A_l=-\frac{2l+1}{2}b^{-l}\frac{p}{4\pi\epsilon_0b^2}
+    \int_{-1}^1d(\cos\theta)P_l(\cos\theta)P_1(\cos\theta)
+    =-\frac{p}{4\pi\epsilon_0 b^{2+l}}\delta_{1l}
+\end{equation}
+The only non-trivial coefficient is thus $A_1=-p /4\pi\epsilon_0b^3$. Then the
+potential can be written as
+\begin{equation}
+    \Phi=\frac{p\cos\theta}{4\pi\epsilon_0b^2}\qty[\qty(\frac{b}{r})^2-\frac{r}{b}] 
+\end{equation}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5.3}[A disk inside a sphere]
+Consider a disk of radius $R$ centered on the origin, with uniform surface
+charge density $\sigma$. The disk sits inside a grounded, conducting sphere of
+radius $b$, also centered on the origin. Use a suitable limit of the Green's
+function in Jackson 3.125 to find the potential everywhere inside the sphere, as
+an expansion in Legendre polynomials. (This is similar to the example in class
+and Jackson 3.10, except with a disk instead of a ring. Fill in the steps of how
+the spherical harmonics reduce to Legendre polynomials, and treat the cases
+$r<R$ and $R<r<b$ separately when you do the radial integral. You can use the
+results for $P_l(0)$ found above Jackson 3.131).
+\begin{solution}
+First, note that the total charge can be written as
+\begin{equation}
+    Q=\int\sigma r'dr'd\varphi'=\int \rho
+    r'^2dr'd(\cos\theta')d\varphi' 
+\end{equation}
+Thus, we can write the volume charge density as
+\begin{equation}
+    \rho(\vb{x}')=\sigma\frac{\delta(\cos\theta')}{r'} 
+\end{equation}
+Now, from (3.125), the Green's function inside the sphere with $a\to 0$ is
+\begin{equation}
+    G(\vb{x},\vb{x}')=4\pi\sum_{l=0}^\infty\sum_{m=-l}^l\frac{Y_{lm}^\star(\Omega')Y_{lm}(\Omega)}{2l+1}r_<^l\qty[\frac1{r_>^{l+1}}-\frac{r_>^l}{b^{2l+1}}]
+\end{equation}
+Then the potential can be written as
+\begin{equation}\label{p3:Phi1}
+    \Phi=\frac{\sigma}{\epsilon_0}\sum_{l=0}^\infty\sum_{m=-l}^l
+    \frac1{2l+1}\int_0^{2\pi}d\varphi'Y_{lm}^\star(\theta'=\pi/2,\varphi')Y_{lm}(\theta,\varphi)\int_0^Rdr'r'r_<^l\qty[\frac1{r_>^{l+1}}-\frac{r_>^l}{b^{2l+1}}]
+\end{equation}
+Note that the domain for $r'$ is $[0,R]$ because $\sigma=0$ for $r'>R$. Now, for
+$m\neq 0$, the integration over $\varphi'$ is
+\begin{equation}
+    \int_0^{2\pi}d\varphi' e^{-im\varphi'}=-\frac{i}{m}\qty(1-e^{-2im\pi})=0
+\end{equation}
+and for $m=0$, $e^{-im\varphi'}=1$ and the integration is
+\begin{equation}\label{p3:int_phi}
+    \int_0^{2\pi}d\varphi'=2\pi 
+\end{equation}
+Thus, the only non-trivial term in the summation $\sum_{m=-l}^l$ is $m=0$. The
+function $Y_{l0}^\star(\Omega')Y_{l0}(\Omega)$ reduces to
+\begin{equation}\label{p3:Y}
+    Y_{l0}^\star(\theta'=\pi/2,\varphi')Y_{l0}(\theta,\varphi)
+    =\frac{2l+1}{4\pi}P_l(0)P_l(\cos\theta)
+\end{equation}
+Thus, the potential \eqref{p3:Phi1} can be written with \eqref{p3:int_phi} and
+\eqref{p3:Y} as
+\begin{align}
+    \Phi
+    &=\frac{\sigma}{2\epsilon_0}\sum_{l=0}^\infty P_l(0)P_{l}(\cos\theta)
+    \int_0^Rdr' r'r_<^l\qty[\frac1{r_>^{l+1}}-\frac{r_>^l}{b^{2l+1}}]\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty P_{2l}(0)P_{2l}(\cos\theta)
+    \int_0^Rdr'\frac{r'}{R}r_<^l\qty[\frac1{r_>^{l+1}}-\frac{r_>^l}{b^{2l+1}}]
+\end{align}
+where the odd terms $P_{2l+1}(0)$ all vanish. Now, we consider two cases:
+
+\qquad \textbf{Case 1}: $r>R\Rightarrow r_< =\min(r,r')=r'$ and $r_>
+=\max(r,r')=r$
+
+The integration over $r'$ is thus
+\begin{equation}
+    I=\frac1R\qty[\frac1{r^{2l+1}}-\frac{r^{2l}}{b^{4l+1}}]\int_0^Rdr' r'^{2l+1}
+    =\frac1{2l+2}\qty(\frac{R}{r})^{2l+1}\qty[1-\qty(\frac{r}{b})^{4l+1}]
+\end{equation}
+Then we can write the potential as
+\begin{align}\label{p3:Phi_out}
+    \Phi_{r>R}&=\frac{\sigma
+    R}{2\epsilon_0}\sum_{l=0}^\infty\frac{P_{2l}(0)P_{2l}(\cos\theta)}{2l+2}\qty(\frac{R}{r})^{2l+1}\qty[1-\qty(\frac{r}{b})^{4l+1}]\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty
+        \frac{(-1)^l(2l-1)!!}{(2l+2)2^ll!}\qty(\frac{R}{r})^{2l+1}
+        \qty[1-\qty(\frac{r}{b})^{4l+1}]P_{2l}(\cos\theta)
+\end{align}
+
+\qquad \textbf{Case 2}: $r<R$.
+
+We have to split the integral $\int_0^R=\int_0^r+\int_r^R$ where $r_< =r'$ and
+$r_> =r$ in the former and $r_< =r$ and $r_> =r'$ in the latter.
+\begin{align}
+    I
+    &=\frac1R\qty[\frac1{r^{2l+1}}-\frac{r^{2l}}{b^{4l+1}}]\int_0^rdr' r'^{2l+1}
+    +\frac{r^{2l}}{R}\int_r^R
+    dr'\qty[\frac1{r'^{2l}}-\frac{r'^{2l+1}}{b^{4l+1}}]\notag\\
+    &=\frac1{(2l+2)}\frac{r}{R}\qty[1-\qty(\frac{r}{b})^{4l+1}]
+    -\frac{r^{2l}}{(2l-1)R}\qty[\frac1{R^{2l-1}}-\frac1{r^{2l-1}}]
+    -\frac{r^{2l}}{(2l+2)Rb^{4l+1}}\qty(R^{2l+2}-r^{2l+2})\notag\\
+    &=\frac{1}{(2l+2)}\frac{r}{R}\qty[1-\frac{r^{2l-1}R^{2l+2}}{b^{4l+1}}]
+    +\frac1{2l-1}\frac{r}{R}\qty[1-\qty(\frac{r}{R})^{2l-1}]
+\end{align}
+Then the potential is
+\begin{align}\label{p3:Phi_in}
+    \Phi_{r<R}&=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty
+        \frac{P_{2l}(0)P_{2l}(\cos\theta)}{2l+2}\qty(\frac{r}{R})
+            \qty[1-\frac{r^{2l-1}R^{2l+2}}{b^{4l+1}}+\frac{2l+2}{2l-1}\qty[1-\qty(\frac{r}{R})^{2l-1}]]\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty
+    \frac{(-1)^l(2l-1)!!}{(2l+2)2^ll!}\qty(\frac{r}{R})
+    \qty[1-\frac{r^{2l-1}R^{2l+2}}{b^{4l+1}}+\frac{2l+2}{2l-1}\qty[1-\qty(\frac{r}{R})^{2l-1}]]P_{2l}(\cos\theta)
+\end{align}
+
+Note that \eqref{p3:Phi_out} vanishes at $r=b$ and at $r=R$, the potential
+$\Phi$ is continuous
+\begin{equation}
+    \eval{\Phi_{r>R}}_{r=R}=\eval{\Phi_{r<R}}_{r=R}
+    =\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty
+    \frac{(-1)^l(2l-1)!!}{(2l+2)2^ll!}\qty[1-\qty(\frac{R}{b})^{4l+1}]
+\end{equation}
+Thus, this solution satisfies all boundary and continuity conditions.
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
