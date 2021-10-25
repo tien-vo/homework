@@ -98,6 +98,97 @@ why it is physically reasonable to do so.
 any $\theta$ with $r\ll R$ in terms of Legendre polynomials, keeping the first
 two terms in the expansion in $r /R$.
 \begin{solution}
+(a) In the following, we shall use the solution for the potential of a uniformly
+charged ring in Section 3.3 of Jackson for this problem. Let us also redefine
+$c\to r'$, $a\to R$, and $r\to z'$. Then $r'^2=R^2+z'^2$ where $z'$ is the
+position of the ring and $r'$ is the distance from points on the ring to the $z$
+axis. The charge is $dq'=\sigma 2\pi Rdz'$ so that the cylinder is uniformly
+charged on the surface for $z'=0$ to $z'\to-\infty$.
+
+Now, if $z<R$, then $r'>z$ by definition. From the results of Jackson 3.3, the 
+contribution from a thin ring located at $z'$ is
+\begin{equation}
+    d\Phi_<=\frac{dq'}{4\pi\epsilon_0}\sum_{l=0}^\infty
+        \frac{z^l}{r'^{l+1}}P_l(\cos\alpha') 
+\end{equation}
+where $\tan\alpha'=R /z'$. Let $x=\cos\alpha'$. Then the 
+total potential at $z$ is
+\begin{align}
+    \Phi_{z<R}
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty
+    z^l\int_{-\infty}^0dz'(R^2+z'^2)^{-\frac{l+1}{2}}P_l(\cos\alpha')\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\qty[
+        \int_{-\infty}^0\frac{dz'}{\sqrt{R^2+z'^2}}
+        +\sum_{l=1}^\infty\qty(\frac{z}{R})^l\int_0^1dx(1-x^2)^{\frac{l-2}{2}}
+        P_l(x)
+    ] 
+\end{align}
+The first term is infinite. However, it is independent of $z$. So we can set it 
+to zero since the potential has to be finite at $z=R$ (because it is continuous
+at every finite distance). Then we can use Mathematica to evaluate the integral
+in the infinite series
+\begin{equation}
+    \Phi_{z<R}(z)=\frac{\sigma
+    R}{2\epsilon_0}\sum_{l=1}^\infty\qty(\frac{z}{R})^l\frac{P_{l-1}(0)}{l}
+\end{equation}
+Note that all even terms vanish here.
+
+Similarly, for $z\geq R$, we need to split the integral into two because there 
+is a domain where $R\leq r'\leq z$, or $-\sqrt{z^2-R^2} /z<x<0$. The potential
+contribution in this domain is
+\begin{equation}
+    d\Phi_>=\frac{dq'}{4\pi\epsilon_0}\sum_{l=0}^\infty
+    \frac{r'^{l}}{z^{l+1}}P_l(x) 
+\end{equation}
+Then the total potential is
+\begin{align}
+    \Phi_{z\geq R}
+    &=\int d\Phi_<
+    +\int d\Phi_>\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty\qty[
+        \int_{-\sqrt{z^2-R^2}}dz'\frac{r'^l}{z^{l+1}}P_l(x)
+        +\int_{-\infty}^{-\sqrt{z^2-R^2}}dz'\frac{z^l}{r'^{l+1}}P_l(x)
+    ]\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\sum_{l=0}^\infty\Bigg[
+        \qty(\frac{R}{z})^{l+1}\int_{-\sqrt{z^2-R^2}/z}^0dx(1-x^2)^{-\frac{l+3}{2}}P_l(x)\notag\\
+    &\qquad\qquad
+        +\qty(\frac{z}{R})^l\int_{-1}^{-\sqrt{z^2-R^2}/z}dx(1-x^2)^{\frac{l-2}{2}}P_l(x)
+    \Bigg]\notag\\
+    &=\frac{\sigma R}{2\epsilon_0}\Bigg\{
+        \sum_{l=0}^\infty\qty[\qty(\frac{R}{z})^{l+1}\frac{P_{l+1}(0)}{l+1}-\frac{P_{l+1}(-u)}{l+1}]
+        +\sum_{l=1}^\infty\frac{P_{l-1}(-u)}{l}
+    \Bigg\}\tag{$u\equiv\sqrt{z^2-R^2}/z$}\\
+    &=\frac{\sigma
+    R}{2\epsilon_0}\qty{\frac{\sqrt{z^2-R^2}}{z}+\sum_{l=1}^\infty
+    \qty[\qty(\frac{R}{z})^{l+1}\frac{P_{l+1}(0)}{l+1}-\frac{P_{l+1}(u)}{l+1}+\frac{P_{l-1}(u)}{l}]
+    }
+\end{align}
+where we have again used Mathematica to solve the two integrals in the third
+equality. The $l=0$ term in the series with $(z /R)^l$ is also omitted
+for the same reason as before. In summary,
+\begin{subequations}\label{p2a:Phi}
+    \begin{align}
+        \Phi_{z<R}&=\frac{\sigma
+        R}{2\epsilon_0}\sum_{l=1}^\infty\qty(\frac{z}{R})^l\frac{P_{l-1}(0)}{l}\label{p2a:Phi1}\\
+        \Phi_{z\geq R}&=\frac{\sigma
+    R}{2\epsilon_0}\qty{\frac{\sqrt{z^2-R^2}}{z}+\sum_{l=1}^\infty
+    \qty[\qty(\frac{R}{z})^{l+1}\frac{P_{l+1}(0)}{l+1}-\frac{P_{l+1}(u)}{l+1}+\frac{P_{l-1}(u)}{l}]
+}  \label{p2a:Phi2} 
+    \end{align}
+\end{subequations}
+Note that at $z=R$, $u=0$. So \eqref{p2a:Phi1} and \eqref{p2a:Phi2} are equal
+and the potential is continuous. Also, at $z\to\infty$, $\Phi_{z\geq R}\to\sigma
+R /2\epsilon_0$, as expected of the potential inside an infinite cylinder.
+
+(b) From \eqref{p2a:Phi1}, we let $z\to r$ and add the polar basis function
+(Legendre polynomials) to write the potential at $(r,\theta)$
+\begin{align}
+    \Phi_{r\ll R}(r,\theta)
+    &=\frac{\sigma
+    R}{2\epsilon_0}\sum_{l=1}^\infty\qty(\frac{r}{R})^{l}\frac{P_{l-1}(0)}{l}P_l(\cos\theta)\notag\\
+    &\approx\frac{\sigma
+    R}{2\epsilon_0}\qty[\frac{r}{R}\cos\theta-\frac16\qty(\frac{r}{R})^3P_3(\cos\theta)]
+\end{align}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
