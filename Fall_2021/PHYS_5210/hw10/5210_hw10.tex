@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 10: Phys 5210 (Fall 2021)}
+
+\date{November 22, 2021}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[Goldstein, 9.30]
+(a) Prove that the Poisson bracket of two constants of the motion is itself a
+constant of motion even if the constants are explicitly dependent on time.
+Constants of motions are two functions of position, momenta and time, $u(q,p,t)$
+and $v(q,p,t)$ such that
+\begin{equation}\label{p1:ddt}
+    \frac{du}{dt}=\qty{\HH,u}+\frac{\partial u}{\partial t}=0,\qquad
+    \frac{dv}{dt}=\qty{\HH,v}+\frac{\partial v}{\partial t}=0
+\end{equation}
+
+(b) Show that if both the Hamiltonian $\HH$ and a quantity $u(q,p,t)$ are
+constants of motion, the $n$th partial derivative of $u$ with respect to time
+must also be a constant of motion.
+
+(An illustration of this result is the motion of a free particle with
+$\HH=p^2/2m)$ where there exists a constant of motion $x-pt/m$, whose derivative
+with respect to time $t$ is also a constant of motion.
+\begin{solution}
+(a) First, since $\qty{u,v}$ is also a function of $q,p,$ and $t$, we can write
+\begin{align}
+    \frac{d}{dt}\qty{u,v}=\qty{\HH,\qty{u,v}}+\frac{\partial}{\partial
+    t}\qty{u,v}
+\end{align}
+Now, the Poisson bracket has a cyclic property
+\begin{align}
+    \qty{\HH,\qty{u,v}}+\qty{v,\qty{\HH,u}}-\qty{u,\qty{\HH,v}}=0
+\end{align}
+So we can write
+\begin{align}
+    \qty{\HH,\qty{u,v}}
+    =\qty{u,\qty{\HH,v}}-\qty{v,\qty{\HH,u}}
+    =\qty{v,\frac{\partial u}{\partial t}}-\qty{u,\frac{\partial v}{\partial t}}
+\end{align}
+from \eqref{p1:ddt}. Now, by definition of the Poisson bracket,
+\begin{align}
+    \frac{\partial}{\partial t}\qty{u,v}
+    &=\frac{\partial}{\partial q}\qty(\frac{\partial u}{\partial
+    t})\frac{\partial v}{\partial p}+\frac{\partial u}{\partial
+q}\frac{\partial}{\partial p}\qty(\frac{\partial v}{\partial t})
+-\frac{\partial}{\partial p}\qty(\frac{\partial u}{\partial t})\frac{\partial
+v}{\partial q}-\frac{\partial u}{\partial p}\frac{\partial}{\partial
+q}\qty(\frac{\partial v}{\partial t})\notag\\
+    &=\qty{\frac{\partial u}{\partial t},v}+\qty{u,\frac{\partial v}{\partial t}}
+\end{align}
+Thus,
+\begin{align}
+    \frac{d}{dt}\qty{u,v}=\qty{v,\frac{\partial u}{\partial t}}
+    -\qty{u,\frac{\partial v}{\partial t}}-\qty{v,\frac{\partial u}{\partial
+    t}}+\qty{u,\frac{\partial v}{\partial t}}=0
+\end{align}
+
+(b) Given that $d\HH/dt=\partial\HH/\partial t=0$ and $du/dt=0$, we can
+write
+\begin{align}
+    \frac{d}{dt}\qty(\frac{\partial^nu}{\partial t^n})
+    &=\qty{\HH,\frac{\partial^nu}{\partial t^n}}+\frac{\partial^{n+1}}{\partial
+    t^{n+1}}u\notag\\
+    &=\frac{\partial^n}{\partial t^n}\qty{\HH,u}+\frac{\partial^{n+1}}{\partial
+    t^{n+1}}u\notag\\
+    &=-\frac{\partial^{n+1}}{\partial t^{n+1}}u+\frac{\partial^{n+1}}{\partial
+    t^{n+1}}u\notag\\
+    &=0
+\end{align}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[Goldstein, 10.16]
+A particle of mass $m$ is constrained to move on a curve in the vertical plane
+defined by the parametric equations
+\begin{equation}\label{p2:xy}
+    x=l(2\phi+\sin(2\phi)),\qquad
+    y=l(1-\cos(2\phi))
+\end{equation}
+There's the usual constant gravitational force acting in the vertical $y$
+direction. By the method of action-angle variable, find the frequency of
+oscillations for all initial conditions such that the maximum of $\phi$ is less
+than or equal to $\pi/2$.
+\begin{solution}
+Given \eqref{p2:xy}, the velocity is
+\begin{equation}
+    \dot{x}=2l(1+\cos2\phi)\dot\phi\qquad\text{and}\qquad
+    \dot{y}=2l\sin2\phi \dot\phi
+\end{equation}
+Then the Lagrange function is
+\begin{align}
+    \LL&=2ml^2\dot\phi^2\qty[(1+\cos2\phi)^2+\sin^2\phi]-mgl(1-\cos2\phi)\notag\\
+       &=4ml^2\dot\phi^2\qty(1+\cos2\phi)-mgl(1-\cos2\phi)\notag\\
+       &=8ml^2\dot\phi^2\cos^2\phi-2mgl\sin^2\phi
+\end{align}
+The canonical momentum is then
+\begin{equation}
+    p=\frac{\partial\LL}{\partial\dot\phi}=12ml^2\dot\phi\cos^2\phi 
+\end{equation}
+Then the Hamiltonian is
+\begin{align}
+    \HH
+    &=p\dot\phi-8ml^2\dot\phi^2\cos^2\phi+2mgl\sin^2\phi\notag\\
+    &=\frac{p^2}{16ml^2\cos^2\phi}-8ml^2\cos^2\phi\frac{p^2}{256m^2l^4\cos^4\phi}+2mgl\sin^2\phi\notag\\
+    &=\frac{p^2}{32ml^2\cos^2\phi}+2mgl\sin^2\phi
+\end{align}
+Since $\HH$ is time-independent, we can also write $\HH=E=2mgl$ where $E$ is the
+energy at the point where $\phi=\phi_{\max}=\pi/2$ and $\dot\phi=0$. Then,
+define the new adiabatic invariant
+\begin{align}
+    P&=4\int_0^{\pi/2} pd\phi\notag\\
+     &=4\int_0^{\pi/2} d\phi\sqrt{32ml^2\cos^2\phi(E-2mgl\sin^2\phi)}\notag\\
+     &=4\sqrt{32ml^2E}\int_0^{\pi/2}d\phi\cos\phi\sqrt{1-\sin^2\phi}\notag\\
+     &=4\sqrt2\pi\sqrt{ml^2E}
+\end{align}
+Then it follows that
+\begin{equation}
+    \HH=\frac1{32\pi^2}\frac{P^2}{ml^2}\qquad\text{and}\qquad
+    P=8\pi ml\sqrt{gl}
+\end{equation}
+Then the new coordinate $\Phi$ conjugate to $P$ is cyclic and the frequency is
+\begin{equation}
+    \dot\Phi=\frac{\partial\HH}{\partial P} 
+    =\frac1{16\pi^2}\frac{P}{ml^2}=\frac1{2\pi}\sqrt{\frac{g}{l}}
+\end{equation}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

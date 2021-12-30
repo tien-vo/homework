@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 9: Phys 7310 (Fall 2021)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{9.1}[Hard ferromagnetic cylinder]
+A magnetically ``hard'' material is in the shape of a right circular cylinder of
+length $L$ and radius $a$. The cylinder has a permanent magnetization $M_0$,
+uniform throughout its volume and parallel to its axis. Determine the magnetic
+field $\vb{H}$ and magnetic induction $\vb{B}$ at all points on the axis of the
+cylinder, both inside and outside. Use the magnetic scalar potential $\Phi_M$.
+In addition, find $H_z$ and $B_z$ at $z\sim 0$ where $0$ is the vertical middle
+of the cylinder, for the limits $a\ll L$ and $a\gg L$.
+\begin{solution}
+From (5.100, Jackson),
+\begin{equation}
+    \Phi_M(z)=\frac1{4\pi}\oint_S\frac{\hat{\vb{n}}'\vdot\vb{M}(\vb{x}')da'}{\abs{z\zhat-\vb{x}'}}
+\end{equation}
+because $\grad'\vdot\vb{M}=0$ inside the cylinder. The surface integral is only
+non-trivial on the caps $S_\pm$ at $z=\pm L /2$ because
+$\hat{\vb{n}}'=\pm\zhat$. We can then evaluate for $\Phi_M$
+\begin{align}
+    \Phi_M(z)
+    &=\frac{M_0}{4\pi}\qty[\int_0^a\frac{\rho'd\rho'}{\sqrt{\rho'^2+(z-L/2)^2}}-\int_0^a\frac{\rho'd\rho'}{\sqrt{\rho'^2+(z+L/2)^2}}]\int_0^{2\pi}
+    d\phi\notag\\
+    &=\frac{M_0}{2}\eval{\qty[\sqrt{\rho'^2+(z-L/2)^2}-\sqrt{\rho'^2+(z+L/2)^2}]}_0^a\notag\\
+    &=\frac{M_0}{2}\qty[\sqrt{a^2+\qty(z-\frac{L}{2})^2}-\sqrt{a^2+\qty(z+\frac{L}{2})^2}+\abs{z+\frac{L}{2}}-\abs{z-\frac{L}{2}}]
+\end{align}
+Thus, the magnetic field $H_z$ is
+\begin{equation}\label{p1:H}
+    H_z=-\frac{\partial\Phi_m}{\partial z}
+    =-\frac{M_0}{2}\qty[\frac{z-L/2}{\sqrt{a^2+(z-L/2)^2}}
+    -\frac{z+L/2}{\sqrt{a^2+(z+L/2)^2}}+\frac{z+L/2}{\abs{z+L/2}}-\frac{z-L/2}{\abs{z-L/2}}]
+\end{equation}
+everywhere along the axis. The magnetic induction inside is
+\begin{align}
+    B_{\abs{z}\leq L/2}
+    &=\mu_0H_z+\mu_0M_0\notag\\
+    &=-\frac{\mu_0M_0}{2}\qty[\frac{z-L/2}{\sqrt{a^2+(z-L/2)^2}}
+    -\frac{z+L/2}{\sqrt{a^2+(z+L/2)^2}}+2]+\mu_0M_0\notag\\
+    &=-\frac{\mu_0M_0}{2}\qty[\frac{z-L/2}{\sqrt{a^2+(z-L/2)^2}}-\frac{z+L/2}{\sqrt{a^2+(z+L/2)^2}}]
+\end{align}
+and the magnetic induction outside is
+\begin{align}\label{p1:B}
+    B_{\abs{z}>L/2}
+    &=\mu_0H_z\notag\\
+    &=-\frac{\mu_0M_0}{2}\qty[\frac{z-L/2}{\sqrt{a^2+(z-L/2)^2}}-\frac{z+L/2}{\sqrt{a^2+(z+L/2)^2}}]
+\end{align}
+So the magnetic induction also has the same form everywhere along $z$.
+
+From \eqref{p1:H} and \eqref{p1:B}, at $z=0$, the magnetic field and magnetic
+induction are
+\begin{subequations}
+    \begin{align}
+        B_z&=\mu_0M_0\frac{L}{\sqrt{4a^2+L^2}}\\
+        H_z&=M_0\qty[\frac{L}{\sqrt{4a^2+L^2}}-1]
+    \end{align} 
+\end{subequations}
+Then for $a\ll L$,
+\begin{subequations}
+    \begin{align}
+        B_z&=\mu_0M_0\frac{1}{\sqrt{1+4(a/L)^2}}\approx\mu_0M_0\qty[1-2\frac{a^2}{L^2}]\\
+        H_z&=M_0\qty[\frac{1}{\sqrt{1+4(a/L)^2}}-1]
+        \approx-2M_0\frac{a^2}{L^2}
+    \end{align} 
+\end{subequations}
+Similarly, for $L\ll a$,
+\begin{subequations}
+    \begin{align}
+        B_z&=\mu_0M_0\frac{L/a}{\sqrt{4+(L/a)^2}}\approx\frac{\mu_0M_0}{2}\frac{L}{a}\\
+        H_z&=M_0\qty[\frac{L/a}{\sqrt{4+(L/a)^2}}-1]
+        \approx -M_0\qty[1-\frac{L}{2a}]
+    \end{align} 
+\end{subequations}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{9.2}[Self-inductance]
+A circuit consists of a long thin conducting shell of radius $a$ and a parallel
+return wire of radius $b$ on axis inside. If the current is assumed distributed
+uniformly throughout the cross section of the wire, calculate the
+self-inductance per unit length. What is the self-inductance if the inner
+conductor is a thin hollow tube?
+\begin{solution}
+Draw an Amperian circular loop perpendicular to the axis of the wire with a
+radius $r<b$. Then the enclosed current is
+\begin{equation}
+    I_\text{enc}=\oint_S\vb{J}\vdot d\vb{a}=
+    4\pi r^2J=I\frac{r^2}{b^2}
+\end{equation}
+where $I$ is the total current running through the wire. Then by Ampere's Law,
+the magnetic field is
+\begin{equation}
+    \vb{H}_{r<b}=\frac{I_\text{enc}}{2\pi r}\phihat
+    =\frac{I}{2\pi b}\frac{r}{b}\phihat
+\end{equation}
+The magnetic induction is thus
+\begin{equation}
+    \vb{B}_{r<b}=\mu\vb{H}=\frac{\mu I}{2\pi b}\frac{r}{b}\phihat
+\end{equation}
+For $b\leq r\leq a$, the enclosed current is $I$ and
+\begin{equation}
+    \vb{H}_{b\leq r\leq a}=\frac{I}{2\pi r}\phihat
+    \qquad\text{and}\qquad
+    \vb{B}_{b\leq r\leq a}=\frac{\mu I}{2\pi r}\phihat
+\end{equation}
+By definition, the self-inductance is
+\begin{align}
+    L
+    =\frac1{I^2}\int\frac{B^2}{\mu}d^3x
+    =\frac{\mu}{2\pi}\qty[\frac1{b^2}\int_0^brdr+\int_b^a\frac{dr}{r}]
+    =\frac{\mu}{2\pi}\qty[\frac12+\ln\frac{a}{b}]
+\end{align}
+
+If the wire is hollow, then there is no magnetic field inside the wire and the
+self-inductance is just
+\begin{equation}
+    L_\text{hollow}=\frac{\mu}{2\pi}\ln\frac{a}{b} 
+\end{equation}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

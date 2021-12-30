@@ -1,0 +1,239 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+\newcommand{\ret}[1]{\qty[#1]_\text{ret}}
+\newcommand{\Rhat}{\bm{\hat{R}}}
+
+\title{Homework 10: Phys 7310 (Fall 2021)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{10.1}[Solutions for $\vb{E}$ and $\vb{B}$ in electrodynamics]
+The potentials $\Phi$ and $\vb{A}$ are often easier to deal with, but it is
+possible to work with the electric and magnetic fields $\vb{E}$ and $\vb{B}$
+directly. In particular, they also obey wave equations with velocity parameter
+$c$.
+
+(a) Starting from Maxwell's equations in vacuum,
+\begin{align}
+    \div{\vb{E}}&=\frac{\rho}{\epsilon_0}, &
+    \div{\vb{B}}&=0,\notag\\
+    \curl{\vb{E}}+\frac{\partial\vb{B}}{\partial t}&=0 &
+    \curl{\vb{B}}-\frac1{c^2}\frac{\partial\vb{E}}{\partial t}&=\mu_0\vb{J}
+    +\frac1{c^2}\frac{\partial\vb{E}}{\partial t}
+\end{align}
+show that $\vb{E}$ and $\vb{B}$ obey wave equations with sources as given in
+Jackon (6.49)--(6.50), and therefore have the solutions (6.51)--(6.52). (Thiscan
+also be obtained starting with the solutions for the potentials (6.48), but I
+want you to derive it without the potentials.)
+
+(b) The solutions (6.51)--(6.52) are correct, but it is useful to recast them in
+a form that more obviously reduces to the static forms. Fill in the steps to
+derive (6.53) and (6.54), where we recall $\qty[f(\vb{x}',t')]_\text{ret}\equiv
+f(\vb{x}',t-R /c)$.
+
+(c) Use the results of part (b) to derive the solutions (6.55) and (6.56) for
+$\vb{E}$ and $\vb{B}$. These are general solutions for the electric and magnetic
+fields produced by fixed sources $\rho(\vb{x}',t')$ and $\vb{J}(\vb{x}',t')$ in
+the fully dynamic case. Show that in the static limit these reduce to Coulomb's
+Law (1.5) and the Biot-Savart Law (5.14).
+
+(d) Comment on the $R$-dependence of the new terms that only appear in the
+time-dependent case; do these fall off faster or more slowly than the static
+fields? These are \textit{radiation fields}.
+\begin{solution}
+(a) Taking the curl of Ampere's Law and using the identity
+$\curl{\vb{\curl\vb{E}}}=\grad\qty(\div{\vb{E}})-\laplacian\vb{E}$, we can
+write
+\begin{align}
+    &&\frac1{\epsilon_0}\grad\rho-\laplacian\vb{E}
+    &=-\frac{\partial}{\partial
+    t}\qty(\mu_0\vb{J}+\frac1{c^2}\frac{\partial\vb{E}}{\partial t})
+    =-\mu_0\frac{\partial\vb{J}}{\partial
+    t}-\frac1{c^2}\frac{\partial^2\vb{E}}{\partial t^2}\notag\\
+    &\Rightarrow&
+    \laplacian\vb{E}-\frac1{c^2}\frac{\partial^2\vb{E}}{\partial t^2}
+    &=-\frac1{\epsilon_0}\qty(-\grad\rho-\frac1{c^2}\frac{\partial\vb{J}}{\partial
+    t})
+\end{align}
+Similarly, taking the curl of Faraday's Law, we get
+$\curl{\curl{\vb{B}}}=-\laplacian\vb{B}$ because $\div{\vb{B}}=0$. Thus
+\begin{equation}
+    -\laplacian\vb{B}=\mu_0\curl\vb{J}-\frac1{c^2}\frac{\partial^2\vb{B}}{\partial
+    t^2}\Rightarrow
+    \laplacian\vb{B}-\frac1{c^2}\frac{\partial^2\vb{B}}{\partial t^2}
+    =-\mu_0\curl{\vb{J}}
+\end{equation}
+
+(b) First, when taking the gradient of $\ret\rho=\ret\rho(\vb{x}',t-R /c)$, we
+have to use the chain rule
+\begin{align}
+    \grad'\ret\rho
+    &=\frac{\partial\ret\rho}{\partial\vb{x}'}+\frac{\partial\ret\rho}{\partial
+    t'}\frac{\partial t'}{\partial \vb{x}'}\notag\\
+    &=\ret{\grad'\rho}+\ret{\frac{\partial\rho}{\partial
+    t'}}\grad'\qty(t-R/c)\notag\\
+    &=\ret{\grad'\rho}-\frac1c\ret{\frac{\partial\rho}{\partial
+    t'}}\grad'R\notag\\
+    &=\ret{\grad'\rho}+\frac{\Rhat}{c}\ret{\frac{\partial\rho}{\partial t'}}
+\end{align}
+Thus, we arrive at (6.53, Jackson)
+\begin{equation}
+    \ret{\grad'\rho}=\grad'\ret{\rho}-\frac{\Rhat}{c}\ret{\frac{\partial\rho}{\partial
+    t'}} 
+\end{equation}
+
+Now, to derive (6.54, Jackson), we write the cross product in index notation
+\begin{align}
+    \grad'\times\ret{\vb{J}}
+    &=\epsilon_{ijk}\vb{\hat{e}}_i\partial_j J_k(\vb{x}',t-R/c)\notag\\
+    &=\epsilon_{ijk}\vb{\hat{e}}_i\qty[\partial_jJ_k(\vb{x}',t')+\frac{\partial
+    J_k}{\partial t'}\partial_j(t-R/c)]\notag\\
+    &=\ret{\grad'\vb{J}}+\epsilon_{ijk}\vb{\hat{e}}_i\partial_jt'\frac{\partial
+    J_k}{\partial t'}\notag\\
+    &=\ret{\grad'\vb{J}}+\grad'(t-R/c)\times\ret{\frac{\partial\vb{J}}{\partial
+    t'}}\notag\\
+    &=\ret{\grad'\times\vb{J}}+\frac{\Rhat}{c}\times\ret{\frac{\partial\vb{J}}{\partial
+    t'}}
+\end{align}
+Thus,
+\begin{equation}
+    \ret{\grad'\times\vb{J}}=\grad'\times\ret{\vb{J}}
+    +\frac1c\ret{\frac{\partial\vb{J}}{\partial t'}}\times\Rhat
+\end{equation}
+
+(c) From (6.51, Jackson),
+\begin{align}
+    \vb{E}
+    &=\frac1{4\pi\epsilon_0}\int
+    d^3x'\frac1R\ret{-\grad'\rho-\frac1{c^2}\frac{\partial\vb{J}}{\partial
+    t'}}\notag\\
+    &=\frac1{4\pi\epsilon_0}\int d^3x'\frac1R\qty{
+        -\grad'\ret\rho+\frac{\Rhat}{c}\ret{\frac{\partial\rho
+        }{\partial t'}}-\frac1{c^2}\ret{\frac{\partial\vb{J}}{\partial t'}}
+    }\notag\\
+    &=\frac1{4\pi\epsilon_0}\qty{
+        -\int d^3x'\frac1R\grad'\ret\rho+\int d^3x'
+        \qty{\frac{\Rhat}{cR}\ret{\frac{\partial\rho}{\partial
+        t'}}-\frac1{c^2R}\ret{\frac{\partial\vb{J}}{\partial t'}}}
+    }
+\end{align}
+Integrating the first term by parts, we get
+\begin{equation}
+    \int d^3x'\frac1R\grad'\ret\rho
+    =\int d^3x'\qty[\grad'\qty(\frac{\ret\rho}{R})-\ret\rho\grad'\qty(\frac1R)]
+    =\oint\frac{\ret\rho}{R}d\vb{a}'
+    -\int d^3x'\ret\rho\frac{\Rhat}{R^2}
+\end{equation}
+The boundary term (surface integral) vanishes because $\ret\rho$ vanishes at
+$\infty$. So we can write the electric field as
+\begin{align}
+    \vb{E}=\frac1{4\pi\epsilon_0}\int d^3x'\qty{
+        \frac{\ret\rho}{R^2}\Rhat+\frac{\Rhat}{cR}\ret{\frac{\partial\rho}{\partial
+        t'}}
+        -\frac1{c^2R}\ret{\frac{\partial\vb{J}}{\partial t'}}
+    } 
+\end{align}
+
+Similarly, we can find the magnetic field by integrating by parts. From (6.52,
+Jackson),
+\begin{align}
+    \vb{B}
+    &=\frac{\mu_0}{4\pi}\int d^3x'\frac1R\ret{\grad'\times\vb{J}}\notag\\
+    &=\frac{\mu_0}{4\pi}\int d^3x'\frac1R\qty(
+    \grad'\times\ret{\vb{J}}+\frac1c\ret{\frac{\partial\vb{J}}{\partial
+    t'}}\times\Rhat
+    )\notag\\
+    &=\frac{\mu_0}{4\pi}\qty{
+        \int
+        d^3x'\qty[\grad'\times\qty(\frac{\ret{\vb{J}}}{R})-\grad'\qty(\frac1R)\times\ret{\vb{J}}]
+        +\int d^3x'\ret{\frac{\partial\vb{J}}{\partial t'}}\times\frac{\Rhat}{cR}
+    }\notag\\
+    &=\frac{\mu_0}{4\pi}\int d^3x'\qty{-\frac{\Rhat}{R}\times\ret{\vb{J}}
+    +\ret{\frac{\partial\vb{J}}{\partial t'}}\times\frac{\Rhat}{cR}}
+\end{align}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{10.2}[Causality in Coulomb gauge]
+In the Coulomb gauge, $\Phi(\vb{x},t)$ is instantaneous (that is, it is
+determined by the behavior of $\rho(\vb{x},t)$ at the same time), but
+$\vb{A}(\vb{x},t)$ is causal (it is the solution of the wave equation).
+Causality of $\vb{B}$ follows from causality of $\vb{A}$ (you do not need to
+show this). Starting from equations for $\Phi$ and $\vb{A}$ in Coulomb gauge,
+show that $\vb{E}$ is also causal. What is the source of $\vb{E}$? (Hint: it
+should be the same as what you got in the previous problem.)
+\begin{solution}
+Starting from the LHS of the wave equation for $\vb{A}$ (6.24, Jackson) in 
+Coulomb gauge, we can use the definition of $\vb{E}$ and write
+\begin{align}
+    \laplacian{\vb{A}}
+    -\frac1{c^2}\frac{\partial^2\vb{A}}{\partial t^2}
+    &=\laplacian\qty(-\grad\Phi-\vb{E})
+-\frac1{c^2}\frac{\partial^2}{\partial t^2}\qty(-\grad\Phi-\vb{E})\notag\\
+    &=-\grad\qty(\frac{\rho}{\epsilon_0})-\laplacian\vb{E}
+    +\frac1{c^2}\grad\frac{\partial^2\Phi}{\partial t^2}
+    +\frac1{c^2}\frac{\partial^2\vb{E}}{\partial t^2}
+\end{align}
+Equating this to the RHS of (6.24, Jackson), we can write
+\begin{equation}
+    \laplacian\vb{E}-\frac1{c^2}\frac{\partial^2\vb{E}}{\partial t^2}
+    =\frac1{\epsilon_0}\grad\rho+\mu_0\frac{\partial\vb{J}}{\partial t}
+\end{equation}
+So $\vb{E}$ also follows the wave equation of the general form (6.32, Jackson),
+meaning it is causal. The RHS determines the source of $\vb{E}$ where the source
+distribution $f(\vb{x},t)$ is
+\begin{equation} 
+    f(\vb{x},t)=-\frac1{4\pi\epsilon_0}\grad\rho-\frac{\mu_0}{4\pi}\frac{\partial\vb{J}}{\partial
+    t}
+\end{equation}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{10.3}[A conducting shell and the stress tensor]
+A (perfectly) conducting spherical shell of radius $a$ is placed in a uniform
+electric field $\vb{E}_0$. Find the force tending to separate the two halves of
+the sphere across a diametrical plane perpendicular to $\vb{E}_0$ in two ways:
+
+(a) Using the stress tensor.
+
+(b) By integrating the appropriate projection of $\sigma^2 /2\epsilon_0$ over a
+hemisphere.
+
+You may use old results for a conducting sphere in a uniform electric field.
+\begin{solution}
+(a) From (2.15, Jackson), the electric field strength on the surface of the 
+conductor is $\abs{\vb{E}}=3E_0\cos\theta$. So by definition, the stress tensor
+is
+\begin{equation}
+    T_{\alpha\beta}=\epsilon_0\qty[E_\alpha E_\beta-\frac12E^2\delta_{\alpha\beta}] 
+    =\frac12\epsilon_0E^2\mqty(-1&0&0\\0&-1&0\\0&0&1)
+    =\frac92\epsilon_0E_0^2\cos^2\theta\mqty(-1&0&0\\0&-1&0\\0&0&1)
+\end{equation}
+Then by definition, the force on one hemisphere of the shell is
+\begin{align}
+    \vb{F}
+    &=\int \vb{T}\vdot\rhat da\notag\\
+    &=\frac92\epsilon_0E_0^2\int\mqty(-1&0&0\\0&-1&0\\0&0&1)
+    \mqty(\sin\theta\cos\phi\\\sin\theta\sin\phi\\\cos\theta)\cos^2\theta
+    a^2\sin\theta d\theta d\phi\notag\\
+    &=\frac92\epsilon_0E_0^2a^2\int_0^{\pi/2}\sin\theta\cos^3\theta
+    d\theta\int_0^{2\pi}d\phi\zhat\notag\\
+    &=\frac94\pi a^2\epsilon_0E_0^2\zhat
+\end{align}
+
+(b) By symmetry, the force has to be in the $z$ direction. So using (2.15,
+Jackson),
+\begin{align}
+    F_z=\int\frac{\sigma^2}{2\epsilon_0}\rhat\vdot\zhat da 
+    =\frac92\epsilon_0E_0^2a^2\int_0^{\pi/2}\sin\theta\cos^3\theta
+    d\theta\int_0^{2\pi}d\phi=\frac94\pi a^2\epsilon_0E_0^2
+\end{align}
+This is the same result as (a).
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

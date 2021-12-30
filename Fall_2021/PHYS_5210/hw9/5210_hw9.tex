@@ -1,0 +1,153 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 9: Phys 5210 (Fall 2021)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}
+In atomic physics experiments such as the ones done in JILA, a cloud of
+interacting atoms is sometimes placed in a rotating external potential. It is
+convenient to study these atoms in a reference frame which rotates together
+with the potential where their potential energy does not depend on time. As we
+know the velocity of a particle at a position $\vb{r}$ in this rotating
+reference frame is related to the velocity of the same particle in the
+stationary reference frame by $\vb{v}_0=\vb{v}+\bm\Omega\times\vb{r}$, where
+$\bm\Omega$ is the constant angular velocity of rotation, $\vb{v}$ is the
+velocity of the particle in the rotating reference frame and $\vb{v}_0$ is the
+velocity in the stationary reference frame. The Lagrange function in the
+rotating reference frame of a system of particles, each with mass $\vb{m}$,
+labelled by the index $j=1,2,\hdots,N$, is then given by
+\begin{equation}\label{p1:L}
+    \LL=\sum_{j=1}^N\frac{mv_{0j}^2}{2}-U(\vb{r})
+    =\sum_{j=1}^N\qty(\frac{mv_j^2}{2}+m\vb{v}_j\vdot\qty(\bm\Omega\times\vb{r}_j)+\frac{m(\bm\Omega\times\vb{r}_j)^2}{2})-U(\vb{r})
+\end{equation}
+Find the Hamiltonian of this system in the rotating reference frame.
+\begin{solution}
+Given the Lagrange function \eqref{p1:L}, the canonical momenta are
+\begin{align}
+    \vb{p}_j=\frac{\partial\LL}{\partial\vb{v}_j}
+            =m\vb{v}_j+m\qty(\bm\Omega\times\vb{r}_j)
+    \Rightarrow\vb{v}_j=\frac{\vb{p}_j}{m}-\bm\Omega\times\vb{r}_j
+\end{align}
+where $\vb{v}_j=\dot{\vb{r}}_j$. Then we can write the Hamiltonian as
+\begin{align}
+    \HH
+    &=\sum_{j=1}^N\vb{p}_j\vdot \vb{v}_j-\LL\notag\\
+    &=\sum_{j=1}^N\Bigg[
+    \frac{p_j^2}{m}-\vb{p}_j\vdot\qty(\bm\Omega\times\vb{r}_j)\notag\\
+    &\qquad-\frac{m}{2}\qty(\frac{\vb{p}_j}{m}-\bm\Omega\times\vb{r}_j)^2
+    -\qty(\vb{p}_j-m\bm\Omega\times\vb{r}_j)\vdot\qty(\bm\Omega\times\vb{r}_j)
+    -\frac{m}{2}\qty(\bm\Omega\times\vb{r}_j)^2
+    \Bigg]+U(\vb{r})\notag\\
+    &=\sum_{j=1}^N\qty[\frac{p_j^2}{2m}-\vb{p}_j\vdot\qty(\bm\Omega\times\vb{r}_j)]+U(\vb{r})
+\end{align}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}
+Inspired by \textit{Goldstein}, Chapter 8, Problem 35. Consider a system with
+this Lagrangian
+\begin{equation}\label{p2:L}
+    \LL=\frac{m}{2}\qty(\dot{x}^2-\omega^2x^2)e^{2\gamma t} 
+\end{equation}
+where $\gamma>0,\omega\neq 0, m>0$.
+
+(a) Write down the Euler-Lagrange equation and solve it with arbitrary initial
+conditions at $t=0$.
+
+(b) Find the Hamiltonian, write down the Hamilton equations of motion and
+verify that they are equivalent to the Euler-Lagrange equation.
+
+(c) For arbitrary initial conditions such as in part (a), how do the position
+$x$, the momentum $p$, and the Hamiltonian $\HH$ of this system behave as
+$t\to\infty$?
+\begin{solution}
+(a) From the Euler-Lagrange equation for $x$,
+\begin{align}
+    \frac{d}{dt}\qty[m\dot{x}e^{2\gamma t}]=-m\omega^2xe^{2\gamma t}
+    \Rightarrow \ddot{x}+2\gamma\dot{x}+\omega^2x=0
+\end{align}
+A guess to the solution of this differential equation is $x=Ce^{i\Omega t}$ for
+some $\Omega$. Plugging back yields
+\begin{equation}
+    -\Omega^2+2i\gamma\Omega+\omega^2=0\Rightarrow\Omega_\pm=i\gamma\pm\sqrt{\omega^2-\gamma^2}
+\end{equation}
+Since there are two solutions to $\Omega$, the general solution for is spanned 
+by a linear combination
+\begin{equation}
+    x(t)=C_1e^{i\Omega_+t}+C_2e^{i\Omega_-t}
+    =e^{-\gamma
+    t}\qty[C_1e^{i\sqrt{\omega^2-\gamma^2}t}+C_2e^{-i\sqrt{\omega^2-\gamma^2}t}]
+\end{equation}
+where $C_1,C_2$ are some constants dependent on initial conditions. The physical
+solution is the real part of this
+\begin{equation}
+    x(t)=e^{-\gamma
+    t}\qty[C_1\cos\qty(\sqrt{\omega^2-\gamma^2}t)+C_2\sin\qty(\sqrt{\omega^2-\gamma^2}t)] 
+\end{equation}
+Thus, given arbitrary conditions $x(0)=x_0$ and $\dot{x}(0)=v_0$, we can write
+the real constants $C_1,C_2$ as
+\begin{equation}
+    C_1=x_0\qquad\text{and}\qquad
+    C_2=\frac{v_0+\gamma x_0}{\sqrt{\omega^2-\gamma^2}}
+\end{equation}
+Then the final form of the solution, given initial conditions, is
+\begin{equation}\label{p2a:x}
+    x(t)=e^{-\gamma
+    t}\qty[x_0\cos\qty(\sqrt{\omega^2-\gamma^2}t)+\frac{v_0+\gamma
+x_0}{\sqrt{\omega^2-\gamma^2}}\sin\qty(\sqrt{\omega^2-\gamma^2}t)] 
+\end{equation}
+
+(b) From \eqref{p2:L}, the canonical momentum is
+\begin{equation}
+    p=\frac{\partial\LL}{\partial\dot{x}}
+    =m\dot{x}e^{2\gamma t}
+\end{equation}
+Then we can write the Hamiltonian as
+\begin{equation}\label{p2b:H}
+    \HH=p\dot{x}-\LL 
+    =\frac{p^2}{m}e^{-2\gamma t}-\frac{m}{2}\qty(\frac{p}{m}e^{-2\gamma
+    t})^2e^{2\gamma t}+\frac12m\omega^2x^2e^{2\gamma t}
+    =\frac{p^2}{2m}e^{-2\gamma t}+\frac12m\omega^2x^2e^{2\gamma t}
+\end{equation}
+The Hamiltonian equation of motion is thus
+\begin{subequations}
+    \begin{align}
+        \dot{x}&=\frac{\partial\HH}{\partial p}=\frac{p}{m}e^{-2\gamma
+        t}\label{p2:xdot}\\
+        \dot{p}&=-\frac{\partial\HH}{\partial x}
+        =-m\omega^2xe^{2\gamma t}\label{p2:pdot}
+    \end{align} 
+\end{subequations}
+Taking the time derivative of \eqref{p2:xdot} one more time and substituting in
+\eqref{p2:pdot}, we get
+\begin{equation}
+    \ddot{x}=\frac{\dot{p}}{m}e^{-2\gamma t}-2\gamma\frac{p}{m}e^{-2\gamma t} 
+    =-\omega^2x-2\gamma\dot{x}\Rightarrow
+    \ddot{x}+2\gamma\dot{x}+\omega^2x=0
+\end{equation}
+This is the same differential equation obtained from the Euler-Lagrange
+equation. Thus, the Hamiltonian equation of motion is equivalent to that in the
+Lagrangian formulation.
+
+(c) From \eqref{p2a:x}, $x\to0$ as $t\to\infty$. Also, the velocity is
+\begin{equation}
+    \dot{x}(t)=-\gamma x(t)+e^{-\gamma
+    t}\qty[-x_0\sqrt{\omega^2-\gamma^2}\cos\qty(\sqrt{\omega^2-\gamma^2}t)+\qty(v_0+\gamma
+    x_0)\cos\qty(\sqrt{\omega^2-\gamma^2}t)]
+\end{equation}
+Thus, the mechanical momentum $p_\text{mech}=m\dot{x}\to0$ as $t\to\infty$.
+However, the canonical momentum $p=p_\text{mech}e^{2\gamma t}\sim e^{\gamma
+t}\to\infty$ as $t\to\infty$. Also, since $x(t)=e^{-\gamma t}f(t)$ and 
+$p(t)=e^{\gamma t}g(t)$ where $f,g$ are bounded functions, from
+\eqref{p2b:H}, we can conclude that $\HH$ is bounded. So $\HH$ doesn't blow up
+where $t\to\infty$.
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\end{document}

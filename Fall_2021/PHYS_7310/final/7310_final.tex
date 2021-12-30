@@ -1,0 +1,328 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Final: Phys 7310 (Fall 2021)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{F.1}[Potentials and gauges]
+Consider two vector potentials
+\begin{equation}
+    \vb{A}(\vb{x})=Bx\yhat,\qquad \vb{A}'(\vb{x})=\frac{B}2\qty(x\yhat-y\xhat)
+\end{equation}
+where $B$ is a constant. The scalar potential vanishes.
+
+(a) Show that $\vb{A}$ and $\vb{A}'$ lead to the same magnetic field, a uniform
+field in the $z$ direction. Find a gauge transformation $\Lambda(\vb{x})$ that
+relates them.
+
+(b) Which of $\vb{A}$ and $\vb{A}'$ (or both, or neither) are in the Coulomb
+gauge? The answer places a constraint on $\Lambda$; show that $\Lambda$ indeed
+satisfies this contraint.
+
+(c) Starting with $\vb{A}$, consider a new gauge transformation by the function
+\begin{equation}
+    \Lambda(\vb{x},t)=xe^{2t} 
+\end{equation}
+Is the electric field now zero or nonzero? Demonstrate your answer explicitly.
+\begin{solution}
+(a) First, the magnetic field corresponding to $\vb{A}$ is
+\begin{equation}
+    \vb{B}=\curl{\vb{A}}=\frac{\partial A}{\partial x}\zhat=B\zhat 
+\end{equation}
+and that corresponding to $\vb{A}'$ is
+\begin{equation}
+    \vb{B}'=\curl{\vb{A}'}=\qty(\frac{\partial A_y}{\partial x}-\frac{\partial
+    A_x}{\partial y})\zhat=\qty(\frac{B}2+\frac{B}2)\zhat=B\zhat
+\end{equation}
+Thus, $\vb{B}'=\vb{B}$. Now, we want to find $\Lambda$ such that
+\begin{equation}
+    \grad\Lambda=\vb{A}'-\vb{A}=-\frac{B}2\qty(x\yhat+y\xhat)
+\end{equation}
+Thus,
+\begin{equation}
+    \frac{\partial\Lambda}{\partial x}=-\frac{By}{2}\qquad\text{and}\qquad
+    \frac{\partial\Lambda}{\partial y}=-\frac{Bx}{2}
+\end{equation}
+One solution is clearly $\Lambda=-(B/2)xy$.
+
+(b) From (6.21, Jackson), Coulomb gauge is that in which $\div{\vb{A}}=0$.
+Thus, considering that both $\div{\vb{A}}=\div{\vb{A}'}=0$, both of them are in
+the Coulomb gauge. Then this places a contraint on $\Lambda$ through the Lorenz
+condition (6.17, Jackson)
+\begin{equation}
+    \laplacian\Lambda=\frac1c^2\frac{\partial^2\Lambda}{\partial t^2}=0 
+\end{equation}
+Since $\Lambda$ is only up to the first order in $x$ and $y$, the Laplacian is
+indeed
+\begin{equation}
+    \laplacian\Lambda=\frac{\partial^2\Lambda}{\partial
+    x^2}+\frac{\partial^2\Lambda}{\partial y^2}
+    \sim\frac{\partial y}{\partial x}+\frac{\partial x}{\partial y}=0
+\end{equation}
+
+(c) The transformed potentials are
+\begin{equation}
+    \vb{A}'=\vb{A}+\grad\Lambda=Bx\yhat+e^{2t}\xhat
+    \qquad\text{and}\qquad
+    \Phi'=-\frac{\partial\Lambda}{\partial t}=-2xe^{2t}
+\end{equation}
+Then the electric field is
+\begin{equation}
+    \vb{E}'=-\grad\Phi'-\frac{\partial\vb{A}'}{\partial
+    t}=2e^{2t}\xhat-2e^{2t}\xhat=\vb{0}
+\end{equation}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{F.2}[Fields in a circular capacitor]
+A parallel plate capacitor is composed of two circular plates of radius $R$, a
+distance $d$ apart. Starting at $t=0$, the capacitor is slowly charged by a
+constant current $I$. The space between the plate is empty. You may assume $R\gg
+d$ and ignore edge effects.
+
+(a) Calculate the magnitude and direction of the Poynting vector at the boundary
+of the region between the plates ($\rho=R,0<z<d$) and use this to find the total
+power flowing into this region.
+
+(b) Calculate the electrostatic energy stored in the capacitor by integrating
+the electrostatic energy density. Determine its change with time and compare
+this to the result for part (a).
+\begin{solution}
+(a) Ignoring edge effects, we assume the plates are charged with a uniform 
+charge density $\sigma=Q/\pi R^2$. Then the electric field inside the capacitor
+is uniform
+\begin{equation}\label{p2a:E}
+    \vb{E}=\frac{\sigma}{\epsilon_0}\nhat=\frac{Q}{\pi\epsilon_0R^2}\nhat
+    =\frac{It}{\pi\epsilon_0R^2}\nhat
+\end{equation}
+where $\nhat=\zhat$ is a vector normal to the plates. Now, we can
+draw a circular surface $S$ with radius $\rho$ inside the capacitor such that
+$\vb{B}$ is constant on the boundary $\partial S$. Then by Ampere's Law,
+\begin{equation}\label{p2a:B}
+    \oint_{\partial S}\vb{B}\vdot d\vb{l}=B2\pi
+    \rho=\frac1c^2\oint_S\frac{\partial\vb{E}}{\partial t}\nhat
+    da=\frac{\mu_0I}{\pi R^2} \pi \rho^2\Rightarrow
+    \vb{B}=\frac{\mu_0I}{2\pi R}\frac{\rho}{R}\phihat
+\end{equation}
+by symmetry. So the Poynting vector inside the capacitor is
+\begin{equation}
+    \vb{S}=\frac{\vb{E}\times\vb{B}}{\mu_0}=\frac{It}{\epsilon_0\pi
+    R^2}\frac{Ir}{2\pi R^2}\zhat\times\phihat
+    =-\frac{I^2}{2\pi^2\epsilon_0}\frac{rt}{R^4}\rhat
+\end{equation}
+This points radially inward. So choosing a normal vector $\nhat=-\rhat$, we can
+calculate the total power flowing into the capacitor at $\rho=R$
+\begin{equation}
+    P_\text{in}=\oint\vb{S}\vdot\nhat da
+    =\frac{I^2}{2\pi^2\epsilon_0}\frac{t}{R^3}(2\pi
+    Rd)=\frac{I^2dt}{\pi\epsilon_0R^2}
+\end{equation}
+
+(b) Using the electric and magnetic fields \eqref{p2a:E}, \eqref{p2a:B}, the  
+energy density is
+\begin{equation}
+    u=\frac12\qty(\epsilon_0E^2+\frac{B^2}{\mu_0}) 
+    =\frac12\qty(\frac{I^2t^2}{\pi^2\epsilon_0R^4}+\frac{\mu_0I^2\rho^2}{4\pi^2R^4})
+    =\frac{\mu_0I^2}{8\pi^2R^4}\qty(4c^2t^2+\rho^2)
+\end{equation}
+Then the total energy is obtained by integrating over the volume of the
+capacitor
+\begin{align}
+    U&=\int
+    ud^3x=\frac{\mu_0I^2}{8\pi^2R^4}\int_0^R\int_0^{2\pi}\int_0^d
+    \qty(4c^2t^2+\rho^2)\rho d\rho d\phi dz\notag\\
+     &=\frac{\mu_0I^2d}{4\pi R^4}\qty(\frac{R^4}{4}+2c^2R^2t^2)\tag{by
+     Mathematica}\\
+     &=\frac{\mu_0I^2d}{4\pi R^2}\qty(\frac{R^2}{4}+2c^2t^2)
+\end{align}
+So the total energy increases quadratically with time. The rate of charging is
+\begin{equation}
+    \frac{dU}{dt}=\frac{I^2dt}{\pi\epsilon_0 R^2} 
+\end{equation}
+which is the same as the power $P_\text{in}$ flowing into the capacitor in part 
+(a).
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{F.3}[Hard ferromagnetic shell]
+A spherical shell of hard ferromagnet is centered on the origin between $r=a$
+and $r=b$. The shell has uniform magnetization of magnitude $M_0$ in the $z$
+direction. Inside and outside the shell is empty space.
+
+(a) Find an expression for the magnetic scalar potential $\Phi_M$ for all three
+regions $r<a$, $a<r<b$, and $r>b$, and find the $r$ and $\theta$ components of
+the vector fields $\vb{H}$ and $\vb{B}$ just for the region $a<r<b$.
+
+(b) Show how the value of both components of $\vb{B}$ (not $\vb{H}$!) satisfy
+the expected boundary conditions at $r=a$, relating the surface current that
+appears to the magnetization.
+\begin{solution}
+(a) Since we already know the solution for a uniformly magnetized solid sphere 
+of hard ferromagnet, we can use the principle of superposition here. From
+Section 5.10 in Jackson, a sphere of radius $b$ and magnetization 
+$\vb{M}_+=M_0\zhat$ has a potential
+\begin{equation}
+    \Phi_+(r,\theta)=\begin{cases}
+        (1/3)M_0r\cos\theta & r<b\\
+        (1/3)M_0(b^3/r^2)\cos\theta & r\geq b
+    \end{cases}
+\end{equation}
+and a sphere of radius $a$ and magnetization $\vb{M}_-=-M_0\zhat$ has a 
+potential
+\begin{equation}
+    \Phi_-(r,\theta)=\begin{cases}
+        -(1/3)M_0r\cos\theta & r<a\\
+        -(1/3)M_0(a^3/r^2)\cos\theta & r\geq a
+    \end{cases}
+\end{equation}
+Then for $r<a$, the total magnetization is $\vb{M}=\vb{M}_++\vb{M}_-=\vb{0}$, as
+expected of a hollow shell and the total potential is also
+$\Phi_M=\Phi_++\Phi_-=0$. For $a<r<b$, the total magnetization is only
+$\vb{M}=\vb{M}_+$ and the total potential is
+\begin{equation}
+    \Phi_M=\frac{M_0}{3}r\cos\theta-\frac{M_0}{3}\frac{a^3}{r^2}\cos\theta
+    =\frac{M_0}{3}\qty(1-\frac{a^3}{r^3})r\cos\theta
+\end{equation}
+Similarly, for $r>b$, there is no magnetization and
+\begin{equation}
+    \Phi_M=\frac{M_0}{3}\qty(b^3-a^3)\frac{\cos\theta}{r^2} 
+\end{equation}
+In summary,
+\begin{subequations}
+    \begin{align}
+        \Phi_M(r<a)&=0\\
+        \Phi_M(a<r<b)&=\frac{M_0}{3}\qty(1-\frac{a^3}{r^3})r\cos\theta\\
+        \Phi_M(r>b)&=\frac{M_0}{3}\frac{b^3-a^3}{r^2}\cos\theta
+    \end{align} 
+\end{subequations}
+Then the field $\vb{H}$ for $a<r<b$ is
+\begin{align}
+    \vb{H}&=-\grad\Phi_M\notag\\
+          &=-\frac{\partial\Phi_M}{\partial
+          r}\rhat-\frac1r\frac{\partial\Phi_M}{\partial\theta}\thetahat\notag\\
+          &=-\frac{M_0}{3}\qty(1+2\frac{a^3}{r^3})\cos\theta\rhat+\frac{M_0}{3}\qty(1-\frac{a^3}{r^3})\sin\theta\thetahat
+\end{align}
+and the magnetic field is
+\begin{align} 
+    \vb{B}&=\mu_0\qty(\vb{H}+\vb{M})\notag\\
+          &=\frac{2\mu_0M_0}{3}\qty(1-\frac{a^3}{r^3})\cos\theta\rhat
+          -\frac{\mu_0M_0}{3}\qty(2+\frac{a^3}{r^3})\sin\theta\thetahat
+\end{align}
+where we have used Mathematica to save the algebra steps.
+
+(b) At $r=a$, the boundary condition is
+\begin{equation}\label{p3b:bc}
+    \vb{B}_{r\to a^+}-\vb{B}_{r\to a^-}=\mu_0\qty(\vb{K}_b\times\nhat)
+    =\mu_0\qty(\vb{M}\times\rhat)\times\rhat
+    =\mu_0M_0\sin\theta\thetahat
+\end{equation}
+where the normal vector points radially inward $\nhat=-\rhat$. There is no
+magnetic field inside the shell because there's no current. So now we consider
+the LHS
+\begin{equation}
+    -\vb{B}_{r\to a^-}=\mu_0M_0\sin\theta\thetahat
+\end{equation}
+which is the same as the RHS in \eqref{p3b:bc}. So this magnetic field (all
+components) satisfies the boundary condition at $r=a$.
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{F.4}[Dielectric in a waveguide]
+Consider a waveguide with square cross-section, of side length $a$. The
+waveguide axis is in the $z$ direction and the sides of the square are oriented
+along $x$ and $y$. Assume the walls are perfect conductors. For $z\geq 0$ the
+waveguide is filled with dielectric with permittivity $\epsilon$, while for
+$z<0$ the waveguide is empty. Take $\mu=\mu_0$ everywhere.
+
+(a) Electromagnetic radiation in the lowest TE mode of frequency $\omega$ flows
+down the waveguide in the positive $z$ direction. Use the boundary conditions
+for the $\vb{E}$ and $\vb{H}$ fields at $z=0$ to obtain all the independent
+constraints on the coefficients for the incident, reflected, and transmitted
+waves.
+
+(b) Calculate the reflection coefficient for this interface, with your answer
+given in terms of $\omega,a,c$ and the index of refraction for the dielectric
+$n$ (and pure numbers).
+\begin{solution}
+(a) Let medium 1 and 2 be the regions $z<0$ and $z\geq 0$, respectively.
+By assumption, $n_1=1$ and $n_2=n$. Now, from (8.46, Jackson), the incident 
+fields are
+\begin{subequations}
+    \begin{align}
+        \vb{E}_I&=\frac{i\omega a\mu_0}{\pi}H_{0I}\sin\qty(\frac{\pi
+        x}{a})e^{i(k_1z-\omega t)}\yhat\\
+        \vb{H}_I&=\frac{k_1}{\mu_0\omega}\zhat\times\vb{E}_I+
+        H_{Iz}\zhat=
+        -\frac{ik_1a}{\pi}H_{0I}\sin\qty(\frac{\pi x}{a})e^{i(k_1z-\omega
+        t)}\xhat+
+        H_{0I}\cos\qty(\frac{\pi x}{a})e^{i(k_1z-\omega t)}\zhat
+    \end{align} 
+\end{subequations}
+where $k_{1,2}=\sqrt{\mu_{1,2}\epsilon_{1,2}}\sqrt{\omega^2-\omega_{1,2}^2}$ as
+defined in (8.39, Jackson), $\omega_{1,2}=\pi/(\sqrt{\mu_{1,2}\epsilon_{1,2}}a)$
+are the lowest TE modes in medium 1 and 2. Similarly, the reflected fields are
+\begin{subequations}
+    \begin{align}
+        \vb{E}_R&=\frac{i\omega a\mu_0}{\pi}H_{0R}\sin\qty(\frac{\pi
+        x}{a})e^{i(-k_1z-\omega t)}\yhat\\
+        \vb{H}_R&=-\frac{k_1}{\mu_0\omega}\zhat\times\vb{E}_R+
+        H_{Rz}\zhat=
+        \frac{ik_1a}{\pi}H_{0R}\sin\qty(\frac{\pi x}{a})e^{i(-k_1z-\omega
+        t)}\xhat+
+        H_{0R}\cos\qty(\frac{\pi x}{a})e^{i(-k_1z-\omega t)}\zhat
+    \end{align} 
+\end{subequations}
+and the transmitted fields are
+\begin{subequations}
+    \begin{align}
+        \vb{E}_T&=\frac{i\omega a\mu_0}{\pi}H_{0T}\sin\qty(\frac{\pi
+        x}{a})e^{i(k_2z-\omega t)}\yhat\\
+        \vb{H}_T&=\frac{k_2}{\mu_0\omega}\zhat\times\vb{E}_T+
+        H_{Tz}\zhat=
+        -\frac{ik_2a}{\pi}H_{0T}\sin\qty(\frac{\pi x}{a})e^{i(k_2z-\omega
+        t)}\xhat+
+        H_{0T}\cos\qty(\frac{\pi x}{a})e^{i(k_2z-\omega t)}\zhat
+    \end{align} 
+\end{subequations}
+
+At $z=0$, we must require that the tangential $\vb{E}$ and $\vb{H}$ are
+continuous. This means
+\begin{equation}
+    \frac{i\omega a\mu_0}{\pi}H_{0I}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+    +\frac{i\omega a\mu_0}{\pi}H_{0R}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+    =\frac{i\omega a}{\pi}H_{0T}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+\end{equation}
+and
+\begin{equation}
+    -\frac{ik_1a}{\pi}H_{0I}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+    +\frac{ik_1a}{\pi}H_{0R}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+    =-\frac{ik_2a}{\pi}H_{0T}\sin\qty(\frac{\pi x}{a})e^{-i\omega t}
+\end{equation}
+Simplifying, we get $H_{0I}+H_{0R}=H_{0T}$ and
+\begin{equation}
+    H_{0I}-H_{0R}=\frac{k_2}{k_1}H_{0T}
+    =\sqrt{\frac{\mu\epsilon}{\mu_0\epsilon_0}}\sqrt{\frac{\omega^2-\omega_2^2}{\omega^2-\omega_1^2}}H_{0T}
+    =n\sqrt{\frac{\omega^2-c^2\pi^2/n^2a^2}{\omega^2-c^2\pi^2/a^2}}H_{0T}
+    =n'H_{0T}
+\end{equation}
+
+(b) Using Mathematica to solve for the boundary conditions in part (a), we get
+\begin{equation}
+    \frac{H_{0R}}{H_{0I}}=\frac{1-n'}{1+n'}\qquad\text{and}\qquad
+    \frac{H_{0T}}{H_{0I}}=\frac{2}{1+n'}
+\end{equation}
+Then the reflection coefficient is
+\begin{align}
+    R=\abs{\frac{E_{0R}}{E_{0I}}}^2= \abs{\frac{H_{0R}}{H_{0I}}}^2
+    =\abs{\frac{1-n\sqrt{\frac{\omega^2-c^2\pi^2/n^2a^2}{\omega^2-c^2\pi^2/a^2}}}{1+n\sqrt{\frac{\omega^2-c^2\pi^2/n^2a^2}{\omega^2-c^2\pi^2/a^2}}}}^2
+\end{align}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

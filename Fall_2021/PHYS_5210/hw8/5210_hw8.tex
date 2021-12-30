@@ -24,6 +24,31 @@ problem that both the Earth and the Sun are stationary in space relative to
 distant galaxies, and that the Earth rotates about its axis with a constant
 angular velocity.
 \begin{solution}
+The rotation of the Earth about its axis is
+$\bm\Omega=\Omega\qty(\cos\theta\yhat+\sin\theta\zhat)$ where $T=2\pi
+/\Omega\approx 24$\,\si{hr}. In the inertial frame, let the Earth be at the
+origin and the Sun at $\vb{r}=r\yhat$ where $r=1$\,\si{AU}. Then the force on
+the Sun seen by an observer on Earth is
+\begin{equation}\label{p1:F}
+    \vb{F}=-2M\bm\Omega\times\vb{v}-M\bm\Omega\times(\bm\Omega\times\vb{r}) 
+    =M\bm\Omega\times\qty(\bm\Omega\times\vb{r})
+\end{equation}
+where we have written $\vb{v}=-\bm\Omega\times\vb{r}$. Also, by Newton's 2nd
+law, $\vb{F}=M\vb{a}$. So the acceleration of the Sun in the non-inertial frame
+rotating with the Earth is 
+\begin{equation}
+    \vb{a}=\bm\Omega\times\qty(\bm\Omega\times\vb{r}) 
+    =\Omega\qty(\cos\theta\yhat+\sin\theta\zhat)\times\qty(-\Omega r\xhat)
+    =\Omega^2r\sin\theta\qty(\cos\theta\zhat-\sin\theta\yhat)
+\end{equation}
+So the magnitude of this acceleration is
+\begin{equation}
+    a=\Omega^2r\sin\theta\approx726\,\si{ms\tothe{-2}}
+\end{equation}
+where $\theta=66.6^\circ$ from online sources. Note that this is also the 
+centripetal acceleration if the Sun rotates around the Earth in circular orbit 
+with radius $r_\bot=r\sin\theta$ and angular velocity $\Omega$. So the force
+\eqref{p1:F} gives the correct acceleration of the Sun.
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
@@ -36,6 +61,65 @@ its kinetic energy, neglect the vertical motion of the pendulum, taking its
 movement as two dimensional. How long does it take for the plane of oscillations
 to do one full rotation?
 \begin{solution}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{hw8_p2.jpg} 
+\end{center}
+Define a coordinate system as above where $\rhat=\zhat',\thetahat=\yhat'$, and
+$\phihat=\xhat'$. Then the Earth's rotation is
+$\bm\Omega=\Omega(\cos\theta\zhat'-\sin\theta\yhat')$. The velocity of the
+pendulum on the surface of the Earth at $\theta=\pi /2-\phi$, neglecting the
+$\zhat'$ direction, is $\vb{v}'=\dot{\vb{x}}'=\dot{x}'\xhat'+\dot{y}'\yhat'$. 
+Now, the force on a pendulum with frequency $\omega$ in the non-inertial 
+reference frame of the Earth is
+\begin{align}
+    &&\vb{F}&=m\vb{a}'=-m\omega^2\vb{x}'-2m\bm\Omega\times\vb{v}'\notag\\
+    &\Rightarrow&\vb{a}'
+    &=-\omega^2\vb{x}'-2\Omega\qty(\cos\theta\zhat'-\sin\theta\yhat')
+    \times\qty(\dot{x}'\xhat'+\dot{y}'\yhat')\notag\\
+    &\Leftrightarrow&\vb{a}'
+    &=-\omega^2\vb{x}'-2\Omega\cos\theta\qty(\dot{x}'\yhat'-\dot{y}'\xhat')
+\end{align}
+where the $\zhat'$ component is ignored. Writing $\cos\theta=\sin\phi$, we then
+have the following system of differential equations
+\begin{subequations}
+    \begin{align}
+        \ddot{x}&=-\omega^2x+2\Omega\sin\phi\dot{y}\\ 
+        \ddot{y}&=-\omega^2y-2\Omega\sin\phi\dot{x}
+    \end{align} 
+\end{subequations}
+where we have dropped the primes to simplify the expressions. Letting $z=x+iy$,
+then the system above can be simplified into a single differential equation
+\begin{equation}
+    \ddot{z}=\ddot{x}+i\ddot{y}
+    =-\omega^2(x+iy)-2i\Omega\sin\phi(\dot{x}+i\dot{y})
+    \Rightarrow
+    \ddot{z}+\omega^2z+2i\Omega\sin\phi\dot{z}=0
+\end{equation}
+Solving this with Mathematica yields the solution
+\begin{equation}\label{p2:z}
+    z(t)=e^{-i\Omega\sin\phi
+    t}\qty[A\sin\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)
+    +B\cos\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)] 
+\end{equation}
+where $A,B$ are constants dependent on initial conditions. We can also write
+explicitly
+\begin{subequations}
+    \begin{align}
+        x(t)&=\Re\qty{z}
+        =\cos(\Omega\sin\phi t)\qty[A\sin\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)
+    +B\cos\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)]\\
+        y(t)&=\Im\qty{z}
+        =-\sin(\Omega\sin\phi t)\qty[A\sin\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)
+    +B\cos\qty(\sqrt{\omega^2+\Omega^2\sin^2\phi}t)] 
+    \end{align} 
+\end{subequations}
+However, from \eqref{p2:z}, it is more apparent that the amplitude of
+the sinuisoidal solution (in the square bracket) is rotated in the $x'y'$ plane 
+clockwise with a frequency $\Omega\sin\phi$. Thus, the time it takes for the 
+plane of oscillations to do one full rotation is
+\begin{equation}
+    T=\frac{2\pi}{\Omega\sin\phi} 
+\end{equation}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
