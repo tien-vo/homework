@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 1: Phys 7230 (Spring 2022)}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}
+Consider two (otherwise) closed systems A and B at respective temperatures $T_A$
+and $T_B$ in thermal contact with each other, so that heat $Q$ can flow between
+them.
+
+Using the 2nd law of thermodynamics -- total entropy $S$ of a closed system
+increases under equilibration -- show that heat $Q$ flows from the hotter to the
+colder system as $A$ and $B$ come to thermal equilibrium.
+
+\textit{Hint}: $TdS\geq Q$.
+
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[Spin-1/2 paramagnet]
+Consider a magnet of $N$ noninteracting spin-1/2 magnetic moments in an external
+magnetic field $\vb{B}$, with Hamiltonian given by Zeeman energy,
+\begin{equation}
+    \HH=-\sum_{i=1}^N\bm\mu_i\vdot\vb{B}=-\sum_{i=1}^N\mu_BB\sigma_i
+    \equiv-\sum_{i=1}^Nh\sigma_i
+\end{equation}
+where $\mu_B$ is Bohr magneton (carrying units of magnetic moment) and
+$\sigma_i=\pm1$ labels the two Zeeman spin states of $n$th spin.
+
+(a) For fixed dimensionless magnetization $M=N_\ua-N_\da$, (i) what is the
+multiplicity $\Omega(M,N)$? (ii) What is the corresponding probability $P(M,N)$?
+Check that $\sum_{M=-N}^NP(M,N)=1$.
+
+(b) Compute the multiplicity $\Omega(E)$ for this system at a total energy $E$
+and sketch/plot it as a function of full range of accessible energies. 
+
+\textit{Hint}: Note that the magnetization $M$ is proportional to the energy
+$E$.
+
+(c) Derive the relation between temperature $T(E)$ and energy $E$ and plot
+$T(E)$.
+
+(d) Calculate the (i) magnetization $m(T,B)=\mu_B\sum_{i=1}^N\sigma_i$, (ii)
+obtain its asymptotic forms in the classical $\mu_BB/k_BT\ll 1$ and quantum
+$\mu_BB/k_BT\gg 1$ limits and (iii) plot it as a function of $T$ at a couple of
+fixed values of $B$ and as a function of $B$ at a couple of fixed values of $T$.
+
+\textit{Hint}: (i) Notice that magnetization is proportional to the energy $E$,
+(ii) Eliminate $E$ in favor of $T$, (iii) Use lowest order Stirling
+approximation throughout to simplify the factorials in your expression.
+
+(e) Compute the linear magnetic susceptibility $\chi(T,B)=\eval{\partial
+m/\partial B}_{B\to0}$, show that it exhibits Curie form
+$\chi_\text{Curie}=a/T$, extracting the coefficient $a$.
+
+(f) Compute the heat capacity (specific heat), $C_v(T)=T(\partial S/\partial
+T)_{V,N}$, extract its low and high temperatures asymptotics, and sketch it,
+noting its limiting forms and the crossover temperature.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{3}[Quamtum harmonic oscillators: Einstein solid]
+Consider $N$ decoupled 3D quantum harmonic oscillators as a model of atomic
+vibrations in a crystalline solid (Einstein phonons), described by the familiar
+quantum Hamiltonian
+\begin{equation}
+    \hat\HH=\sum_{i}^N\qty[\frac{\hat{p}_i^2}{2m}+\frac12m\omega_0^2\hat{r}_i^2-\frac32\hbar\omega_0] 
+\end{equation}
+where for convenience I defined $\hat\HH$ with zero point energy subtracted off.
+
+(a) Let's warm up on a single harmonic oscillator, computing its degeneracy
+$g(n)=\Omega(E=\hbar\omega_0n)$ a fixed total energy
+$E\equiv\hbar\omega_0n=\hbar\omega_0\sum_{\alpha=1}^dn_\alpha$ (where
+$n_\alpha\in\Z$ are integer quantum numbers for $\alpha=x,y,\hdots$) for the
+cases of (i) 2D and (ii) 3D.
+
+(b) Recalling the eigenvalues
+$E[\qty{n_\alpha}]=\hbar\omega_0\sum_{\alpha=1}^{3N}n_\alpha$
+($\alpha=x_1,y_1,z_1,x_2,y_2,z_2,\hdots$ ranging from 1 to $3N$) for the
+harmonic oscillator Hamiltonian, compute the multiplicity
+\begin{equation}
+    \Omega(E)=\sum_{\qty{n_\alpha}}\delta_{E,E[\qty{n_\alpha}]} 
+\end{equation}
+taking $E=\hbar\omega_0n$ ($n\in\Z$).
+
+\textit{Hint}: Think about how to distribute $n$ total quanta of excitations
+among $3N$ 1D oscillators, and use the lowest Stirling formula approximation for
+$N\gg 1$ and $n\gg 1$.
+
+(c) Compute the entropy $S(E)$ and the corresponding $T(E)$, thereby extracting
+energy $E(T)$ as a function of temperature $T$, exploring its classical
+$\hbar\omega_0/k_BT\ll1$ and quantum $\hbar\omega_0/k_BT\gg1$ limiting
+functional forms. Plot $E(T)$, noting limiting forms.
+
+(d) Compute heat capacity
+$C_v=T(\partial S/\partial T)_{V,N}=\partial E/\partial T$ and explore its 
+classical (high $T$) and quantum (low $T$) limits, showing
+the expected equipartition $C_v=N_\text{dof}k_B$ in former and its breakdon in
+the latter limits. Plot $C_v(T)$, noting the crossover temperature.
+
+(e) Consider a classical limit of the problem with small $\hbar\omega_0/k_BT$
+such that $E[\qty{n_\alpha}]=\sum_{\alpha=1}^{3N}\epsilon_\alpha$ and oscillator
+eigenvalues $\epsilon_\alpha$ vary nearly continuously. Using this
+simplification compute
+\begin{equation}
+    \Omega(E)=\Delta\prod_{\alpha=1}^{3N}\int\frac{d\epsilon_\alpha}{\hbar\omega_0}
+    \delta(E-E[\qty{\epsilon_\alpha}]) 
+\end{equation}
+as a multidimensional integral over $\epsilon_\alpha$.
+
+\textit{Hint}: It is helpful to use a result for a hypervolume of an
+$N$-dimensional space spanned by positive values of $x_i$ coordinates, limited
+by a hyperplane $x_1+x_2+\hdots+x_N=R$,
+\begin{equation}
+    V(R)=\int_{[\sum_{i=1}^Nx_i]\leq R}dx_1dx_2\hdots
+    dx_N=\int_0^RdrS(r)=R^N/N!,
+\end{equation}
+where $S(R)=R^{N-1}/(N-1)!$ is the corresponding hyper-area at radius $R$ needed
+for computation of the multiplicity $\Omega(E)$ and above integral is a
+constrained one indicated by a prime.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{4}[Boltzmann gas]
+Consider $N$ identical noninteracting particles in a 3D box of linear size $L$,
+described by a Hamiltonian
+\begin{equation}
+    \HH(\qty{\vb{p}_i})=\sum_i^N\frac{p_i^2}{2m}
+\end{equation}
+
+(a) By integrating over $6N$ dimensional phase space, compute the multiplicity
+(number of microstates) in a shell of width $\Delta$ around energy $E$,
+\begin{equation}
+    \Omega(E)=\frac{\Delta}{N!}\prod_{i}^N\qty[\int\frac{d\vb{r}_id\vb{p}_i}{(2\pi\hbar)^3}]\delta(E-\HH(\qty{\vb{p}_i})] 
+\end{equation}
+where $1/N!$ is the Gibbs ``fudge'' factor to crudely (we will see later why
+this fix fails at low temperatures; also see below) account for the identity of
+these classical particles, and we used the fact that 1 state corresponds to
+phase space area $dxdp=2\pi\hbar$ to normalize the integration measure.
+
+\textit{Hint}: Use the expression for a surface area of a $d$-dimensional unit
+hypersphere, $S_d=2\pi^{d/2}/\Gamma(d/2)$ (with $S_2=2\pi,S_3=4\pi,\hdots$).
+
+(b) Compute the corresponding (i) entropy $S(E,V,N)=k_B\ln\Omega$, and (ii) find
+the temperature $T_c$ at which the entropy becomes negative, i.e., unphysical.
+
+(c) Using the expression for $S(E,V,N)$ found above, calculate the pressure
+$P(V,N)=T(\partial S/\partial V)_{E,N}$ for the Boltzmann gas, and show that it
+leads to the familiar ideal gas law, $PV=Nk_BT$.
+
+(d) Compute the corresponding chemical potential $\mu=-T(\partial S/\partial
+N)_{E,V}$, expressing in terms of the thermal deBroglie wavelength
+$\lambda_{dB}(T)=h/\sqrt{2\pi mk_BT}$, $T$ and density $n$.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5}[Classical harmonic oscillators: Einstein solid]
+Consider $N$ decouped 3D classical harmonic oscillators, described by the
+familiar Hamiltonian
+\begin{equation}
+    \HH=\sum_i^N\qty[\frac{p_i^2}{2m}+\frac12m\omega_0^2r_i^2] 
+\end{equation}
+as the classical version of the problem above, with $\vb{r}_i,\vb{p}_i$ the
+classical phase space coordinates. Let's repeat the analysis utilizing and
+generalizing the analysis for the Boltzmann gas, above.
+
+(a) By integrating over $6N$ dimensional phase space, compute the multiplicity
+(number of microstates) in a shell of width $\Delta$ around energy $E$,
+\begin{equation}
+    \Omega(E,N)=\Delta\prod_i^N\qty[\int\frac{d\vb{r}_id\vb{p}_i}{(2\pi\hbar)^3}]\delta[E-\HH(\qty{\vb{p}_i})],
+\end{equation}
+where there is no $1/N!$ Gibbs ``fudge'' factor. Why?
+
+(b) Compare your classical result with the high $T$ classical limit
+($\hbar\omega_0/k_BT$ is the relevant dimensionless parameter) of the quantum
+treatment of the system in problem 3(c,d,e) above.
+
+(c) What is the relation of this classical analysis to the classical limit
+analysis in problem 3e?
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\end{document}
