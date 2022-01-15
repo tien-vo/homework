@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 1: Phys 5040 (Spring 2022)}
+\due{January 27, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}
+Prove that a subgroup $H\subset G$ is normal iff $gH=Hg$ for all $g\in G$. (That
+is, you are showing here that normal subgroups are those for which left and
+right cosets agree.)
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}
+Explain why the following is true: for a collection of sets denoted $A_i$, there
+is no natural function from one of the $A_i$'s to the product set, but for a
+collection of groups $G_i$, there is a natural injective homomorphism from each
+$G_i$ to the product group. (The key here is the rather loose meaning of
+``natural''.) In the latter case you should write down what this injective
+homomorphism is.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{3}
+Let $G$ be a finite group with $\abs{G}=p$, for $p$ a prime number. Prove that
+$G$ is isomorphic to $\Z_p$.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{4}
+Let $A$ be a set and $\text{Perm}(A)$ be the group of invertible functions from
+$A\to A$. That is $\text{Perm}(A)$ is the subset of $\text{Fun}(A,A)$ consisting
+of invertible functions, and is a group as discussed in the notes.
+
+Now let $G$ be a group. Prove that a group action of $G$ on $A$ determines a
+natural homomorphism $G\to \text{Perm}(A)$, and vice versa.
+
+Yes, the word natural is not precise so you aren't aasked to prove naturalness
+-- the point is that part of this problem is to figure out what the homomorphism
+is, and it should be natural in the sense that it should ``do the same thing as
+the group action''. You have to prove that what you find is in fact a
+homomorphism. Note you have to go both ways here: (1) Given a group action, find
+a natural homomorphism and prove it's a homomorphism. (2) Given a homomorphism
+from $G\to\text{Perm}(A)$, obtain a natural group action (proving it's in fact a
+group action).
+
+\textit{Remarks (you don't have to do anything with this except read it)}: This
+result is helpful if you want to generaize the action of a group on a set to a
+group acting on a set with some additional structure. For instance, an action of
+a group $G$ on another group $H$ can be defined simply as a homomorphism
+$G\to\text{Aut}(H)$. The idea is that we replaced $\text{Perm}(H)$ with
+$\text{Aut}(H)$, because these are invertible functions from $H$ to itself that
+know about and respect the group structure on $H$.
+
+Similarly, the action of a group $G$ on a topological space $X$ is a
+homomorphism $G\to\text{Homeo}(X)$, the group of homeomorphisms from $X$ to
+itself. (If the group $G$ is a topological group, then we additionally require
+that the map $G\times X\to X$ is continuous in the product topology on $G\times
+X$).
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5}
+Let $G$ be a group and $H\subset G$ a subgroup (not necessarily normal). Let
+$G/H$ be the set of left cosets. Show that $G/H$ is naturally a left $G$-set
+(i.e. it has a natural group action of $G$, acting on the left). Does $G/H$ have
+a natural $G$-right action? Explain why or why not.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{6}
+Take $m,n\in \Z$ with $m$ and $n$ relatively prime (this means $m$ and $n$ do
+not share any prime factors). Prove that $Z_{m,n}\cong Z_m\times\Z_n$.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{7}
+Prove Proposition 2.1.7 in the lecture notes (i.e. prove the two definitions of
+continuity given in Section 2.1 are equivalent). Here you should only use
+results from the notes in 2.1 or earlier.
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
