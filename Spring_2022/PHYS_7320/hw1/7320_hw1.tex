@@ -11,11 +11,76 @@
 \begin{problem}{1.1}[Radiating spherical metallic shell]
 Two halves of a spherical metallic shell of radius $R$ and infinite conductivity
 are separated by a very small insulating gap. An alternating potential is
-applied between the two halves of the sphere so that the potentias are $\pm
+applied between the two halves of the sphere so that the potentials are $\pm
 V\cos\omega t$. In the long-wavelength limit, find the radiation fields, the
 angular distribution of radiated power, and the total radiated power from the
 sphere.
 \begin{solution}
+Under Fourier analysis, the potential at the boundary ($r=R$) is given by
+\begin{equation}
+    V(\theta)=\begin{cases}
+        Ve^{-i\omega t} & 0\leq\theta < \pi/2\\
+        -Ve^{-i\omega t}&\pi/2<\theta\leq\pi
+    \end{cases} 
+\end{equation}
+Thus, from Section 3.3 in Jackson, the solution for the potential is
+\begin{align}\label{p1:Phi}
+    \Phi(r,\theta,t)
+    &=\frac{Ve^{-i\omega t}}{\sqrt\pi}
+        \sum_{j=1}^\infty(-1)^{j-1}\frac{(2j-1/2)\Gamma(j-1/2)}{j!}
+        \qty(\frac{R}{r})^{2j}P_{2j-1}(\cos\theta)\notag\\
+    &\approx\frac32V\qty(\frac{R}{r})^2\cos\theta e^{-i\omega t}
+\end{align}
+Comparing this with (4.10, Jackson), only the dipole term grows as $r^{-2}$
+\begin{equation}
+    \Phi_\text{dipole}=\frac1{4\pi\epsilon_0}\frac{\vb{p}\vdot\vb{x}}{r^3}
+    =\frac1{4\pi\epsilon_0}\frac{p\cos\theta}{r^2}
+\end{equation}
+since in this instance, we know that $\vb{p}=p\zhat$ from geometry. Thus, we can
+write from \eqref{p1:Phi} that
+\begin{equation}
+    \vb{p}=6\pi\epsilon_0R^2Ve^{-i\omega t}\zhat
+\end{equation}
+Then from (9.19, Jackson), we can calculate the magnetic field
+\begin{align}
+    \vb{B}
+    =\mu_0\vb{H}
+    =\frac{c\mu_0k^2}{4\pi}\qty(\vb{n}\times\vb{p})\frac{e^{ikr}}{r}
+    =\frac32\frac{k^2R^2V}{c}\qty(\vb{n}\times\zhat)\frac{e^{i(kr-\omega
+    t)}}{r}
+\end{align}
+Note that by definition, $\vb{n}=\vb{x}/r$. So
+$\vb{n}\times\zhat=-\sin\theta\cos\phi\yhat+\sin\theta\sin\phi\xhat=-\sin\theta\phihat$.
+The magnetic field is then
+\begin{equation}
+    \vb{B}=-\frac32\frac{k^2R^2V}{c}\frac{e^{i(kr-\omega
+    t)}}{r}\sin\theta\phihat 
+\end{equation}
+The second equation in (9.19, Jackson) gives the electric field
+\begin{align}
+    \vb{E}&=\frac{Z_0}{\mu_0}\vb{B}\times\vb{n}\notag\\
+    &=cB\qty(\sin\phi\xhat-\cos\phi\yhat)\times\qty(\sin\theta\cos\phi\xhat+\sin\theta\sin\phi\yhat+\cos\theta\zhat)\notag\\
+    &=cB\qty(-\cos\theta\rhat+\sin\theta\zhat)\notag\\
+    &=-cB\thetahat\notag\\
+    &=-\frac32k^2R^2V\frac{e^{i(kr-\omega t)}}{r}\sin\theta\thetahat
+\end{align}
+
+Then, the angular distribution of radiated power is
+\begin{align}
+    \frac{dP}{d\Omega}
+    &=\frac12\Re\qty{r^2\vb{n}\vdot\qty(\vb{E}\times\frac{\vb{B}^\ast}{\mu_0})}
+        \notag\\
+    &=\frac1{2\mu_0}\Re\qty{r^2\rhat\vdot\qty[\frac94\frac{k^4R^4V^2}{c}\sin^2\theta\thetahat\times\phihat]}\notag\\
+    &=\frac98\frac{k^4R^4V^2}{c\mu_0}\sin^2\theta\Re\qty{\rhat\vdot\rhat}\notag\\
+    &=\frac98\frac{k^4R^4V^2}{c\mu_0}\sin^2\theta
+\end{align}
+and the total radiated power is
+\begin{align}
+    P=\int\frac{dP}{d\Omega}d\Omega
+    =\frac98\frac{k^4R^4V^2}{c\mu_0}\int_0^\pi\sin^3\theta
+    d\theta\int_0^{2\pi}d\phi
+    =\frac{3\pi k^4R^4V^2}{c\mu_0}
+\end{align}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
@@ -30,11 +95,47 @@ the origin. Find the resulting antenna pattern $dP/d\Omega$ at $r\gg D$. You may
 assume that the wavelength is large compared to each individual dipole, but do
 not assume it is large compared to the spacing between dipoles (that is, do not
 assume $\lambda\gg D$.) Explicitly work out what happens at $\theta\approx\pi/2$
-where $\theta$ is the usual angle from the $z$-axis in spherica coordinates.
+where $\theta$ is the usual angle from the $z$-axis in spherical coordinates.
 
 This is an iconic probem: many similar radiators distributed in space, so the
 antenna pattern tells you things about the spatial distribution of radiators.
 \begin{solution}
+For $n\in\Z$ and $-N\leq n\leq N$, let $\vb{A}_n$ be the contribution of the
+dipole located at $\vb{z}_n=nD\zhat$ to the vector potential. From (9.16,
+Jackson),
+\begin{equation}
+    \vb{A}_n=-i\omega\frac{\mu_0}{4\pi}\vb{p}\frac{e^{ikr_n}}{r_n} 
+\end{equation}
+where $r_n=\abs{\vb{x}-\vb{z}_n}\approx r-nD\cos\theta$. In the denominator, we
+can write $r_n\approx r$, but we need to keep the $kD$ term since it is not
+necessarily that $kD\ll 1$. Thus,
+\begin{equation}
+    \vb{A}_n\approx-i\omega\frac{\mu_0}{4\pi}\vb{p}\frac{e^{ikr}}{r}e^{-inkD\cos\theta} 
+\end{equation}
+The total vector potential is then
+\begin{equation}
+    \vb{A}=-i\omega\frac{\mu_0}{4\pi}\vb{p}\frac{e^{ikr}}{r}\sum_{n=-N}^Ne^{-inkD\cos\theta}
+    =-i\omega\frac{\mu_0}{4\pi}\vb{p}\frac{e^{ikr}}{r}\frac{\sin\qty[(2N+1)kD\cos\theta/2]}{\sin\qty[kD\cos\theta/2]}
+\end{equation}
+Let
+\begin{equation}
+    C=\frac{\sin\qty[(2N+1)kD\cos\theta/2]}{\sin\qty[kD\cos\theta/2]}
+\end{equation}
+Then the vector potential has a form similar to (9.16, Jackson),
+\begin{equation}
+    \vb{A}=-i\omega\frac{\mu_0}{4\pi}\vb{\overline{p}}\frac{e^{ikr}}{r} 
+\end{equation}
+with $\overline{\vb{p}}=C\vb{p}$. Thus, the angular distribution of radiated
+power in the radiation zone is, from (9.23),
+\begin{equation}
+    \frac{dP}{d\Omega}=\frac{c^2Z_0}{32\pi^2}k^4\overline{p}^2\sin^2\theta
+    =\frac{c^2Z_0}{32\pi^2}k^4p^2\sin^2\theta\frac{\sin^2\qty[(2N+1)kD\cos\theta/2]}{\sin^2\qty[kD\cos\theta/2]}
+\end{equation}
+At small angle, $\sin x\to x$. Thus, as $\theta\to\pi/2$, $\cos\theta\to0$ and
+we can write
+\begin{equation}
+    \frac{dP}{d\Omega}(\theta\approx\pi/2)=(2N+1)^2\frac{c^2Z_0}{32\pi^2}k^4p^2\sin^2\theta 
+\end{equation}
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,16 +149,61 @@ the radius as a function of the polar angle is
 The quantity $\gamma$ oscillates in time with frequency $\omega$, so we are
 describing something like surface waves on a water balloon. Working to lowest
 nontrivial order in the small parameter $\gamma$, and in the long wavelength
-limit, first find an expression for the total charge on the surface $Q$, and
+limit, first find an expression for the total charge within the surface $Q$, and
 then find an expression for the antenna pattern of emitted radiation
 $dP/d\Omega$ and the total power radiated $P$ with these answers written in
 terms of $Q$.
 
 (b) The previous part is a variation of Jackson 9.12, except in that problem
-$R(\theta)=R_0(1+\beta P_2(\cos\theta))$. What is the leading mutipole behavior
+$R(\theta)=R_0(1+\beta P_2(\cos\theta))$. What is the leading multipole behavior
 of the radiation in that case? Why? (You don't have to calculate it -- just say
 which kind of multipole it is and why.)
 \begin{solution}
+(a) Assuming a uniform density $\rho$, the total charge is
+\begin{align}\label{p3:Q}
+    Q
+    &=\int\rho d^3x' \notag\\
+    &=2\pi\rho\int_0^\pi\sin\theta'd\theta'\int_0^{R(\theta)}r'^2dr'\notag\\
+    &=\frac{2\pi R_0^3}3\rho
+    \int_0^\pi\sin\theta'\qty(1+\gamma\cos\theta')^3d\theta'
+    \notag\\
+    &=\frac{4\pi R_0^3}{3}\rho\qty(1+\gamma^2)
+\end{align}
+
+Now, we calculate the dipole moments. The first two components are trivial
+\begin{align}
+    p_x&=\int x'\rho d^3x'\propto\int_0^{2\pi}\cos\phi'd\phi'=0\notag\\
+    p_y&=\int y'\rho d^3x'\propto\int_0^{2\pi}\sin\phi'd\phi'=0
+\end{align}
+So the moment $\vb{p}=p_z\zhat$ with
+\begin{align}
+    p_z&=\int z'\rho d^3x'\notag\\
+       &=2\pi\rho\int_0^\pi\sin\theta'\cos\theta'd\theta'
+        \int_0^{R(\theta)}r'^3dr'\notag\\
+       &=\frac{\pi
+       R_0^4}{2}\rho\int_0^{\pi}\sin\theta'\cos\theta'(1+\gamma\cos\theta')^4d\theta'\notag\\
+       &=\frac{4\pi R_0^4}{15}\rho\gamma(5+3\gamma^2)\notag\\
+       &=\frac{QR_0}{5}\frac{\gamma(5+3\gamma^2)}{1+\gamma^2}\notag\\
+       &\approx QR_0\gamma
+\end{align}
+Then the antenna pattern is, from (9.23, Jackson),
+\begin{equation}
+    \frac{dP}{d\Omega}=\frac{c^2Z_0}{32\pi^2}k^4\abs{\vb{p}}^2\sin^2\theta
+    =\frac{c^2Z_0}{32\pi^2}k^4Q^2R_0^2\gamma^2\sin^2\theta
+\end{equation}
+
+The total power is
+\begin{equation}
+    P=\frac{c^2Z_0}{32\pi^2}k^4Q^2R_0^2\gamma^2\int\sin^2\theta d\Omega 
+    =\frac{c^2Z_0}{12\pi}k^4Q^2R_0^2\gamma^2
+\end{equation}
+
+(b) Since $P_2(x)=(1/2)(-1+3x^2)$, the radius is modulated as
+\begin{equation}
+    R(\theta)=R_0\qty(1-\frac{\gamma}{2}+\frac{3\gamma}{2}\cos^2\theta) 
+\end{equation}
+So because there is a modulating term independent of the polar angle $\theta$,
+the leading mulipole term must be the monopole.
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
