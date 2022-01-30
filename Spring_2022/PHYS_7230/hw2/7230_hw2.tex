@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 2: Phys 7230 (Spring 2022)}
+\due{February 7, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[Statistical mechanics and thermodynamic relations]
+(a) Given the basic definitions of the partition function and of the average
+energy in the canonical ensemble, derive the average energy relation,
+$E=-\partial(\ln Z)/\partial\beta$.
+
+(b) Given the definition of Helmholtz free energy $F=-k_BT\ln Z$ and above
+result for the average energy $E$, derive the relation $F=E-TS$. \textit{Hint}:
+Note that the above expression for $F$ is equivalent to $\ln Z=-\beta F$ and
+from thermodynamics $S=-\eval{\partial F/\partial T}_{N,V}$, a relation that you
+will derive below.
+
+(c) From the above Legendre transform relation (also discussed in the lectures)
+between $E(S)$ and $F(T)$, and the 1st law of thermodynamics for e.g., a gas,
+namely $dE=TdS-PdV+\mu dN$, derive $dF$ and identify from it the thermodynamic
+expressions for $S, P$, and $\mu$, as well as the heat capacity $C_v$.
+
+(d) In lecture, we discussed the equivalence of canonical and microcanonical
+ensembles, with the key relation expressing the partition function $Z$ as an
+integration over energies (rather than microstates) weighted by the density of
+states $g(E)=\sum_\qty{q_i}\delta(E-H_q)$,
+\begin{align}
+    Z(\beta)&=\sum_\qty{q_i}e^{-\beta H_q}=\int
+    dE\sum_\qty{q_i}\delta(E-H_q)e^{-\beta E},\notag\\
+    &=\int dEg(E)e^{-\beta E},
+\end{align}
+related to multiplicity of the microcanonical ensemble, $\Omega(E)=\Delta g(E)$.
+
+Recall our argument that $g(E)$ is generically an extremely fast growing
+function of $E$ and therefore above integrand is highly peaked function around
+average energy $E_0$, set by the peak. This condition is prime for the
+saddle-point method evaluation of the integral over $E$.
+
+\qquad(i) By applying the lowest order saddle-point approximation and using the
+definition of $S$, show that this gives $Z\approx e^{-\beta F}$, where $F=E-TS$
+from above and the standard thermodynamic relation.
+
+\qquad(ii) By expanding a logarithm of the integrand in Taylor series to
+quadratic order around its maximum $E_0$, derive the general expression for the
+width of this peaked integrand, and use it to argue that indeed in the
+thermodynamic limit the width is vanishingly small relative to
+$E_0$. \textit{Hint}: (i) What happens to the 1st order term? (ii) What is the
+general expression for heat capacity in the microcanonical ensemble?
+\begin{solution}
+(a) From the Boltzmann-Gibbs probability distribution, we can calculate the
+average energy
+\begin{align}
+    E
+    =\frac1Z\sum_\qty{q_i}H_qe^{-\beta H_q}
+    =-\frac1Z\sum_\qty{q_i}\frac{\partial(e^{-\beta H_q})}{\partial\beta}
+    =-\frac1Z\frac{\partial Z}{\partial\beta}
+    =-\frac{\partial(\ln Z)}{\partial\beta}
+\end{align}
+
+(b) First note that we can write $\beta F=-\ln Z$. Plugging this into the
+previous result yields
+\begin{equation}
+    F+\beta\frac{\partial F}{\partial\beta}=F+T\frac{\partial F}{\partial T}
+    -\frac{\partial(\ln Z)}{\partial\beta}=E 
+\end{equation}
+
+(d) First, we write $Z(\beta)=\int_0^\infty dE e^{-f(E)}$ where
+\begin{equation}
+    f(E)=\beta E-\ln g(E)\approx \beta E_0-\ln g(E_0)+\frac12f''(E_0)(E-E_0)^2
+\end{equation}
+with $E_0$ satisfying $g'(E_0)=\beta g(E_0)$ and
+\begin{equation}\label{p1d:fpp}
+    f''(E_0)=\qty[\frac{g'(E_0)}{g(E_0)}]^2-\frac{g''(E_0)}{g(E_0)}
+    =\beta^2-\frac{g''(E_0)}{g(E_0)}
+\end{equation}
+being a constant. (i) To the lowest order, we can then write
+\begin{align}
+    Z(\beta)
+    &\approx g(E_0)e^{-\beta E_0}\int_0^\infty dE e^{-(1/2)f''(E-E_0)^2}\notag\\
+    &=\sigma\sqrt{\frac\pi2} g(E_0)e^{-\beta E_0}\qty[
+    \frac1{\sigma \sqrt{2\pi}}\int_{-\infty}^\infty
+    dE\exp\qty[-\frac12\qty(\frac{E-E_0}{\sigma})^2]]\notag\\
+    &=\sqrt{\frac\pi8}(2\sigma)g(E_0)e^{-\beta E_0}
+\end{align}
+where we have set $f''(E_0)=1/\sqrt\sigma$ and the integration of the Gaussian
+distribution in the square bracket equates to unity. Now, note that the full
+width of the (approximately) Gaussian distribution around $E=E_0$ is
+$\Delta=2\sigma$. Letting $E=\expval{E}=E_0$, we can write
+\begin{equation}
+    Z(\beta)=\sqrt{\frac\pi8}\Omega(E)e^{-\beta E} 
+    =\sqrt{\frac\pi8}e^{S/k_B-\beta E}
+    =\sqrt{\frac\pi8}e^{\beta(TS-E)}
+    =0.6 e^{-\beta F}
+    \approx e^{-\beta F}
+\end{equation}
+
+(ii) The entropy is $S(E)=k_B\ln\Omega=k_B\ln[\Delta g(E)]$. So by calculating
+the temperature,
+\begin{equation}
+    \beta=\frac{\partial(S/k_B)}{\partial E} 
+    =\frac{g'(E)}{g(E)}
+\end{equation}
+Differentiating once more, we get
+\begin{equation}
+    g''(E)=\beta g'(E)+g(E)\frac{\partial}{\partial E}\qty(\frac1{k_BT})
+    =\beta g'(E)-\beta^2k_Bg(E)\frac{\partial T}{\partial E}
+    =\beta g'(E)-g(E)\frac{\beta^2k_B}{C_v}
+\end{equation}
+Then, from \eqref{p1d:fpp},
+\begin{equation}
+    \frac1{\sqrt\sigma}=f''(E)=\beta^2\frac{k_B}{C_v}
+\end{equation}
+But from equipartition theorem, $C_v=Nk_B$ and $E=(N/2)k_BT$. Thus, the width of
+the peak is
+\begin{equation}
+    \sigma=\frac1\beta\sqrt{\frac{C_v}{k_B}}=\frac{2E}{\sqrt{N}}\Rightarrow
+    \frac{\Delta}{E}=\sqrt{\frac2N}\to 0
+\end{equation}
+in the thermodynamic limit ($N\gg 1$).
+\end{solution}
+\newpage
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}
+\begin{solution}
+\end{solution}
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\end{document}

@@ -20,21 +20,24 @@ colder system as $A$ and $B$ come to thermal equilibrium.
 \textit{Hint}: $TdS\geq Q$.
 
 \begin{solution}
-First, for a closed system, the total energy $U=U_A+U_B$ is conserved. So
-$dU_B=-dU_A$. The total entropy is $S=S_A+S_B$. Since the volume and number of
-particles of each system is constant, we have
-\begin{align}
-    dS
-    =\qty(\frac{\partial S}{\partial U_A})_{N_A,V_A}dU_A
+First, assume $T_A>T_B$. Because these two systems are closed, the total energy
+$U=U_A+U_B$ is constant. Thus $dU_B=-dU_A$. We need to prove that
+$dU_A=Q<0$ (the hotter system loses heat $Q$ to the colder one as both systems 
+come to equilibrium).
+
+Now, the total entropy is $S=S_A+S_B$. Since the volume $V$ and number of
+particles $N$ of each system are constant,
+\begin{equation}
+    dS=\qty(\frac{\partial S}{\partial U_A})_{N_A,V_A}dU_A
     +\qty(\frac{\partial S}{\partial U_B})dU_B
-    =\qty(\frac1{T_A}-\frac1{T_B})dU_A\geq 0
-\end{align}
-The last inequality is the 2nd law of thermodynamics. Now, without loss of
-generality, assume $T_A>T_B$, then it must be the case that $dU_A<0$. Since
-the change in energy is the heat exchanged ($dU_A=Q$), it follows that the
-hotter system (A) loses energy in the form of heat to the lower system (B).
+    =\qty(\frac1{T_A}-\frac1{T_B})dU_A\geq 0.
+\end{equation}
+The last inequality is the 2nd law of thermodynamics. Now, by assumption,
+$1/T_A-1/T_B<0$, so it must be the case that $dU_A<0$ in order to make $dS\geq
+0$. We are done.
 \end{solution}
 \end{problem}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}{2}[Spin-1/2 paramagnet]
@@ -77,118 +80,125 @@ $\chi_\text{Curie}=a/T$, extracting the coefficient $a$.
 T)_{V,N}$, extract its low and high temperatures asymptotics, and sketch it,
 noting its limiting forms and the crossover temperature.
 \begin{solution}
+
 (a) Given $M=N_\ua-N_\da$ and $N=N_\ua+N_\da$, we can write
 \begin{equation}
-    N_\ua=\frac12\qty(N+M)\qquad\text{and}\qquad
-    N_\da=\frac12\qty(N-M).
+    N_\ua=\frac{N+M}{2}\qquad\text{and}\qquad
+    N_\da=\frac{N-M}{2}.
 \end{equation}
 (i) The multiplicity of $\Omega(M,N)$ is just the combination of $N_\ua$ in $N$
-total magnets
-\begin{equation}\label{p1a:Omega}
-    \Omega(M,N)=\binom{N}{N_\ua}=\frac{N!}{N_\ua!N_\da!}
-    =\frac{N!}{\qty(\frac{N+M}{2})!\qty(\frac{N-M}{2})!}
+total paramagnets
+\begin{equation}\label{p2a:Omega}
+    \Omega(M,N)=\Omega(N_\ua,N_\da)
+    =\binom{N}{N_\ua}
+    =\frac{N!}{N_\ua!N_\da!}
+    =\frac{N!}{\qty(\frac{N+M}{2})!\qty(\frac{N-M}{2})!}.
 \end{equation}
-(ii) For $N$ total magnets, each with 2 possible states, the sample size is
+(ii) For $N$ total paramagnets, each with 2 possible states, the sample size is
 $2^N$. So the probability $P(M,N)$ is
 \begin{equation}
-    P(M,N)
-    =\frac1{2^N}\Omega(M,N)
-    =\frac1{2^N}\frac{N!}{\qty(\frac{N+M}{2})!\qty(\frac{N-M}{2})!} 
-\end{equation}
-Using the binomial theorem,
-\begin{equation}
-    2^N=\sum_{N_\ua=0}^N\binom{N}{N_\ua}=\sum_{N_\ua=0}^N\Omega(M,N),
-\end{equation}
-we can convert the summation back to $M$. For $0\leq N_\ua\leq N$, $-N\leq M\leq
-N$. Thus,
-\begin{equation}
-    1=\frac1{2^N}\sum_{M=-N}^N\binom{N}{N_\ua}=\sum_{M=-N}^NP(M,N)
+    P(M,N)=\frac{\Omega(M,N)}{2^N}
+    =2^{-N}\frac{N!}{\qty(\frac{N+M}{2})!\qty(\frac{N-M}{2})!}.
 \end{equation}
 
-(b) By definition, $E=-hM$. So from \eqref{p1a:Omega},
+Now, we check for the normalization condition of the probability $P$. Using the
+binomial theorem:
 \begin{equation}
-    \Omega(E)=\frac{N!}{\qty(\frac{N-E/h}{2})!\qty(\frac{N+E/h}{2})!}
+    (1+1)^N=2^N=\sum_{N_\ua=0}^N\binom{N}{N_\ua}1^{N_\ua}1^{N-N_\ua}
+    =\sum_{N_\ua=0}^N\Omega(N_\ua,N_\da).
 \end{equation}
-for $-hN\leq E\leq hN$. A plot of $\Omega(E)$ is included below
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{p1b.png} 
-\end{center}
+Converting the summation back to $M$, we get $-N\leq M\leq N$ for $0\leq
+N_\ua\leq N$. Thus,
+\begin{equation}
+    1=2^{-N}\sum_{M=-N}^N\binom{N}{N_\ua}=\sum_{M=-N}^NP(M,N). 
+\end{equation}
+
+(b) By definition, $E=-hM$ with $h=\mu_BB$. So from \eqref{p2a:Omega},
+\begin{equation}\label{p2b:Omega}
+    \Omega(E)=\frac{N!}{\qty(\frac{N-E/\mu_BB}{2})!\qty(\frac{N+E/\mu_BB}{2})!}
+\end{equation}
+for $-\mu_BBN\leq E\leq\mu_BBN$. Figure\,\ref{fig:p2}(a) shows a plot of
+\eqref{p2b:Omega}.
+
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{p2.png}
+    \caption{Sketches of quantities in problem 2.}
+    \label{fig:p2}
+\end{figure}
 
 (c) By definition, the entropy is
 \begin{align}
-    S/k_B&=\ln\Omega\notag\\
-    &\approx N\ln N-N-\qty(\frac{N-E/h}{2})\ln\qty(\frac{N-E/h}{2})
-    +\frac{N-E/h}{2}\notag\\
-    &\qquad-\qty(\frac{N+E/h}{2})\ln\qty(\frac{N+E/h}{2})
-    +\frac{N+E/h}{2}\notag\\
-    &=N\ln N-\qty(\frac{N-E/h}{2})\ln\qty(\frac{N-E/h}{2})
-    -\qty(\frac{N+E/h}{2})\ln\qty(\frac{N+E/h}{2})
+    S/k_B
+    &=\ln\Omega\notag\\
+    &\approx N\ln N-N-\qty(\frac{N-E/\mu_BB}{2})\ln\qty(\frac{N-E/\mu_BB}{2})
+    +\frac{N-E/\mu_BB}{2}\notag\\
+    &\qquad-\qty(\frac{N+E/\mu_BB}{2})\ln\qty(\frac{N+E/\mu_BB}{2})
+    +\frac{N+E/\mu_BB}{2}\notag\\
+    &=N\ln N-\qty(\frac{N-E/\mu_BB}{2})\ln\qty(\frac{N-E/\mu_BB}{2})
+    -\qty(\frac{N+E/\mu_BB}{2})\ln\qty(\frac{N+E/\mu_BB}{2})
 \end{align}
-by Stirling approximation. Then the temperature is
-\begin{align}\label{p1c:T}
-    \frac1{k_BT}=\frac{\partial(S/k_B)}{\partial E}
-    =\frac1{2h}\ln\qty(\frac{N-E/h}{N+E/h})
-    \Rightarrow\frac{k_BT}{h}=\frac{2}{\ln\qty(\frac{N-E/h}{N+E/h})}
-\end{align}
-A plot of the normalized temperature $k_BT/h$ is included below
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{p1c.png} 
-\end{center}
+by Stirling approximation. Using Mathematica to differentiate this wrt $E$, we
+get
+\begin{equation}
+    \frac1{k_BT}=\frac{\partial(S/k_B)}{\partial E}=\frac1{2\mu_BB}
+    \ln\qty(\frac{N-E/\mu_BB}{N+E/\mu_BB}).
+\end{equation}
+Thus, the temperature is
+\begin{equation}\label{p2c:T}
+    T=\frac{2\mu_BB}{k_B\ln\qty(\frac{N-E/\mu_BB}{N+E/\mu_BB})}.
+\end{equation}
+Figure~\ref{fig:p2}(b) shows the normalized temperature $k_BT/\mu_BB$.
 
-(d) First, we can invert \eqref{p1c:T} to solve for $E$ as below
+(d) First, inverting \eqref{p2c:T}, we get
 \begin{equation}
-    E=-hN\frac{e^{2h/k_BT}-1}{e^{2h/k_BT}+1}=-hN\tanh(\frac{h}{k_BT})
-    =-hN\tanh(\frac{\mu_BB}{k_BT})
+    E=-N\mu_BB\frac{e^{2\mu_BB}{k_BT}-1}{e^{2\mu_BB/k_BT}+1}
+    =-N\mu_BB\tanh\qty(\frac{\mu_BB}{k_BT}).
 \end{equation}
-But the energy $E$ can be written in terms of $m$ as $E=-mB$ since $m=\mu_BM$.
-So (i) the magnetization is
-\begin{equation}\label{p1d:m}
-    m=\mu_BN\tanh\qty(\frac{\mu_BB}{k_BT}) 
+But the energy $E$ can also be written in terms of $m$ as $E=-mB$ since
+$m=\mu_BM$. (i) So, the magnetization is
+\begin{equation}\label{p2d:m}
+    m=\mu_BN\tanh\qty(\frac{\mu_BB}{k_BT}).
 \end{equation}
-(ii) For $\mu_BB/k_BT\ll 1$, $\tanh$ is a linear function
+(ii) For $\mu_BB/k_BT\ll1$, $\tanh(x)\approx x$. Thus,
 \begin{equation}
-    m\qty(\frac{\mu_BB}{k_BT})=\frac{\mu_B^2nB}{k_BT} 
+    m\qty(\frac{\mu_BB}{k_BT}\ll 1)=\frac{\mu_B^2NB}{k_BT}.
 \end{equation}
-and for $\mu_BB/k_BT\gg 1$, $\tanh(x)\to 1$, so the magnetization is a constant
+For $\mu_BB/k_BT\gg 1$, $\tanh(x)\to1$, so the magnetization is a constant
 \begin{equation}
-    m\qty(\frac{\mu_BB}{k_BT})=\mu_BN 
+    m\qty(\frac{\mu_BB}{k_BT}\gg1)=\mu_BN .
 \end{equation}
-(iii) A plot of $m(T,B)/\mu_BN$ is included below
-\begin{center}
-    \includegraphics[width=\textwidth]{p1d.png} 
-\end{center}
+(iii) Figure~\ref{fig:p2}(c-d) shows $m(T,B)/\mu_BN$ in various values.
 
-(e) From \eqref{p1d:m}, we can calculate
+(e) From \eqref{p2d:m}, we can calculate
 \begin{equation}
     \chi=\lim_{B\to0}\frac{\partial m}{\partial B}
-    =\frac{\mu^2N}{k_BT}\lim_{B\to0}\sech^2\qty(\frac{\mu_BB}{k_BT})
-    =\frac{\mu^2N}{k_BT}
+    =\frac{\mu_B^2N}{k_BT}\lim_{B\to0}\sech^2\qty(\frac{\mu_BB}{k_BT})
+    =\frac{\mu_B^2N}{k_BT}.
 \end{equation}
-So $\chi$ follows Curie's law with $a=\mu^2N/k_B$.
+So $\chi$ follows Curie's law with the constant $a=\mu_B^2N/k_B$.
 
-(f) By the chain rule,
+(f) By definition,
 \begin{equation}
-    C_V=T\frac{\partial S}{\partial E}\frac{\partial E}{\partial T} 
+    C_v=T\frac{\partial S}{\partial T}
     =\frac{\partial E}{\partial T}
-    =Nk_B\qty(\frac{\mu_BB}{k_BT})^2\sech^2\qty(\frac{\mu_BB}{k_BT})
+    =Nk_B\qty(\frac{\mu_BB}{k_BT})^2\sech^2\qty(\frac{\mu_BB}{k_BT}).
 \end{equation}
-For $x=\mu_BB/k_BT\ll1$ (high temperature), $\sech(x)\to1$ and the heat capacity
-is
+For $x=\mu_BB/k_BT\ll 1$ (high temperature), $\sech(x)\to 1$ and the heat
+capacity is
 \begin{equation}
-    C_V\qty(\frac{\mu_BB}{k_BT}\ll 1)\approx Nk_B\qty(\frac{\mu_BB}{k_BT})^2
+    C_v\qty(\frac{\mu_BB}{k_BT}\ll1)\approx Nk_B\qty(\frac{\mu_BB}{k_BT})^2.
 \end{equation}
-For $x\gg 1$ (low temperature), $\sech^2(x)$ dominates and so $C_V\to0$.
-Letting the crossover temperature to be $T^\ast=\mu_BB/k_B$, then we can rewrite
-the heat capacity in normalized form
-\begin{equation}\label{p1f:C}
-    \frac{C_V}{Nk_B}=\qty(\frac{T^\ast}{T})^2\sech^2\qty(\frac{T^\ast}{T}) 
+For $x\gg 1$ (low temperature), $\sech^2(x)$ dominates and so $C_v\to0$. Letting
+the crossover temperature be $T^\ast=\mu_BB/k_B$, we can rewrite the heat
+capacity in normalized form
+\begin{equation}\label{p2f:Cv}
+    \frac{C_v}{Nk_B}=\qty(\frac{T^\ast}{T})^2\sech^2\qty(\frac{T^\ast}{T}).
 \end{equation}
-A plot of \eqref{p1f:C} is included below
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{p1f.png} 
-\end{center}
+Figure~\ref{fig:p2}(e) shows a plot of \eqref{p2f:Cv}.
 \end{solution}
 \end{problem}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}{3}[Quamtum harmonic oscillators: Einstein solid]
@@ -251,33 +261,28 @@ where $S(R)=R^{N-1}/(N-1)!$ is the corresponding hyper-area at radius $R$ needed
 for computation of the multiplicity $\Omega(E)$ and above integral is a
 constrained one indicated by a prime.
 \begin{solution}
-(a) For the 2D case, there are $n$ quanta to distribute into 2 partitions
-($n_x,n_y$). The problem can be understood in terms of a sequence of 0's and 1's
-where 0's are the quanta and 1 is the separation between the two groups $n_x$
-and $n_y$. For example, if $n=5$, $000100$ is a possible sequence. So there are 
-$n+1$ objects in total and the degeneracy is
+(a) For the 2D case, there are two groups ($n_x,n_y$). The problem can be
+understood in terms of a sequence of 0's (quanta) and 1's (partitions separting
+groups). For example, if $n=5$, $000100$ is a possible sequence. Thus, there are
+$n+1$ objects in total to shuffle and the (i) degeneracy is
 \begin{equation}
-    g_{2D}(n)=\binom{n+1}{n}=n+1 
+    g_{2D}(n)=\binom{n+1}{n}=n+1.
 \end{equation}
-For the 3D case, the number of 1's is 2, to separate the 0's (quanta) into 
-three groups $n_x,n_y,n_z$. So the degeneracy is
+(ii) For the 3D case, there needs to be 2 partitions to separate the 0's into
+three groups ($n_x,n_y,n_z$). So the degeneracy is
 \begin{equation}
-    g_{3D}(n)=\binom{n+2}{n}=\frac{(n+1)(n+2)}{2} 
+    g_{3D}(n)=\binom{n+2}{n}=\frac{(n+1)(n+2)}{2}.
 \end{equation}
 
-(b) For the $3N$-dimensional case, there needs to be $3N-1$ 1's to seperate the
-0's into $3N$ groups. So the multiplicity is
+(b) Generalizing the previous results into the $3N$-dimensional case, there
+needs to be $3N-1$ partitions to separate the 0's into $3N$ groups. The
+multiplicity is thus
 \begin{equation}
-    \Omega=\binom{n+3N-1}{n} 
-    =\frac{(n+3N-1)!}{n!(3N-1)!}
+    \Omega=\binom{n+3N-1}{n}=\frac{(n+3N-1)!}{n!(3N-1)!}
     \approx\frac{(n+3N)!}{n!(3N)!}
 \end{equation}
-where we have assumed $n,N\gg 1$. Calculating $\ln\Omega$ and using the lowest
-order Stirling approximation, we get
-\begin{equation}
-    \ln\Omega\approx(n+3N)\ln\qty(n+3N)-n\ln n-3N\ln 3N 
-\end{equation}
-So taking the exponent again gives us the multiplicity
+where we have assumed $n,N\gg 1$. Using the lowest order Stirling approximation
+($N!\approx N^N$), we can simplify this result into
 \begin{equation}
     \Omega(E)\approx\qty(1+\frac{3N\hbar\omega_0}{E})^{E/\hbar\omega_0}
     \qty(1+\frac{E}{3N\hbar\omega_0})^{3N}
@@ -287,95 +292,83 @@ where we have also written $n=E/\hbar\omega_0$.
 (c) By definition, the entropy is
 \begin{align}
     S/k_B
-    &=\ln\Omega=\frac{E}{\hbar\omega_0}\ln\qty(1+\frac{3N\hbar\omega_0}{E})
+    &=\ln\Omega\notag\\
+    &=\frac{E}{\hbar\omega_0}\ln\qty(1+\frac{3N\hbar\omega_0}{E})
     +3N\ln\qty(1+\frac{E}{3N\hbar\omega_0})\notag\\
-    &=3N\qty[\epsilon\ln\qty(1+\frac{1}{\epsilon})+\ln\qty(1+\epsilon)]
+    &=3N\qty[\epsilon\ln\qty(1+\frac1\epsilon)+\ln\qty(1+\epsilon)]
 \end{align}
-where $\epsilon\equiv E/3N\hbar\omega_0$. The temperature is then
+where $\epsilon=E/3N\hbar\omega_0$. Differentiate wrt $E$,
 \begin{equation}
-    \frac{3N\hbar\omega_0}{k_BT}=\frac{\partial(S/k_B)}{\partial\epsilon}
+    \frac{3N\hbar\omega_0}{k_BT}=\frac{\partial (S/k_B)}{\partial\epsilon}
     =3N\ln\qty(1+\frac1\epsilon)
-    \Rightarrow T(E)=\frac{\hbar\omega_0}{k_B\ln\qty(1+3N\hbar\omega_0/E)}
+\end{equation}
+Thus, the temperature is
+\begin{equation}
+    T(E)=\frac{\hbar\omega_0}{k_B\ln\qty(1+3N\hbar\omega_0/E)} 
 \end{equation}
 Inverting this result, we get
 \begin{equation}
-    E(T)=\frac{3N\hbar\omega_0}{e^{\hbar\omega_0/k_BT}-1}
+    E(T)=\frac{3N\hbar\omega_0}{e^{\hbar\omega_0/k_BT}-1} 
 \end{equation}
-For the classical limit ($x=\hbar\omega_0/k_BT\ll 1$), $e^x-1\approx x$
-and $E(T)=3Nk_BT$. For the quantum limit ($x\gg 1$), $e^x\to\infty$ and
-$E\sim e^{-x}\to0$. Letting $T^\ast=\hbar\omega_0/k_B$, a plot of $E(T)$ is 
-included below.
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{p3c.png} 
-\end{center}
-At high temperature (classical limit), $E$ grows linearly in temperature and at 
-low temperature (quantum limit), $E\to0$, as expected.
 
-(d) By definition, the heat capacity is
+For the classical limit ($x=\hbar\omega_0/k_BT\ll 1$), $e^x-1\approx x$ and
+$E(T)=3Nk_BT$. For the quantum limit ($x\gg1$), $e^x\to\infty$ and $E\sim
+e^{-x}\to0$. The crossover temperature is $T^\ast=\hbar\omega_0/k_B$.
+Figure~\ref{fig:p3c} shows that $E$ grows linearly at high temperature and
+decreases to 0 in the quantum limit, as expected.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{p3c.png}
+    \caption{$E(T)$ of $N$ decoupled 3D quantum harmonic oscillators.}
+    \label{fig:p3c}
+\end{figure}
+
+(d) By definition,
 \begin{equation}
-    C_v=\frac{\partial E}{\partial
-    T}=3Nk_B\qty(\frac{T^\ast}{T})^2\frac{e^{T^\ast/T}}{(e^{T^\ast/T}-1)^2} 
+    C_v=\frac{\partial E}{\partial T}
+    =3Nk_B\qty(\frac{T^\ast}{T})^2\frac{e^{T^\ast/T}}{(e^{T^\ast/T}-1)^2}
 \end{equation}
-For the quantum limit, $C_v$ grows as $\sim (T^\ast/T)^2 e^{-T^\ast/T}\sim0$
-because of the exponential term. At large $T$ (classical limit), we can set
-$x=T^\ast/T$ and write $C_v$ as
+For the quantum limit, $C_v$ grows as $(T^\ast/T)^2e^{-T^\ast/T}\sim0$ because
+of the exponential term. At large $T$ (classical limit), we can set $x=T^\ast/T$
+and write $C_v$ as
 \begin{equation}\label{p3d:C}
-    C_v=3Nk_B x^2\frac{e^x}{(e^x-1)^2}\approx
-    3Nk_Bx^2\frac{1+x}{x^2}\approx 3Nk_B
+    C_v=3Nk_Bx^2\frac{e^x}{(e^x-1)^2}\approx3Nk_Bx^2\frac{1+x}{x^2}=3Nk_B 
 \end{equation}
-when $x\to0$. This is the expected equipartition where $N_\text{dof}=3N$. A plot
-of $C_v$ is included below.
-\begin{center}
-    \includegraphics[width=0.8\textwidth]{p3d.png} 
-\end{center}
-The formal break occurs at $T=T^\ast$ as expected, where
-$T^\ast=\hbar\omega_0/k_B$ is the
-crossover temperature. Also, $C_v$ is asymptotically constant as $T\to\infty$ as
-predicted in \eqref{p3d:C} and 0 as $T\to0$.
+as $x\to0$. This is the expected equipartition where $N_\text{dof}=3N$.
+Figure~\ref{fig:p3d} shows that the formal break occurs at $T=T^\ast$ as
+expected. Also, $C_v$ is asymptotically constant as $T\to\infty$ as predicted in
+\eqref{p3d:C} and decreases to 0 as $T\to0$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{p3d.png}
+    \caption{$C_v(T)$ of $N$ decoupled 3D quantum harmonic oscillators.}
+    \label{fig:p3d}
+\end{figure}
 
 (e) First, we can isolate the integration
 \begin{equation}
-    \Omega(E)=\frac{\Delta}{(\hbar\omega_0)^{3N}}\prod_{\alpha=1}^{3N}
-    \int d\epsilon_\alpha\delta(E-E[\qty{\epsilon_\alpha}])
+    \Omega(E)=\frac{\Delta}{(\hbar\omega_0)^{3N}}
+    \prod_{\alpha=1}^{3N}\int
+    d\epsilon_\alpha\delta\qty(E-E[\qty{\epsilon_\alpha}])
     =\frac{\Delta}{(\hbar\omega_0)^{3N}}I_{3N}
 \end{equation}
-$I_{3N}$ is just the $3N-1$-dimensional hyper-area restricted by the 
-constraint $E=\sum_{\alpha=1}^{3N}\epsilon_\alpha$. We can prove this by 
-induction. First consider the 2D case where $E=\epsilon_1+\epsilon_2$ and
+
+$I_{3N}$ is just the $(3N-1)$-dimensiona hyper-area restricted by the constraint
+$E=\sum_{\beta=1}^{3N}\epsilon_\beta$ when integrating over a $3N$-dimensional
+space $\R_+^{3N}$ where $R_+=[0,\infty)$. Thus,
 \begin{equation}
-    I_{2}=\int_0^\infty d\epsilon_1\int_0^\infty
-    d\epsilon_2\delta(E-\epsilon_1-\epsilon_2) 
+     \Omega(E)=\frac{\Delta}{(\hbar\omega_0)^{3N}}S_{3N}(E)
+     =\frac1{(3N-1)!}\frac{\Delta}{E}\qty(\frac{E}{\hbar\omega_0})^{3N}.
 \end{equation}
-Let $u=E-\epsilon_1$, then $du=-d\epsilon_1$ and
+But $(3N-1)!\approx (3N)!\approx (3N)^{3N}$ for $N\gg1$. So
 \begin{equation}
-    I_{2}=-\int_E^{-\infty}du\int_0^\infty d\epsilon_2\delta(u-\epsilon_2) 
-    =\int_0^Edu\int_0^\infty d\epsilon_2\delta(u-\epsilon_2)=\int_0^Edu
-    =E=S_2(E)
+    \Omega(E)\approx\frac{\Delta}{E}\qty(\frac{E}{3N\hbar\omega_0})^{3N} .
 \end{equation}
-where $S_n$ is the given hyper-area in the problem. Now, to prove the
-$3N$-dimensional case, suppose the $3N-1$-dimensional case is true. Then,
-\begin{align}
-    I_{3N}
-    &=\int_0^\infty d\epsilon_{3N}\prod_{\alpha=1}^{3N-1}\int_0^\infty
-    d\epsilon_\alpha
-    \delta\qty(E-\epsilon_{3N}-\sum_{\beta=1}^{3N-1}\epsilon_\beta)\notag\\
-    &=\int_0^Edu\prod_{\alpha=1}^{3N-1}\int_0^\infty d\epsilon_\alpha\delta\qty(u-\sum_{\beta=1}^{3N-1}\epsilon_\beta)\tag{$u=E-\epsilon_{3N}$}\\
-    &=\int_0^Edu S_{3N-1}(u)\notag\\
-    &=\frac1{(3N-2)!}\int_0^E u^{3N-2} du\notag\\
-    &=\frac{E^{3N-1}}{(3N-1)!}\notag\\
-    &=S_{3N}(E)
-\end{align}
-Finally, we can use this result to write
-\begin{equation}
-    \Omega(E)=\frac{\Delta}{(\hbar\omega_0)^{3N}}S_{3N}(E) 
-    =\frac1{(3N-1)!}\frac{\Delta}{E}\qty(\frac{E}{\hbar\omega_0})^{3N}
-\end{equation}
-But $(3N-1)!\approx(3N)!\approx (3N)^{3N}$ for $N\gg1$. So
-\begin{equation}
-    \Omega(E)\approx\frac{\Delta}{E}\qty(\frac{E}{3N\hbar\omega_0})^{3N} 
-\end{equation}
+
 \end{solution}
 \end{problem}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}{4}[Boltzmann gas]
@@ -409,6 +402,7 @@ leads to the familiar ideal gas law, $PV=Nk_BT$.
 N)_{E,V}$, expressing in terms of the thermal deBroglie wavelength
 $\lambda_{dB}(T)=h/\sqrt{2\pi mk_BT}$, $T$ and density $n$.
 \begin{solution}
+
 (a) First, we can simplify
 \begin{align}
     \Omega(E)
@@ -438,7 +432,8 @@ approximation on the factorials.
     +\ln\qty[\frac{V}{N}\qty(\frac{4\pi mE}{3Nh^2})^{3/2}]}
 \end{equation}
 the first term is small compared to $N$ and we retrieve the Sackur-Tetrode
-equation in the last two terms. Also, the temperature is
+equation in the last two terms. Also, the temperature (calculated with
+Mathematica) is
 \begin{equation}
     \frac1{k_BT}=\frac{\partial(S/k_B)}{\partial E}=\frac{3}2\frac{N}{E} 
     \Rightarrow\frac{E}{N}=\frac32k_BT
@@ -453,21 +448,23 @@ Now, from \eqref{p4b:S}, $S<0$ only when
     T_c<\frac{h^2}{2\pi mk_B}\qty(\frac{N}{V})^{2/3}e^{-5/3}
 \end{equation}
 
-(c) Differentiating $S$, we get
+(c) Differentiating $S$ wrt $V$ (in Mathematica), we get
 \begin{equation}
     \frac{P}{T}=\frac{\partial S}{\partial V}=\frac{Nk_B}{V} 
     \Rightarrow PV=Nk_BT
 \end{equation}
 This is the ideal gas law.
 
-(d) Differentiating $S$, we get
+(d) Differentiating $S$ wrt $N$ (in Mathematica), we get
 \begin{equation}
     \mu=-k_BT\ln\qty[\frac8{3\sqrt3}\frac{V}{N}\qty(\frac{\pi mE}{h^2N})^{3/2}]
     =-k_BT\ln\qty[\frac{1}{n}\qty(\frac{2\pi mk_BT}{h^2})^{3/2}]
     =k_BT\ln\qty(n\lambda_{dB}^3)
 \end{equation}
+
 \end{solution}
 \end{problem}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}{5}[Classical harmonic oscillators: Einstein solid]
@@ -494,7 +491,51 @@ treatment of the system in problem 3(c,d,e) above.
 (c) What is the relation of this classical analysis to the classical limit
 analysis in problem 3e?
 \begin{solution}
-(a)
+
+(a) 
+\begin{align}
+    \Omega(E,N)
+    &=\Delta\prod_i^N\qty[\int\frac{d^3r_id^3p_i}{(2\pi\hbar)^3}]\delta(E-\HH(\qty{\vb{p}_i}))\notag\\
+    &=\frac{\Delta}{E}\frac{1}{h^{3N}}
+    \prod_i\int
+    d^3r_id^3p_i\delta\qty[1-\sum_j^N\qty(\frac{p_j^2}{2mE}+\frac{m\omega_0^2r_j^2}{2E})]\notag\\
+    &=\frac{\Delta}{E}\qty(\frac{4E^2}{(2\pi\hbar\omega_0)^2})^{3N/2}
+    \prod_i^N\int
+    d^3\overline{r}_id^3\overline{p}_i\delta\qty(1-\sum_j^N\overline{p}_j^2+\overline{r}_j^2)\tag{$\overline{r}_j^2=m\omega_0^2r_j^2/2E,\overline{p}_j^2=p_j^2/2mE$}\\
+    &=\frac{\Delta}{E}\qty(\frac{4E^2}{(2\pi\hbar\omega_0)^2})^{3N/2}
+    \frac{2\pi^{3N}}{\Gamma(3N)}\notag\\
+    &\approx\frac{\Delta}{E}\qty(\frac{4E^2}{(2\pi\hbar\omega_0)^2})^{3N/2}\frac{2\pi^{3N}}{(3N)^{3N}}\notag\\
+    &=\frac{\Delta}{E}\qty(\frac{E}{3N\hbar\omega_0})^{3N}
+\end{align}
+There is no fudge factor because the particles are distinguishable because of
+the position in the Hamiltonian.
+
+(b) From the previous results, the entropy is
+\begin{equation}
+    S=3Nk_B\ln\qty(\frac{E}{3N\hbar\omega_0}) 
+\end{equation}
+Then
+\begin{equation}
+    \frac1T=\frac{\partial S}{\partial E}
+    =\frac{3Nk_B}{E}
+\end{equation}
+and the temperature is
+\begin{equation}
+    T=\frac{E}{3Nk_B}
+\end{equation}
+and the energy in terms of temperature is
+\begin{equation}
+    E=3Nk_BT 
+\end{equation}
+This agrees with the classical limit of problem 3(c). Similarly,
+\begin{equation}
+    C_v=\frac{\partial E}{\partial T}=3Nk_B 
+\end{equation}
+which is the asymptotic limit that we've seen in \eqref{p3d:C}. The multiplicity
+in Problem 3(e) is the exact same result that we derived in part (a).
+
+(c) We're integrating over the entire 6D phase space here, while in problem
+3(e), we integrate over the energies of each macrostate.
 \end{solution}
 \end{problem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
