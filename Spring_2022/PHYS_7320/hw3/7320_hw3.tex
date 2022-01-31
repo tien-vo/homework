@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 3: Phys 7320 (Spring 2022)}
+\due{February 2, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[Scattering for a perfectly conducting sphere]
+In class we discussed scattering off a dielectric sphere; now we consider the
+case of a perfectly conducting sphere of radius $a$. Jackson discusses this in
+Sec. 10.1.C so we will fill in the details.
+
+When the radiation hits the target, it induces both an electric dipole moment
+$\vb{p}$ and a magnetic dipole moment $\vb{m}$, which in Gaussian units take the
+form,
+\begin{equation}
+    \vb{p}=a^3\vb{E}_\text{inc},\qquad
+    \vb{m}=-\frac{a^3}{2}\vb{B}_\text{inc}
+\end{equation}
+or for SI units, see Jackson (10.12)--(10.13).
+
+(a) Show why this leads to the differential scattering cross section given in
+Jackson (10.14) (in either unit system).
+
+(b) Calculate the results for scattering for polarization both parallel and
+perpendicular to the plane of scattering, as in Jackson (10.15). Include the
+factor $1/2$ so that when they are added together in part (c), you are
+calculating the total cross section averaged over initial polarizations.
+
+(c) Caculate the total differential cross-section averaged over polarizations
+(10.16) and the polarization $\Pi(\theta)$ (10.17). Is radiation more likely to
+continue in a forward direction, or to be scattered backwards? Is radiation more
+likely to be scattered parallel to, or perpendicular to, the plane of
+scattering? Compare these behaviors to the case of scattering from a
+dielectric sphere.
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[Power scattered and power absorbed]
+An unpolarized wave of frequency $\omega=ck$ is scattered by a \textit{slightly}
+lossy uniform isotropic dielectric sphere of radius $R$ much smaller than a
+wavelength. The sphere is characterized by an ordinary real dielectric constant
+$\epsilon_r$ and a real conductivity $\sigma$. The parameters are such that the
+skin depth $\delta$ is very \textit{large} compared to the radius $R$.
+
+(a) Calculate the differential and total \textit{scattering} cross sections.
+
+(b) Show that the absorption cross section is
+\begin{equation}
+    \sigma_\text{abs}=12\pi
+    R^2\frac{RZ_0\sigma}{(\epsilon_r+2)^2+(Z_0\sigma/k)^2} 
+\end{equation}
+
+(c) From part (a) write down the forward scattering amplitude and use the
+optical theorem to evaluate the total cross section. Compare your answer with
+the sum of the scattering and absorption cross sections from parts (a) and (b).
+Comment.
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{3}[An atom in a spring]
+Suppose you model the atom as an electron on a spring of natural frequency
+$\omega_0$. Include a damping force $\vb{F}=-\Gamma d\vb{x}/dt$. Put the spring
+in an external electric field $\vb{E}e^{-i\omega t}$, solve for the steady state
+motion, compute the resulting dipole moment, and drop the result into the
+appropriate formula for the differential cross section. Now do physics: note how
+you recover Rayleigh scattering for $\omega\ll\omega_0$. At high frequency, the
+cross section becomes independent of frequency. This is called the Thomson cross
+section. (It is the same formula for scattering off a free electron). There is a
+dimensionful constant
+\begin{equation}
+    r_0=\frac{e^2}{m_ec^2} 
+\end{equation}
+where $m_e$ is the electron mass, which characterizes the scale of elastic light
+scattering on electrons and hence on atoms. Find a number for this in cm. This
+says that the natural scale for light scattering on the electrons in atoms is
+$\sigma\sim r_0^2$ (or maybe more correctly, $r_0^2(\omega/\omega_0)^4$, which
+is even smaller). Notice how all the interesting polarization behavior is
+frequency-independent. This isn't true when you work in complete generality, but
+it is true in dipole approximation. There are other ways to derive this result
+which we'll encounter later on in the course.
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
