@@ -37,6 +37,90 @@ likely to be scattered parallel to, or perpendicular to, the plane of
 scattering? Compare these behaviors to the case of scattering from a
 dielectric sphere.
 \begin{solution}
+(a) Given
+\begin{equation}
+    \vb{p}
+    =4\pi\epsilon_0a^3\vb{E}_\text{inc}
+    =4\pi\epsilon_0a^3E_0e^{ik\vb{n}_0\vdot\vb{x}}\bm\epsilon_0 
+\end{equation}
+and
+\begin{equation}
+    \vb{m}
+    =-2\pi a^3\vb{H}_\text{inc}
+    =-2\pi a^3\sqrt{\epsilon_0/\mu_0}\vb{n}_0\times\vb{E}_\text{inc}  
+    =-2\pi a^3\sqrt{\epsilon_0/\mu_0}E_0e^{ik\vb{n}_0\vdot\vb{x}}\vb{n}_0\times
+    \bm\epsilon_0,
+\end{equation}
+we can plug into (10.4, Jackson) and calculate
+\begin{align}
+    \frac{d\sigma}{d\Omega}
+    &=\frac{k^4}{(4\pi\epsilon_0 E_0)^2}
+    \abs{\bm\epsilon^\ast\vdot\vb{p}+\frac1c(\vb{n}\times\bm\epsilon^\ast)\vdot\vb{m}}^2\notag\\
+    &=k^4a^6\abs{\bm\epsilon^\ast\vdot\bm\epsilon_0
+    +\qty(\vb{n}\times\bm\epsilon^\ast)\vdot\qty[\frac{-2\pi\sqrt{\epsilon_0/\mu_0}}{4\pi\epsilon_0c}(\vb{n}_0\times\bm\epsilon_0)]}^2\notag\\
+    &=k^4a^6\abs{\bm\epsilon^\ast\vdot\bm\epsilon_0
+    -\frac12\qty(\vb{n}\times\bm\epsilon^\ast)\vdot\qty(\vb{n}_0\times\bm\epsilon_0)}^2
+\end{align}
+
+(b) Let $\vb{n}_0=\zhat$ and $\vb{n}=\sin\theta\xhat+\cos\theta\zhat$ so that
+$\vb{n}\vdot\vb{n}_0=\cos\theta$. Then, in the perpendicular case,
+$\bm\epsilon=\yhat$ and $\bm\epsilon_0=\pm\yhat$. We can then calculate
+\begin{align}
+    \qty(\vb{n}\times\bm\epsilon^\ast)\vdot\qty(\vb{n}_0\times\bm\epsilon_0)
+    =\qty(\sin\theta\zhat-\cos\theta\xhat)\vdot\qty(\mp\xhat)
+    =\pm\cos\theta 
+\end{align}
+and $\bm\epsilon^\ast\vdot\bm\epsilon_0=\pm 1$. It follows, then, that
+\begin{equation}
+    \abs{\bm\epsilon^\ast\vdot\bm\epsilon_0-\frac12\qty(\vb{n}\times\bm\epsilon^\ast)\vdot\qty(\vb{n}_0\times\bm\epsilon_0)}^2=
+    \abs{(\pm 1)\qty(1-\frac12\cos\theta)}^2=\abs{1-\frac12\cos\theta}^2
+\end{equation}
+Thus, when averaged over the two possible initial polarizations, we get
+\begin{equation}
+    \frac{d\sigma_\bot}{d\Omega}=\frac{k^4a^6}{2}\abs{1-\frac12\cos\theta}^2 
+\end{equation}
+
+Similarly, in the parallel case, $\bm\epsilon=\cos\theta\xhat-\sin\theta\yhat$
+(so that $\bm\epsilon\vdot\vb{n}=0$) and $\bm\epsilon_0=\pm\xhat$ (so that
+$\bm\epsilon_0\vdot\vb{n}_0=0$). We can calculate
+$\bm\epsilon^\ast\vdot\bm\epsilon_0=\pm\cos\theta$ and
+\begin{equation}
+    (n\times\bm\epsilon^\ast)\vdot\qty(\vb{n}_0\times\bm\epsilon_0)
+    =\qty(\sin^2\theta\yhat+\cos^2\theta\yhat)\vdot\qty(\pm\yhat)
+    =\pm1
+\end{equation}
+Thus,
+\begin{equation}
+    \abs{\bm\epsilon^\ast\vdot\bm\epsilon_0-\frac12\qty(\vb{n}\times\bm\epsilon^\ast)\vdot\qty(\vb{n}_0\times\bm\epsilon_0)}^2
+    =\abs{(\pm1)\qty(\cos\theta-\frac12)}^2=\abs{\cos\theta-\frac12}^2
+\end{equation}
+Thus, averaging over the polarizations,
+\begin{equation}
+    \frac{d\sigma_\parallel}{d\Omega}
+    =\frac{k^4a^6}{2}\abs{\cos\theta-\frac12}^2
+\end{equation}
+
+(c) The total differential cross section is
+\begin{align}
+    \frac{d\sigma}{d\Omega}=\frac{d\sigma_\bot}{d\Omega}+\frac{d\sigma_\parallel}{d\Omega}=
+    &=\frac{k^4a^6}{2}\qty[\qty(\cos\theta-\frac12)^2+\qty(1-\frac12\cos\theta)^2]\notag\\
+    &=\frac{k^4a^6}{2}\qty(\frac54\cos^2\theta-2\cos\theta+\frac54)\notag\\
+    &=k^4a^6\qty[\frac58(1+\cos^2\theta)-\cos\theta]
+\end{align}
+and the polarization is
+\begin{align}
+    \Pi(\theta)
+    =\frac{d\sigma_\bot/d\Omega-d\sigma_\|/d\Omega}{d\sigma/d\Omega}
+    =\frac{(3/8)k^4a^6}{k^4a^6[(5/8)(1+\cos^2\theta)-\cos\theta]}
+    =\frac{3}{5\cos^2\theta-8\cos\theta+5}
+\end{align}
+A plot for $\Pi$ is included below. Since the peak is at
+$\theta\approx40^\circ$, the radiation is more likely to be scattered parallel
+to the plane of scattering. This is different from the case of scattering from a
+dielectric sphere (peak at $\theta_\bot=90^\circ$)
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{p1c.png}
+\end{center}
 \end{solution}
 \end{problem}
 \newpage
@@ -57,11 +141,34 @@ skin depth $\delta$ is very \textit{large} compared to the radius $R$.
     R^2\frac{RZ_0\sigma}{(\epsilon_r+2)^2+(Z_0\sigma/k)^2} 
 \end{equation}
 
-(c) From part (a) write down the forward scattering amplitude and use the
-optical theorem to evaluate the total cross section. Compare your answer with
-the sum of the scattering and absorption cross sections from parts (a) and (b).
-Comment.
 \begin{solution}
+(a) In the long wavelength approximation, we can use the results for a dielectric
+sphere in uniform electromagnetic fields. From (10.5, Jackson), the dipole 
+moment is
+\begin{equation}
+    \vb{p}
+    =4\pi\epsilon_0E_0R^3\frac{\epsilon/\epsilon_0-1}{\epsilon/\epsilon_0+2}\bm\epsilon_0e^{ik\vb{n}_0\vdot\vb{x}}
+    =4\pi\epsilon_0E_0R^3\frac{\epsilon_r-1+i\sigma/\omega}{\epsilon_r+2+i\sigma/\omega}\bm\epsilon_0e^{ik\vb{n}_0\vdot\vb{x}}
+\end{equation}
+Thus, the differential cross section is
+\begin{align}
+    \frac{d\sigma}{d\Omega}
+    &=\frac{k^4}{(4\pi\epsilon_0E_0)^2}\abs{\bm\epsilon^\ast\vdot\vb{p}}^2\notag\\
+    &=k^4R^6\abs{\frac{\epsilon_r-1+i\sigma/\omega}{\epsilon_r+2+i\sigma/\omega}}^2\abs{\bm\epsilon^\ast\vdot\bm\epsilon_0}^2\notag\\
+    &=k^4R^6\frac{(\epsilon_r-1)^2+\sigma^2/\omega^2}{(\epsilon_r+2)^2+\sigma^2/\omega^2}\abs{\bm\epsilon^\ast\vdot\bm\epsilon_0}^2
+\end{align}
+An unpolarized wave contains all polarizations. So averaging over all
+polarizations gives
+\begin{equation}
+    \frac{d\sigma}{d\Omega}=\frac{k^4R^6}{2}\frac{(\epsilon-1)^2+\sigma^2/\omega^2}{(\epsilon_r+2)^2+\sigma^2/\omega^2}(1+\cos^2\theta) 
+\end{equation}
+and the total scattering cross section is
+\begin{equation}
+    \sigma=\pi
+    k^4R^6\frac{(\epsilon_r-1)^2+\sigma^2/\omega^2}{(\epsilon_r+2)^2+\sigma^2/\omega^2}\int_0^\pi(1+\cos^2\theta)\sin\theta
+    d\theta
+    =\frac{8\pi}{3}k^4R^6\frac{(\epsilon_r-1)^2+\sigma^2/\omega^2}{(\epsilon_r+2)^2+\sigma^2/\omega^2}
+\end{equation}
 \end{solution}
 \end{problem}
 \newpage
@@ -89,8 +196,55 @@ frequency-independent. This isn't true when you work in complete generality, but
 it is true in dipole approximation. There are other ways to derive this result
 which we'll encounter later on in the course.
 \begin{solution}
+By Newton's second law, the equation of motion is
+\begin{equation}\label{p3:eom}
+    \frac{d^2\vb{x}}{dt^2}
+    =-\omega_0^2\vb{x}-\frac{\Gamma}{m}\frac{d\vb{x}}{dt}
+    -\frac{e}{m}\vb{E}e^{-i\omega t}
+\end{equation}
+The steady state solution is oscillatory. Thus, suppose a solution is
+$\vb{x}=\vb{A}e^{-i\omega t}$. Then, plugging back into \eqref{p3:eom}, we get
+\begin{equation}
+    -\omega^2\vb{A}=-\omega_0^2\vb{A}+i\frac{\Gamma\omega}{m}\vb{A}-\frac{e}{m}\vb{E} 
+    \Rightarrow\vb{A}=\frac{e}{m}\frac{1}{\omega^2-\omega_0^2+i\Gamma\omega/m}\vb{E}
+\end{equation}
+Thus, the full solution is
+\begin{equation}
+    \vb{x}=\frac{e}{m}\frac1{\omega^2-\omega_0^2+i\Gamma\omega/m}\vb{E}e^{-i\omega
+    t} 
+\end{equation}
+The dipole moment is then
+\begin{equation}
+    \vb{p}=-e\vb{x}
+    =-\frac{e^2}{m}\frac1{\omega^2-\omega_0^2+i\Gamma\omega/m}\vb{E}
+    e^{-i\omega t}
+\end{equation}
+Letting $\vb{E}=E_0\bm\epsilon_0$, we can calculate the differential cross
+section from (10.4, Jackson),
+\begin{align}
+    \frac{d\sigma}{d\Omega}
+    &=\frac{k^4}{(4\pi\epsilon_0E_0)^2}\abs{\bm\epsilon^\ast\vdot\vb{p}}^2\notag\\
+    &=\frac{k^4e^4}{m^2(4\pi\epsilon_0)^2}\abs{\frac1{\omega^2-\omega_0^2+i\Gamma\omega/m}\bm\epsilon^\ast\vdot\bm\epsilon_0}^2\notag\\
+    &=\frac{c^4k^4r_0^2}{(\omega^2-\omega_0^2)^2+\Gamma^2\omega^2/m^2}\abs{\bm\epsilon^\ast\vdot\bm\epsilon_0}^2
+\end{align}
+Averaging over all polarizations ($\perp$ and $\parallel$), we get the final 
+result
+\begin{equation}
+    \frac{d\sigma}{d\Omega}=\frac{c^4k^4r_0^2}{(\omega^2-\omega_0^2)^2+\Gamma^2\omega^2/m^2}\frac{1+\cos^2\theta}{2} 
+\end{equation}
+For $\omega\ll\omega_0$, the denominator is $\sim\omega_0^4$ and
+$d\sigma/d\Omega$ scales as $k^4$, in accordance with Rayleigh scattering. For
+$\omega\gg\omega_0$, the denominator is $\sim\omega^4$, but $ck/\omega=1$, so
+\begin{equation}
+    \frac{d\sigma_\text{Thomson}}{d\Omega}=\frac12r_0^2(1+\cos^2\theta)
+\end{equation}
+is indeed independent of $\omega$, where
+\begin{equation}
+    r_0=\frac1{4\pi\epsilon_0}\frac{e^2}{mc^2} 
+    \approx2.82\times10^{-13}\,\unit{cm}
+\end{equation}
+So the total cross section $\sigma$ scales as $r_0^2$.
 \end{solution}
 \end{problem}
-\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
