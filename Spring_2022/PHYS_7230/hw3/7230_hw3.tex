@@ -1,0 +1,278 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 3: Phys 7230 (Spring 2022)}
+\due{February 21, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{1}[Derivation of ensembles]~\\
+(a) Grand canonical ensemble~\\
+Start with the expression
+\begin{equation}
+    W\qty[\qty{n_q}]=\frac{\mathcal{N}!}{\prod_qn_q!} 
+\end{equation}
+for the number of configurations in a grandcanonical ensemble consisting of
+$\mathcal{N}$ systems with a set $\qty{n_q}$ describing the number of systems
+with energy $E_q$ and number of particles $N_q$, discussed in lectures.
+Utilizing lowest order Stirling approximation, maximize $W\qty[\qty{n_q}]$ over
+$n_q$, subject to three constraints,
+\begin{equation}
+    \sum_qn_q=\NN,\qquad\sum_qn_qE_q=E\NN,\qquad\sum_qn_qN_q=N\NN ,
+\end{equation}
+imposed via Lagrange multiplier $\gamma,\beta,\alpha,$ with $E$ and $N$ the
+average energy and particle number in the ensemble, derive the most likely
+$n_q^\ast$ and thereby obtain the grandcanonical probability distribution
+$P_q=n_q^\ast/\NN$.
+
+\textit{Hint}: Maximizing $\ln W$ may be more convenient.
+\begin{solution}
+First, using Stirling approximation, we write
+\begin{equation}
+    \ln W=\NN\ln\NN -\NN-\sum_q\qty(n_q\ln n_q - n_q)
+    =\NN\ln\NN-\sum_qn_q\ln n_q.
+\end{equation}
+Extremizing this function, we calculate
+\begin{align}
+    \grad(\ln W)
+    &-\gamma\grad\qty(\sum_qn_q-\NN)
+    -\beta\grad\qty(\sum_qn_qE_q-E\NN)
+    -\alpha\grad\qty(\sum_qn_qN_q-N\NN)\notag\\
+    \qquad&=\ln\NN-1-\ln n_q+1+\beta(E-E_q)+\alpha(N-N_q)=0.
+\end{align}
+Inverting, we get
+\begin{equation}\label{p1a:n_q}
+    \frac{n_q}{\NN}=e^{\beta(E-E_q)+\alpha(N-N_q)}.
+\end{equation}
+By the normalization condition,
+\begin{equation}
+    1=\sum_q\frac{n_q}{\NN}=e^{\beta E+\alpha N}\sum_qe^{-\beta E_q-\alpha N_q}
+    =e^{\beta E+\alpha N}\ZZ.
+\end{equation}
+where $\beta=1/k_BT$ and $\alpha=-\mu\beta$. Then, letting $n_q=n_q^\ast$, the
+most probable state satisfying \eqref{p1a:n_q}, we can write the probability
+distribution as
+\begin{equation}
+    P_q=\frac{n_q^\ast}{\NN}=\frac{e^{-\beta E_q-\alpha N_q}}\ZZ  .
+\end{equation}
+\end{solution}
+%%%%%%   
+
+(b) Derivation redux
+
+Let us rederive all three ensembles distributions in a more streamlined way by
+focusing on $P_q$ and noting that $P_q$ can be determined by maximizing the
+(Shannon's) entropy $S=-k_B\sum_qP_q\ln P_q$ subject to the appropriate number
+of constraints for each ensemble. Thus, derive
+
+\qquad(i) Microcanonical ensemble subject to its one constraint, showing that it
+is just given by a normalized \textit{constant} $P_q=1/\Omega$.
+
+\qquad(ii) Canonical ensemble subject to its two constraints, showing that it 
+is given by the Gibbs form.
+
+\qquad(iii) Grandcanonical ensemble subject to its three constraints, showing
+that it is given by the Gibbs form.
+\begin{solution}
+\qquad(i) The constraint for the microcanonical ensemble is the normalization
+condition
+\begin{equation}\label{p1b:normalization_condition}
+    \sum_qP_q=1 .
+\end{equation}
+Then, we differentiate to find $P_q$ that extremizes $S$
+\begin{equation}
+   \grad(S)-\lambda\grad\qty(\sum_qP_q-1)
+   =-k_B\qty(\ln P_q+1)-\lambda_1
+   \Rightarrow P_q=e^{-1-\lambda/k_B}.
+\end{equation}
+Plugging this back into the normalization condition, we get
+\begin{equation}
+    \sum_qP_q=e^{-1-\lambda_1/k_B}\sum_q1
+    =e^{-1-\lambda_1/k_B}\Omega,
+\end{equation}
+where $\Omega=\sum_\qty{q_i}1$ is the multiplicity of the system. Then we can
+rewrite the probability distribution function
+\begin{equation}
+    P_q=\frac1\Omega, 
+\end{equation}
+which is a constant, indicating a uniform distribution. Also, we can invert to
+solve for $\lambda_1$
+\begin{equation}
+    \lambda_1=S_t-k_B, 
+\end{equation}
+where $S_t=k_B\ln\Omega$ is the thermodynamic entropy.
+
+\qquad(ii) In addition to the normalization condition
+\eqref{p1b:normalization_condition}, we add a constraint
+\begin{equation}
+    \sum_qE_qP_q=E, 
+\end{equation}
+where $E$ is the average energy of the system. Then, the $P_q$ that extremizes
+$S$ satisfies
+\begin{equation}
+    -k_B\qty(\ln P_q+1)-\lambda_1-\lambda_2E_q=0
+    \Rightarrow P_q=e^{-1-\lambda_1/k_B-\lambda_2E_q/k_B}.
+\end{equation}
+Applying the normalization,
+\begin{equation}
+    1=\sum_qP_q=e^{-1-\lambda_1/k_B}\sum_qe^{-\lambda_2E_q/k_B}
+    = e^{-1-\lambda_1/k_B}\sum_qe^{-\beta E_q}
+    \Rightarrow e^{-1-\lambda_1/k_B}=\frac1{Z},
+\end{equation}
+where we have let the constant $\lambda_2=1/T$, with $T$ the equilibrium
+temperature, and $Z$ is the partition function of the canonical ensemble. It
+then follows that the distribution function
+\begin{equation}
+    P_q=\frac{e^{-\beta E_q}}{Z} 
+\end{equation}
+has the Gibbs form.
+
+(iii) The third constraint to add is
+\begin{equation}
+    \sum_qN_qP_q=N,
+\end{equation}
+where $N$ is the average number of particles per partition. Then $P_q$
+extremizing $S$ satisfies
+\begin{equation}
+    -k_B\qty(\ln P_q+1)-\lambda_1-\lambda_2E_q-\lambda_3N_q
+    =-k_B\ln P_q-S_t-E_q/T-\lambda_3 N_q=0,
+\end{equation}
+where we have replaced the first two Lagrange multipliers with physical
+quantities derived in (i-ii). The probability distribution function is
+\begin{equation}
+    P_q=e^{-S-\beta E_q-\lambda_3N_q/k_B}=e^{-S-\beta E_q+\beta\mu N_q},
+\end{equation}
+where we have let the constant $\lambda_3=-\mu/T$. Then, with the normalization
+condition,
+\begin{equation}
+    1=e^{-S}\sum_qe^{-\beta(E_q+\mu N_q)}=e^{-S}\ZZ, 
+\end{equation}
+and the probability distribution function can be written as
+\begin{equation}
+    P_q=\frac{e^{-\beta(E_q+\mu N_q)}}{\ZZ}, 
+\end{equation}
+which has the Gibbs form.
+\end{solution}
+
+%%%%%%   
+
+(c) Recall the expression for $\Omega(E)$ for the microcanonical ensemble of a
+3d ideal Boltzmann gas of $N$ particles. Using it, calculate the probability
+$P_\epsilon$ of a \textit{particular} particle to have energy in the
+neighborhood of $\epsilon\ll E$.
+
+From your answer for $P_\epsilon$ and comparing it with the standard
+Boltzmann-Gibbs weight, read off the corresponding effective temperature of this
+single particle in terms of $E$ and $N$.
+
+\textit{Hint}: (i) From above total $\Omega(E)$ first think about the number of
+states (sub-multiplicity) $\Omega_\epsilon(E)$ for one of the particle to have
+energy $\epsilon$ and the remaining $N-1$ sharing the remaining energy. (ii)
+Note that $P_\epsilon=\Omega_\epsilon/\Omega$. (iii) Use Stirling's
+approximation and $\epsilon\ll E$ to simplify your answer.
+
+\begin{solution}
+From Sackur-Tetrode, we can write the multiplicity as $\Omega=e^{S/k_B}
+=(V^N/N!)f(N,E)$ where
+\begin{equation}
+    f(N,E)=e^{5N/2}\qty(\frac{4\pi mE}{3Nh^2})^{3N/2}.
+\end{equation}
+Then, we note that there is only one way to distribute an energy of $\epsilon$
+into a particular particle. Thus, the multiplicity for the entire system of one
+particle of energy $\epsilon$ and $N-1$ particles of energy $E-\epsilon$ is
+\begin{align}
+    \Omega_\epsilon
+    &=\frac{V^{N-1}}{(N-1)!}f(N-1,E-\epsilon)\notag\\
+    &=\frac{V^{N-1}}{(N-1)!}e^{5(N-1)/2}\qty(\frac{4\pi
+    m(E-\epsilon)}{3(N-1)h^2})^{3(N-1)/2}\notag\\
+    &\approx\frac{V^{N-1}}{(N-1)!}e^{5(N-1)/2}\qty(\frac{4\pi
+    m(E-\epsilon)}{3Nh^2})^{3(N-1)/2}.
+\end{align}
+The probability is thus
+\begin{align}
+    P_\epsilon
+    &=\frac{\Omega_\epsilon}{\Omega}\notag\\
+    &\approx\frac{N}{V}e^{-5/2}\qty(\frac{4\pi m E}{3Nh^2})^{-3/2}
+        \qty(1-\frac{\epsilon}{E})^{3(N-1)/2}\notag\\
+    &\approx\frac{N}{V}e^{-5/2}\qty(\frac{4\pi m E}{3Nh^2})^{-3/2}
+        e^{-3(N-1)\epsilon/2E},
+\end{align}
+which follows the Gibbs form if the effective temperature is defined as
+\begin{equation}
+    k_BT_\text{eff}=\frac{2E}{3(N-1)}.
+\end{equation}
+\end{solution}
+
+%%%%%%   
+
+(d) Variance (i.e., mean-squared fluctuations) in the number of particles $N$ in
+the grand canonical ensemble is given by $\expval{(\Delta N)^2}$. Show that
+quite generally it is given by
+\begin{equation}
+    N_\text{rms}^2=\expval{\qty(\Delta
+    N)^2}=-\eval{\frac{\partial\overline{N}}{\partial\alpha}}_{\beta,V}
+    =\eval{\frac{\partial^2(\ln\mathcal{Z})}{\partial\alpha^2}}_{\beta,V}
+\end{equation}
+\begin{solution}
+First, from $\ZZ$, we can calculate
+\begin{align}\label{p1d:dZda}
+    \frac{\partial\ZZ}{\partial\alpha}
+    =\frac{\partial}{\partial\alpha}\sum_qe^{-\beta E_q-\alpha N_q}
+    =-\sum_qN_qe^{-\beta E_q-\alpha N_q}
+    =-\expval{N}\ZZ,
+\end{align}
+and
+\begin{align}
+    \frac{\partial^2\ZZ}{\partial\alpha^2}
+    =\sum_qN_q^2e^{-\beta E_q-\alpha N_q}
+    =\expval{N^2}\ZZ.
+\end{align}
+Differentiating \eqref{p1d:dZda} again, we get
+\begin{equation}
+    \expval{N^2}\ZZ=-\frac{\partial\expval{N}}{\partial\alpha}\ZZ
+    +\expval{N}^2\ZZ
+    \Rightarrow\expval{(\Delta
+    N)^2}=\expval{N^2}-\expval{N}^2=-\frac{\partial\expval{N}}{\partial\alpha}.
+\end{equation}
+Also,
+\begin{equation}
+    \frac{\partial(\ln\ZZ)}{\partial\alpha}=-\expval{N}.
+\end{equation}
+So taking the differentation again leads us to the second equality
+\begin{equation}
+    \frac{\partial^2(\ln\ZZ)}{\partial\alpha^2}=-\frac{\partial\expval{N}}{\partial\alpha}
+    .
+\end{equation}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{2}[Ultra-relativistic gas]
+Consider a non-interacting 3d gas of identical ultra-relativistic particles
+(i.e., ignoring their mass), with a dispersion $\epsilon_i=p_ic$, at temperature
+$T$ and chemical potential $\mu$, where
+$p_i=\abs{\vb{p}_i}=\sqrt{p_{xi}^2+p_{yi}^2+p_{zi}^2}$.
+
+Following similar steps that we did in class for nonrelativistic Boltzmann gas,
+compute:
+
+(a) Grandcanonical partition function, $\ZZ(\mu,T)$ by first computing the
+canonical one, $Z(N,T)$, introducing fugacity and then summing over $N$.
+
+\textit{Hint}: it is nice to do the integral in the spherical coordinate system.
+
+\begin{solution}
+    
+\end{solution}
+
+(b) Grandcanonical free energy $\FF(\mu,T)$.
+
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
