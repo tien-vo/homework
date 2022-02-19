@@ -28,6 +28,7 @@
 % Citation
 \usepackage[authoryear]{natbib}
 \usepackage{appendix}
+\usepackage[capitalize]{cleveref}
 % Title & name
 \title{Homework}
 \author{Tien Vo}
@@ -40,6 +41,9 @@
 %%% Misc
 \sisetup{load-configurations=abbreviations}
 \newcommand{\due}[1]{\date{Due: #1}}
+\newcommand{\hint}{\textit{Hint}}
+\let\oldt\t
+\renewcommand{\t}[1]{\text{#1}}
 
 %%% Bold sets & abbrv
 \newcommand{\N}{\mathbb{N}}
