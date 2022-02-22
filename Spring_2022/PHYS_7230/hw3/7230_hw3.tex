@@ -676,7 +676,92 @@ perturbation theory in $g$.
 capacity to lowest nonzero roder in $g$ and note how it differs from the
 equipartition $g=0$ case. \textit{Hint}: You will find Gaussian calculus useful.
 \begin{solution}
-    
+(i) First, we need to calculate the partition function
+\begin{align}
+    Z
+    =\int\frac{dxdp}{2\pi\hbar}\exp\qty(-\frac12\frac\beta{m}p^2-\beta
+    gx^4)
+    =\frac1{\pi\hbar}\sqrt{\frac{2\pi m}{\beta}}\frac{\Gamma(5/4)}{(\beta
+    g)^{1/4}}.
+\end{align}
+
+Then, it follows that
+\begin{align}\label{p4bi:K}
+    K=\expval{\frac{p^2}{2m}}
+    &=\frac1Z\int\frac{dxdp}{2\pi\hbar}\frac{p^2}{2m}\exp\qty(-\frac12\frac\beta{m}p^2-\beta
+    gx^4)\notag\\
+    &=\frac1Z\frac{1}{4\pi\hbar m}\frac{m}{\beta}\sqrt{\frac{2\pi m}{\beta}}
+    \frac{2\Gamma(5/4)}{(\beta g)^{1/4}}\notag\\
+    &=\frac1{2\beta}\notag\\
+    &=\frac12k_BT,
+\end{align}
+as expected of a quadratic degree of freedom. The average potential is
+\begin{align}\label{p4bi:U}
+    U=\expval{g x^4}
+    &=\frac1Z\int\frac{dxdp}{2\pi\hbar}
+    gx^4\exp\qty(-\frac12\frac\beta{m}p^2-\beta gx^4)\notag\\
+    &=\frac1Z\frac{g}{2\pi\hbar}\sqrt{\frac{2\pi
+    m}{\beta}}\frac{\Gamma(5/4)}{2(\beta g)^{5/4}}\notag\\
+    &=\frac{1}{4\beta}\notag\\
+    &=\frac14k_BT,
+\end{align}
+which is not expected by equipartition theorem. Then $K/U=2$.
+
+(ii) First, we calculate the partition function
+\begin{align}
+    Z
+    &=\int\frac{dxdp}{2\pi\hbar}\qty(1-\beta g
+    x^4)\exp\qty(-\frac12\frac\beta{m}p^2-\frac12\beta m\omega_0^2x^2) \notag\\
+    &=\frac1{2\pi\hbar}\sqrt{\frac{2\pi m}{\beta}}\qty[\int_{-\infty}^\infty
+dx\exp\qty(-\frac12\beta m\omega_0^2x^2)-\beta g\int_{-\infty}^\infty
+dxx^4\exp\qty(-\frac12\beta m\omega_0^2x^2)]\notag\\
+    &=\frac1{\beta\hbar\omega_0}\qty[1-\frac{3\beta}{(\beta m\omega_0^2)^2}g].
+\end{align}
+Then, we need only calculate $\expval{x^2}$ since $\expval{x}=0$ due to parity.
+\begin{align}
+    x_\t{rms}^2
+    =\expval{x^2}
+    &=\frac1Z\frac1{2\pi\hbar}\sqrt{\frac{2\pi
+    m}{\beta}}\int\frac{dxdp}{2\pi\hbar}
+    \Bigg[\int_{-\infty}^\infty
+    dx x^2\exp\qty(-\frac12\beta m\omega_0^2x^2)\notag\\
+    &\qquad-\beta g\int_{-\infty}^\infty
+    dxx^6\exp\qty(-\frac12\beta m\omega_0^2x^2)\Bigg]\notag\\
+    &=\frac1{\beta m\omega_0^2}\frac{1-(15\beta/(\beta
+    m\omega_0^2)^2)g}{1-(3\beta/(\beta m\omega_0^2)^2)g}\notag\\
+    &=\frac1{\beta m\omega_0^2}\qty[1-\frac{12\beta}{(\beta m\omega_0^2)^2}g]
+\end{align}
+
+(iii) Now, we calculate
+\begin{align}
+    \expval{x^4}
+    &=\frac1Z\frac1{2\pi\hbar}\sqrt{\frac{2\pi m}{\beta}}
+    \Bigg[
+        \int_{-\infty}^\infty dx x^4\exp\qty(-\frac12\beta m\omega_0^2x^2)
+        -\beta g
+        \int_{-\infty}^\infty dx x^8\exp\qty(-\frac12\beta m\omega_0^2x^2)
+    \Bigg]\notag\\
+    &=\frac{3}{Z\beta\hbar\omega_0}\frac1{(\beta
+        m\omega_0^2)^2}\qty[1-\frac{35\beta}{(\beta m\omega_0^2)^2}g]\notag\\
+    &\approx\frac3{(\beta m\omega_0^2)^2}\qty[-\frac{32\beta}{(\beta
+    m\omega_0^2)^2}g].
+\end{align}
+Then it follows that
+\begin{align}
+    E=\expval{\HH}
+    &=\expval{\frac{p^2}{2m}}+\frac12m\omega_0^2\expval{x^2}
+    +g\expval{x^4}\notag\\
+    &\approx\frac1{2\beta}+\frac1{2\beta}\qty[1-\frac{12\beta}{(\beta
+    m\omega_0^2)^2}g]+\frac{3g}{(\beta m\omega_0^2)^2}\notag\\
+    &=\frac1\beta-\frac{3g}{(\beta m\omega_0^2)^2}\notag\\
+    &=k_BT-\frac{3g}{(m\omega_0^2)^2}k_B^2T^2.
+\end{align}
+Thus, the heat capacity is
+\begin{equation}\label{p4b:Cv}
+    C_v=\frac{\partial E}{\partial T}
+    =k_B-\frac{6k_B^2g}{(m\omega_0^2)^2}T.
+\end{equation}
+For $g=0$, this agrees with that of the 1d linear classical harmonic oscillator.
 \end{solution}
 
 %%%%%%%%%%%
@@ -704,7 +789,70 @@ compare your answer with that found in (b)iii through the lowest order
 perturbation theory in $g$. Check that your answers agree with expectations in
 the trivial limit of $g\to0$. 
 \begin{solution}
-    
+(i) First, with $\HH_\t{tr}=(1/2)kx^2+p^2/2m$, we calculate
+\begin{align}
+    Z_\t{tr}
+    =\int\frac{dxdp}{2\pi\hbar}\exp\qty(-\frac12\beta
+    kx^2-\frac12\frac\beta{m}p^2)
+    =\frac1{\hbar\beta}\sqrt{\frac{m}{k}}.
+\end{align}
+Then the free energy for the trial Hamiltonian is
+\begin{equation}
+    F_\t{tr}
+    =-k_BT\ln Z_\t{tr}
+    =k_BT\ln\qty(\frac{\hbar}{k_BT}\sqrt{\frac{k}{m}}).
+\end{equation}
+Also,
+\begin{align}\label{p4ci:dHH}
+    \expval{\HH-\HH_\t{tr}}_\t{tr}
+    &=\frac1{Z_\t{tr}}\int\frac{dxdp}{2\pi\hbar}\qty(gx^4-\frac12kx^2)\exp\qty(-\frac12\beta
+    k x^2-\frac12\frac\beta{m}p^2)\notag\\
+    &=k_BT\qty(\frac{3g}{k^2}k_BT-\frac12).
+\end{align}
+Then the variational free energy is
+\begin{equation}
+    F_\t{var}=F_\t{tr}+\expval{\HH-\HH_\t{tr}}_\t{tr}
+    =k_BT\qty[\frac{3g}{k^2}k_BT-\frac12+\ln\qty(\frac{\hbar}{k_BT}\sqrt{\frac{k}{m}})].
+\end{equation}
+Using Mathematica, we can find the $k_m$ satisfying $\partial F_\t{var}/\partial
+k=0$ as $k_m=2\sqrt{3gk_BT}$. Then,
+\begin{equation}
+    F_\t{var}(k_m)=\frac14k_BT\qty[4\ln\qty(\frac{\hbar}{k_BT}\sqrt{\frac{\sqrt{gk_BT}}{m}})+\ln12-1],
+\end{equation}
+and we can calculate the heat capacity as follows
+\begin{equation}
+    C_v=-T\frac{\partial^2F_\t{var}}{\partial T^2}=\frac34k_B, 
+\end{equation}
+which agrees with \eqref{p4bi:K} and \eqref{p4bi:K} since the total energy there
+is $E=K+U=(3/4)k_BT$.
+
+(ii) Keeping the same trial Hamiltonian, the trial free energy remains. Then
+$\HH-\HH_\t{tr}=p^2/2m+gx^4+(1/2)(m\omega_0^2-k)x^2$, and we can write
+\begin{align}
+    \expval{\HH-\HH_\t{tr}}_\t{tr}
+    &=k_BT\qty(\frac{3g}{k^2}k_BT-\frac12)+\frac12\qty(m\omega_0^2-k)\expval{x^2}_\t{tr}\notag\\
+    &=k_BT\qty(\frac{3g}{k^2}k_BT+\frac{m\omega_0^2}{2k}-1).
+\end{align}
+Then the variational free energy is
+\begin{equation}
+    F_\t{var}=k_BT\qty[\frac{3g}{k^2}k_BT+\frac{m\omega_0^2}{2k}-1+\ln\qty(\frac{\hbar}{k_BT}\sqrt{\frac{k}{m}})].
+\end{equation}
+Similar to before, we use Mathematica to find that
+\begin{equation}
+    k_m=\frac12m\omega_0^2\qty(1+\sqrt{1+48\frac{k_BTg}{m\omega_0^2}}).
+\end{equation}
+The minimized variational free energy is then
+\begin{equation}
+    F_\t{var}(k_m)=
+    k_BT\qty[-\frac{36x+(1+\sqrt{1+48x})}{(1+\sqrt{1+48x})^2}+\ln\qty(\frac{\hbar\omega_0}{k_BT}\sqrt{\frac12+\frac12\sqrt{1+48x}})],
+\end{equation}
+where $x=k_BTg/m^2\omega_0^4$. Then we can calculate the heat capacity and
+expand to first order in $g$,
+\begin{equation}
+    C_v=-T\frac{\partial^2F_\t{var}(k_m)}{\partial T^2}
+    =k_B-\frac{6k_B^2T}{m^2\omega_0^4}g,
+\end{equation}
+which agrees with \eqref{p4b:Cv}.
 \end{solution}
 \end{problem}
 \newpage
@@ -743,14 +891,80 @@ $N=\sum_{i=1}^{N_0}n_i$.
     \item directly without going through $Z(T,N)$
 \end{enumerate}
 
+\begin{solution}
+(A) First, note that with $N$ atoms to occupy $N_0$ sites, there are 
+$\binom{N_0}{N}$ microstates with equal energy $\HH=-N\epsilon_0$. So the
+canonical partition function is
+\begin{equation}
+    Z(T,N)=\binom{N_0}{N}\exp\qty(-\beta\HH)
+    =\frac{N_0!}{N!(N_0-N)!}e^{N\epsilon_0/k_BT}.
+\end{equation}
+The free energy is thus
+\begin{align}
+    F(T,N)
+    &=-k_BT\ln Z\notag\\
+    &=-k_BT\qty[\frac{N\epsilon_0}{k_BT}+N_0\ln N_0-N\ln N-(N_0-N)\ln(N_0-N)].
+\end{align}
+Then it follows that the chemical potential is
+\begin{equation}
+    \overline\mu(T,N)
+    =\frac{\partial F}{\partial N}
+    =-\epsilon_0+k_BT\ln\qty(\frac{N}{N_0-N}).
+\end{equation}
+
+(B) By definition, the grandcanonical partition function is
+\begin{equation}
+    \ZZ=\qty[1+e^{\beta(\epsilon_0+\mu)}]^{N_0}.
+\end{equation}
+So the free energy is
+\begin{equation}
+    \FF=-N_0k_BT\ln\qty[1+e^{\beta(\epsilon_0+\mu)}],
+\end{equation}
+and the coverage is
+\begin{equation}
+    \overline{N}=-\frac{\partial\FF}{\partial\mu}
+    =\frac{N_0}{1+e^{-\beta(\epsilon_0+\mu)}}.
+\end{equation}
+Inverting this expression, we get
+\begin{equation}
+    e^{-\beta(\epsilon_0+\mu)}=\frac{N_0-N}{N}
+    \Rightarrow\mu=-\epsilon_0+\ln\qty(\frac{N}{N_0-N}),
+\end{equation}
+which agrees with result for $\overline\mu$ in part (A).
+
+\end{solution}
+
 \item Using $\ZZ(T,\mu)$ or $\FF(T,\mu)$ from either method above, compute the
     (1) entropy $S(T,\mu)$ and most importantly (2) the coverage -- the average
     number of particles $\overline{N}(T,\mu)$ and demonstrate that it agrees
     with the $\mu(T,N)$ expression obtained from the canonical ensemble.
 
+\begin{solution}
+In part (i-B), we have already calculated (2) the coverage and check the
+agreement with $\overline\mu$ in (i-A). So now, using Mathematica, we 
+calculate (1)
+\begin{align}
+    S(T,\mu)
+    &=-\frac{\partial\FF}{\partial T}\notag\\
+    &=N_0k_B\frac{\partial}{\partial
+    T}\qty{T\ln\qty[1+\exp\qty(\frac{\epsilon_0+\mu}{k_BT})]}\notag\\
+    &=N_0k_B\qty{\ln\qty[1+e^{(\epsilon_0+\mu)/k_BT}]-\frac{\epsilon_0+\mu}{k_BT}\frac{1}{1+e^{-(\epsilon_0+\mu)/k_BT}}}.
+\end{align}
+\end{solution}
+
 \item Sketch $\overline{N}(T,\mu)$, discussing its low and high $T$ limits, and
     positive and negative $\mu$ limits. What is the characteristic value of the
     chemical potential $\mu$ at which the coverage changes at low $T$?
+\begin{solution}
+A contour plot is given below.
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{p5a.png}
+\end{center}
+At low $T$ and negative $\mu$, there is almost no coverage as $N/N_0\to0$. At
+low $T$ and positive $\mu$, $N/N_0\to1$ and the change occurs at
+$\mu/\epsilon_0=-1$. At high $T$, the coverage changes less drastically for
+negative and positive $\mu$.
+\end{solution}
 
 \item As discussed in class, the adsorbed atoms are in thermal and chemical
     equilibrium with the Boltzmann vapor above it, with a common temperature $T$
@@ -759,6 +973,20 @@ $N=\sum_{i=1}^{N_0}n_i$.
     express your above result for coverage $\overline{N}(T,P)$ as a function of
     the pressure of the \textit{gas}.
 \end{enumerate}
+\begin{solution}
+Because they are in chemical equilibrium, we can write the chemical potential
+$\mu$ as
+\begin{equation}
+    \mu=k_BT\ln\qty(n\lambda_{dB}^3)
+    =k_BT\ln\qty(\frac{P}{k_BT}\lambda_{dB}^3),
+\end{equation}
+where $\lambda_{dB}$ is the deBroglie wavelength and we have made use of the 
+fact that a Boltzmann gas is ideal. Then, plugging
+this into the expression for the coverage, we can write
+\begin{equation}
+    \overline{N}(T,P)=\frac{N_0}{1+(k_BT/P\lambda_{dB}^3)e^{-\epsilon_0/k_BT}}. 
+\end{equation}
+\end{solution}
 
 \item ``Bosonic'' lattice gas
 
@@ -783,6 +1011,46 @@ still having energy $-\epsilon_0$ per occupied particle.
 \end{enumerate}
 
 \begin{solution}
+(i) By definition and using the well-known geometric series
+$\sum_{n\in\N}x^n=1/(1-x)$, we can calculate
+\begin{equation}
+    \ZZ=\qty[\sum_{n_i=0}^\infty e^{\beta(\epsilon_0+\mu)n_i}]^{N_0}
+    =\qty[1-\exp\qty(\frac{\epsilon_0+\mu}{k_BT})]^{-N_0}.
+\end{equation}
+Then the free energy is
+\begin{equation}
+    \FF=-k_BT\ln\ZZ
+    =N_0k_BT\ln\qty[1-\exp\qty(\frac{\epsilon_0+\mu}{k_BT})].
+\end{equation}
+
+(ii) Then it folows that (1) the pressure is
+\begin{equation}
+    P(T,\mu)=-\frac{\partial\FF}{\partial V}=0,
+\end{equation}
+(2) the entropy is
+\begin{equation}
+    S(T,\mu)
+    =-\frac{\partial\FF}{\partial T}
+    =N_0k_B\qty[\frac{\epsilon_0+\mu}{k_BT}\frac1{1-\exp\qty[-(\epsilon_0+\mu)/k_BT]}-\ln\qty[1-e^{(\epsilon_0+\mu)/k_BT}]],
+\end{equation}
+(3) the coverage is
+\begin{equation}
+    \overline{N}
+    =-\frac{\partial\FF}{\partial\mu}
+    =\frac{N_0}{1-\exp\qty[-(\epsilon_0+\mu)/k_BT]}.
+\end{equation}
+
+(iii) A plot of $\overline{N}$ is included below.
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{p5b.png} 
+\end{center}
+The behavior is very different from the Fermionic case. Both at low and high
+$T$, the coverage vanishes everywhere except for when $\mu=-\epsilon_0$. At
+negative and positive $\mu$, $\overline{N}$ also vanishes. Clearly, $N$ cannot
+be negative, so the unphysical range of $\mu$ is $\mu\leq-1$. This model, since
+it allows for infinite occupation, can intuitively lead to $\overline{N}$
+blowing up. By restricting the maximum occupation for each site, it should 
+give a more physical answer.
 \end{solution}
 \end{problem}
 \newpage
