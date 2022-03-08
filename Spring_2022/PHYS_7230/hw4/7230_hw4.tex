@@ -294,4 +294,174 @@ position $x$.
 \end{problem}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{4}[Particle in harmonic potential density matrix in coordinate
+    representation]
+
+Here we want to calculate $\rho^u(x,x',\beta)$ and the corresponding partition
+function $Z$ and $P(x)$ for a quantum harmonic oscillator. The first two methods
+(a) and (b), above are in fact a bit challenging to utilize, though the solution
+of the imaginary-time Schr\"{o}dinger equation (a) is quite straightforward, but
+technically grungy. So below we will focus on the path-integral approach.
+
+Carefully following the path-integral procedure in problem 3, above, now for a
+quantum harmonic oscilator.
+
+(a) Calculate $\rho^u(x,x';\beta)$ from the path-integral analysis, by finding
+$x_\t{cl}(\tau)$ and the corresponding
+$S_E\qty[x_\t{cl}(\tau)]=S_\t{cl}(x,x',\beta\hbar)$, and using
+\eqref{p3d:dens_matrix}, up to a prefactor $\NN(\beta\hbar)$.
+\begin{solution}
+\end{solution}
+
+(b) Compute the canonical partition function $Z$ (that you have done in an
+earlier homework) to determine the prefactor $\NN(\beta\hbar)$.
+\begin{solution}
+    
+\end{solution}
+
+(c) Compute the probability density
+$P(x)=\rho^u(x,x,\beta)/Z(\beta)=\rho(x,x,\beta)$ of finding the particle in a
+harmonic potential at position $x$.
+\begin{solution}
+    
+\end{solution}
+
+(d) Using $P(x)$, compute the root-mean-squared length $x_Q(T)$, defined by the
+variance $x_Q^2(T)=\expval{x^2}$.
+\begin{solution}
+    
+\end{solution}
+
+(e) Study high- and low-temperature limits of $x_Q(T)$, and make arguments for
+the resulting limiting forms, by thinking about the purely classical and purely
+quantum limits of the harmonic oscillator.
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{5}[Density matrix and entanglement entropy]
+Consider a system consisting of two qubits (``quantum bit'', each realized as
+any two-level system e.g., a double-well potential or a spin-1/2 or just two
+atomic levels, a basic element of a quantum computer) $A$ and $B$, with each
+taking on two possible values, designated by, say 0 and 1. Take this 2-qubit
+``computer'' to be in a pure
+
+(a) \textit{unentangled}, i.e., product state
+\begin{equation}
+    \ket{\psi_{AB}}=\frac12\qty(\ket{0}+\ket1)\otimes\qty(\ket0+\ket1).
+\end{equation}
+
+Construct the two-qubit density matrix
+$\hat\rho_{AB}=\ket{\psi_{AB}}\bra{\psi_{AB}}$ for the whole system and extract
+its corresponding ($4\times4$) matrix representation $\rho_{ss'}$ in this
+$\ket{s}=\ket{\sigma_A}\otimes\ket{\sigma_B}$ ($\sigma_{A,B}=0,1\mapsto
+s=1,2,3,4$) basis, namely
+$\hat\rho_{AB}=\sum_{s,s'=1}^4\rho_{ss'}\ket{s}\bra{s'}=\sum_{\sigma,\sigma'=0,1}\rho_{ss'}\ket{\sigma_A}\otimes\ket{\sigma_{B}}\bra{\sigma_A'}\otimes\bra{\sigma_B'}$.
+
+\qquad(i) Verify that this is indeed a density matrix for a pure state by
+showing $\Tr[\hat\rho_{AB}]=\Tr[\hat\rho_{AB}^2]=1$. \textit{Hint}: You can do 
+this by working directly with the matrix $\rho_{\sigma\sigma'}$ or more 
+formally working in a representation-independent way.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(ii) Show that the von Neumann entropy of this state vanishes, i.e.,
+\begin{equation}
+    S_{vN}=-\expval{\ln\hat\rho_{AB}}=-\Tr\qty(\hat\rho_{AB}\ln\hat\rho_{AB})=0, 
+\end{equation}
+as it must for any pure state. \textit{Hint}: One way to define a function of an
+operator (e.g., $\ln\hat{O}$) is by its eigenvalues by going to its diagonal
+basis.
+\begin{solution}
+\end{solution}
+
+\qquad(iii) Compute the reduced ($2\times2$) density matrix
+\begin{equation}
+    \hat\rho_A=\Tr\hat\rho_{AB}=\sum_{\sigma_B}\ev{\hat\rho_{AB}}{\sigma_B},
+\end{equation}
+by tracing over the states of the $B$ qubit, that describes the density matrix
+for the $A$ qubit subsystem.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(iv) Verify that this reduced density matrix describes a pure state, by
+showing $\Tr[\hat\rho_A]=\Tr[\hat\rho_A^2]=1$.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(v) Show that consistent with above, the \textit{entanglement} entropy
+(von Neumann entropy of $\hat\rho_A$) for subsystem $A$, described by this
+reduced density matrix, $\hat\rho_A$ still vanishes, i.e.,
+\begin{equation}
+    S_E=-\expval{\ln\hat\rho_A}_A=-\Tr\qty(\hat\rho_A\ln\hat\rho_A)=0, 
+\end{equation}
+demonstrating that the qubits $A$ and $B$ are not entangled, since
+$\hat\rho_{AB}$ was constructed from a \textit{product} state.
+\begin{solution}
+    
+\end{solution}
+
+(b) \textit{entangled} ``cat'' state
+\begin{equation}
+    \bra{\psi_{AB}}=\frac1{\sqrt2}\qty(\ket0\otimes\ket0+\ket1\otimes\ket1).
+\end{equation}
+Construct the two-qubit density matrix
+$\hat\rho_{AB}=\ket{\psi_{AB}}\bra{\psi_{AB}}$ for the whole system and extract
+its corresponding ($4\times4$) matrix representation $\rho_{ss'}$ in this
+$\ket{s}=\ket{\sigma_A}\otimes\ket{\sigma_B}$ ($\sigma_{A,B}=0,1\mapsto
+s=1,2,3,4$) basis, namely
+$\hat\rho_{AB}=\sum_{s,s'=1}^4\rho_{ss'}\ket{s}\bra{s'}=\sum_{\sigma,\sigma'=0,1}\rho_{ss'}\ket{\sigma_A}\otimes\ket{\sigma_B}\bra{\sigma_A'}\otimes\bra{\sigma_B'}$.
+
+\qquad(i) Verify that this is indeed a density matrix for a pure state by
+showing $\Tr[\hat\rho_{AB}]=\Tr\qty[\hat\rho_{AB}^2]=1$. \textit{Hint}: You can
+do this by working directly with the matrix $\rho_{\sigma\sigma'}$ or more
+formally working in a representation-independent way.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(ii) Show that the von Neumann entropy of this state vanishes, i.e.,
+\begin{equation}
+    S_{vN}=-\expval{\ln\hat\rho_{AB}}=-\Tr\qty(\hat\rho_{AB}\ln\hat\rho_{AB})=0, 
+\end{equation}
+as it must for any pure state. \textit{Hint}: One way to define a function of an
+operator (e.g., $\ln\hat{O}$) is by its eigenvalues by going to its diagonal
+basis.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(iii) Compute the reduced density ($2\times2$) matrix
+\begin{equation}
+    \hat\rho_A=\Tr_B\hat\rho_{AB}=\sum_{\sigma_B}\ev{\hat\rho_{AB}}{\sigma_B}, 
+\end{equation}
+by tracing over the states of the $B$ qubit, that describes the density matrix
+for the $A$ qubit subsystem.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(iv) Verify that this reduced density matrix describes a mixed state, by
+showing $\Tr[\hat\rho_A]=1$, but $\Tr[\hat\rho_A^2]<1$.
+\begin{solution}
+    
+\end{solution}
+
+\qquad(v) Show that, consistent with above, the \textit{entanglement} entropy
+(von Neumann entropy of $\hat\rho_A$) for subsystem $A$, described by this
+reduced density matrix, $\hat\rho_A$ is nonzero, i.e.
+\begin{equation}
+    S_E=-\expval{\ln\hat\rho_A}_A=-\Tr_A\qty(\hat\rho_A\ln\hat\rho_A)=\ln 2, 
+\end{equation}
+demonstrating that the qubits $A$ and $B$ are \textit{entangled}, since
+$\hat\rho_{AB}$ was constructed from a maximally \textit{entangled} ``cat''
+state.
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
 \end{document}
