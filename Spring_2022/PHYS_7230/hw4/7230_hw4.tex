@@ -131,7 +131,7 @@ $k_BT_\ast=4\pi^2\hbar^2/2mx_0^2$ and rewrite the variational free energy as
     &=-\frac12+2E_0\qty(e^{1/4E_0}-1)-\ln\qty(\pi\sqrt{\frac{T/T_\ast}{E_0}}),
 \end{align}
 where $k_m$ is the solution of \eqref{p1c:alpha}. Below, we overlay $F_v/k_BT$
-onto the previous plot from $T/T_\ast=10^{-4}$ (blue) to $T/T_\ast=10^4$ (red).
+onto the previous plot from $T/T_\ast=10^{-4}$ (blue) to $T/T_\ast=10^2$ (red).
 Note that $F_v(k_m)/k_BT$ is only valid for $\alpha/k_BT\gtrsim1$. A low $T$
 particle (blue) has significant free energy for all $E_0$, while a high $T$
 particle (red) only has significant free energy for low $E_0$ or high $E_0$.
@@ -553,7 +553,7 @@ $x_\t{cl}(\beta\hbar)=x'$, we can write
     x_\t{cl}(\tau)=-\frac{x-x'}{\beta\hbar}\tau+x .
 \end{equation}
 Then, from \eqref{p3c:approx_dens_matrix},
-\begin{align}
+\begin{align}\label{p3d:rho}
     \rho^u(x,x';\beta)
     &\approx \NN(\beta\hbar)\exp\qty[-\frac{S_E[x_\t{cl}(\tau)]}{\hbar}]\notag\\
     &=\NN(\beta\hbar)\exp\qty[-\frac{m}{2}\frac{(x-x')^2}{\beta^2\hbar^3}\int_0^{\beta\hbar}d\tau]\notag\\
@@ -574,6 +574,20 @@ Alternatively,you can determine $\NN(\tau)$ by requiring that
 \eqref{p3:Schrodinger_eq}, thereby obtaining and solving a differential equation
 for $\NN(\tau)$.
 \begin{solution}
+Plugging \eqref{p3d:rho} into \eqref{p3:Schrodinger_eq}, we get the following 
+differential equation for $\NN$
+\begin{equation}
+    \frac{d\NN}{d\tau}=-\frac{1}{2\tau}\NN ,
+\end{equation}
+where $\tau=\beta\hbar$. The general solution is
+\begin{equation}
+    \NN(\tau)=\frac{N_0}{\sqrt{\beta\hbar}} ,
+\end{equation}
+with some constant $N_0$. By normalization condition, we find
+$N_0=\sqrt{m/2\pi\hbar}$ such that
+\begin{equation}
+    \rho(x,x';\beta)=\sqrt{\frac{m}{2\pi\hbar^2\beta}}\exp\qty[-\frac{m(x-x')^2}{2\hbar^2\beta}]. 
+\end{equation}
 \end{solution}
 
 (f) Now that we have obtained $\rho^u(x,x';\beta)$ by three methods above,
