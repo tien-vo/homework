@@ -1,0 +1,338 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 8: Phys 7320 (Spring 2022)}
+\due{March 16, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{8.1}[Source-free Maxwell equations]
+Maxwell's source-free equations take the form
+\begin{equation}\label{p1:source_free_maxwell}
+    \partial_\mu F_{\nu\rho}+\partial_\nu F_{\rho\mu}
+    +\partial_\rho F_{\mu\nu}=0.
+\end{equation}
+
+(a) Show that the LHS of equation \eqref{p1:source_free_maxwell} is
+\textit{totally} antisymmetric, meaning it flips sign under the exchange of any
+pair of indices (note you have to do the exchange simultaneously in all terms).
+To do this you'll need the antisymmetry of the Faraday tensor
+$F_{\mu\nu}=-F_{\nu\mu}$. Thus, the LHS vanishes automaticaly unless all three
+indices take different values.
+
+(b) Show that the case where the three indices are the three different spatial
+directions leads to the Maxwell equation $\div{\vb{B}}=0$.
+
+(c) Show that the case where one index is in the time direction and the other
+two indices are in two different spatial directions (say $x$ and $y$) implies
+the component of Faraday's law in the third spatial direction.
+
+(d) Show that if the Faraday tensor is defined in terms of a 4-vector potential
+$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$, then
+\eqref{p1:source_free_maxwell} is automatically satisfied.
+\begin{solution}
+(a) First, by the $\rho\longleftrightarrow\nu$ exchange, the LHS becomes
+\begin{equation}
+    \partial_\mu F_{\rho\nu}
+    +\partial_\rho F_{\nu\mu}
+    +\partial_\nu F_{\mu\rho}
+    =-\partial_\mu F_{\nu\rho}
+    -\partial_\rho F_{\mu\nu}
+    -\partial_\nu F_{\rho\mu}
+    =-\t{LHS}.
+\end{equation}
+Second, by the $\mu\longleftrightarrow\nu$ exchange, it becomes
+\begin{equation}
+    \partial_\nu F_{\mu\rho}
+    +\partial_\mu F_{\rho\nu}
+    +\partial_\rho F_{\nu\mu}
+    =-\partial_\nu F_{\rho\mu}
+    -\partial_\mu F_{\nu\rho}
+    -\partial_\rho F_{\mu\nu}
+    =-\t{LHS}.
+\end{equation}
+Thus, due to commutativity, the LHS flips sign under exchange of any pair of
+indices.
+
+(b) Given from (11.138, Jackson) that
+\begin{equation}
+    F_{\alpha\beta}=\mqty(
+        0&E_x&E_y&E_z\\-E_x&0&-B_z&B_y\\-E_y&B_z&0&-B_x\\
+        -E_z&-B_y&B_x&0),
+\end{equation}
+if $\mu,\nu,\rho\in\qty{1,2,3}$, \eqref{p1:source_free_maxwell} becomes
+\begin{align}
+    \partial_1F_{23}+\partial_2F_{31}+\partial_3F_{12}
+    =\partial_x(-B_x)+\partial_2(-B_y)+\partial_3(-B_z)
+    =-\div{\vb{B}}=0.
+\end{align}
+Thus, we retrieve one of the Maxwell equations.
+
+(c) Now, let $\mu=0,\nu=1,\rho=2$, then \eqref{p1:source_free_maxwell} becomes
+\begin{align}
+    \partial_0 F_{12}
+    +\partial_1 F_{20}
+    +\partial_2F_{01}
+    =\partial_t(-B_z)
+    +\partial_x(-E_y)
+    +\partial_y(E_x)
+    =0
+    \Rightarrow\qty(\curl{\vb{E}})_z=-\qty(\partial\vb{B}/\partial t)_z.
+\end{align}
+This is the $z$ component of Faraday's law.
+
+(d) Assuming the potential $A_\rho$ is smooth, then
+$\partial_{\mu\nu}A_\rho=\partial_{\nu\mu}A_\rho$. It then follows that
+\begin{align}
+    \partial_\mu F_{\nu\rho}+\partial_\nu F_{\rho\mu}+\partial_\rho F_{\mu\nu}
+    &=\partial_{\mu\nu}A_\rho-\partial_{\mu\rho}A_\nu
+    +\partial_{\nu\rho}A_\mu-\partial_{\nu\mu}A_\rho
+    +\partial_{\rho\mu}A_\nu-\partial_{\rho\nu}A_\mu\notag\\
+    &=0.
+\end{align}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{8.2}[Transformation of the electromagnetic field]
+
+(a) Write down the Lorentz transformation matrix $\Lambda$ for a Lorentz boost
+in the $x$ direction with velocity $v$, and act this appropriately on the matrix
+$F$ for the Faraday tensor to derive the transformation rules for the components
+of $\vb{E}$ and $\vb{B}$ as given in class or (11.148, Jackson). Then repeat
+this, but for a rotation around the $z$-axis with angle $\theta$, and thus show
+that both $\vb{E}$ and $\vb{B}$ transform as you would expect separate 3-vectors
+to transform.
+
+(b) Evaluate the Lorentz scalars $F_{\mu\nu}F^{\mu\nu}$ and
+$F_{\mu\nu}\FF^{\mu\nu}$ (where $\FF^{\mu\nu}$) is the dual Faraday tensor given
+in (11.140, Jackson)) in terms of $\vb{E}$ and $\vb{B}$, and thus show that
+$I_1\equiv B^2-E^2$ and $I_2\equiv \vb{E}\vdot\vb{B}$ are Lorentz invariants.
+Argue that $\FF_{\mu\nu}\FF^{\mu\nu}$ does not give you anything new (you can
+calculate it explicitly, but some thought about the properties of $\FF^{\mu\nu}$
+will also reveal the answer).
+
+(c) Verify by explicit calculation that $I_1$ and $I_2$ are indeed invariant
+under a Lorentz boost in the $x$-direction by velocity $v$. Show that $E^2+B^2$
+is not invariant under such a transformation. (It is invariant under rotations,
+but not boosts).
+
+(d) Is it possible to have an electromagnetic field that appears as a purely
+electric field in one inertial frame, and a purely magnetic field in some other
+inertial frame? Explain. If there is some inertial frame where the electric
+field is zero, what conditions must hold on $\vb{E}$ and $\vb{B}$ in any frame?
+\begin{solution}
+(a) The Lorentz transformation is
+\begin{equation}
+    \Lambda=\mqty(\gamma&-\gamma\beta&0&0\\-\gamma\beta&\gamma&0&0\\
+            0&0&1&0\\0&0&0&1).
+\end{equation}
+Thus, by matrix multiplication,
+\begin{align}
+    F'
+    &=\Lambda F\Lambda^T\notag\\
+    &=\Lambda\mqty(
+        \gamma\beta E_x&-\gamma E_x&-E_y&E_z\\
+        \gamma E_x&-\gamma\beta E_x&-B_z&B_y\\
+        \gamma\qty(E_y-\beta B_z)&\gamma\qty(B_z-\gamma E_y)&0&-B_x\\
+        \gamma\qty(E_z+\beta B_y)&-\gamma\qty(B_y+\beta E_z)&B_x&0
+    )\notag\\
+    &=\mqty(0&-E_x&-\gamma\qty(E_y-\beta B_z)&-\gamma\qty(E_z+\beta B_y)\\
+            E_x&0&-\gamma\qty(B_z-\beta E_y)&\gamma\qty(B_y+\beta E_z)\\
+            \gamma\qty(E_y-\beta B_z)&\gamma\qty(B_z-\beta E_y)&0&-B_x\\
+            \gamma\qty(E_z+\beta B_y)&-\gamma\qty(B_y+\beta E_z)&B_x&0).
+\end{align}
+Thus, reading off of this, the fields transform as
+\begin{subequations}\label{p2a:EBp}
+    \begin{align}
+        E_x'&=E_x & B_x'&=B_x\\
+        E_y'&=\gamma\qty(E_y-\beta B_z)&B_y'&=\gamma\qty(B_y+\beta E_z)\\
+        E_z'&=\gamma\qty(E_z+\beta B_y)&B_z'&=\gamma\qty(B_z-\beta E_y)
+    \end{align} 
+\end{subequations}
+This is the same as (11.148, Jackson). Similarly, a rotation about $z$ is
+\begin{equation}
+    R_z=\mqty(1&0&0&0\\0&\cos\theta&\sin\theta&0\\0&-\sin\theta&\cos\theta&0\\
+    0&0&0&1). 
+\end{equation}
+By matrix multiplication,
+\begin{align}
+    F'&=R_zFR_z^T \notag\\
+      &=R_z\mqty(
+    0&-E_x\cos\theta-E_y\sin\theta&-E_y\cos\theta+E_x\sin\theta&-E_z\\
+    E_x&-B_z\sin\theta&0&B_y\\
+    E_y&B_z\cos\theta&-B_z\sin\theta&-B_x\\
+    E_z&-B_y\cos\theta+B_x\sin\theta&B_x\cos\theta+B_y\sin\theta&0
+        )\notag\\
+       &=\mqty(
+    0&-\qty(E_x\cos\theta+E_y\sin\theta)&-\qty(E_y\cos\theta-E_x\sin\theta)
+     &-E_z\\
+    E_x\cos\theta+E_y\sin\theta&0&-B_z&B_y\cos\theta-B_x\sin\theta\\
+    E_y\cos\theta-E_x\sin\theta&B_z&0&-\qty(B_x\cos\theta+B_y\sin\theta)\\
+    E_z&-\qty(B_y\cos\theta-B_x\sin\theta)&B_x\cos\theta+B_y\sin\theta&0
+       ).
+\end{align}
+Thus,
+\begin{subequations}
+    \begin{align}
+        E_x'&=E_x\cos\theta+E_y\sin\theta &
+        B_x'&=B_x\cos\theta+B_y\sin\theta\\
+        E_y'&=E_y\cos\theta-E_x\sin\theta &
+        B_y'&=B_y\cos\theta-B_x\sin\theta\\
+        E_z'&=E_z & B_z'&=B_z
+    \end{align} 
+\end{subequations}
+$\vb{E}$ and $\vb{B}$ in the $z$-direction remain the same, while the components
+in the perpendicular component ($xy$) are rotated counterclockwise by $\theta$,
+as expected.
+
+(b) Because $F_{\mu\nu}$ is antisymmetric, $F_{\mu\mu}=0$, while
+$F_{\mu\nu}=-F_{\nu\mu}$ for $\nu\neq\mu$. So,
+\begin{align}
+    F_{\mu\nu}F^{\mu\nu}
+    &=2\qty(F_{01}F^{01}+F_{02}F^{02}+F_{03}F^{03}+F_{12}F^{12}
+    +F_{13}F^{13}+F_{23}F^{23})\notag\\
+    &=2\qty(-E_x^2-E_y^2-E_z^2+B_z^2+B_y^2+B_x^2)\notag\\
+    &=2\qty(B^2-E^2).
+\end{align}
+Thus, $B^2-E^2$ is a Lorentz invariant since $F_{\mu\nu}F^{\mu\nu}$ is a Lorentz
+scalar. Similarly, $\FF_{\mu\nu}$ is also antisymmetric. So,
+\begin{align}
+    F_{\mu\nu}\FF^{\mu\nu}
+    &=2\qty(F_{01}\FF^{01}+F_{02}\FF^{02}+F_{03}\FF^{03} +F_{12}\FF^{12}
+        +F_{13}\FF^{13}+F_{23}\FF^{23})\notag\\
+    &=2\qty(-E_xB_x-E_yB_y-E_zB_z-B_zE_z-B_yE_y-B_xE_x)\notag\\
+    &=-4\vb{E}\vdot\vb{B}.
+\end{align}
+Thus, $\vb{E}\vdot\vb{B}$ is Lorentz invariant for the same reason. By
+construction, $\FF^{\alpha\beta}$ differs from $F^{\alpha\beta}$ by an exchange
+$\vb{B}\to\vb{E}$ and $\vb{E}\to\vb{B}$. Thus,
+$\FF_{\mu\nu}\FF^{\mu\nu}=2(E^2-B^2)$, which doesn't reveal any additional
+information.
+
+(c) From \eqref{p2a:EBp}, we can calculate
+\begin{align}
+    B'^2-E'^2
+    &=B_x^2+\gamma^2\qty(B_y^2+B_z^2+\beta^2(E_y^2+E_z^2)+2\beta\qty(E_zB_y-E_yB_z))\notag\\
+    &\qquad-E_x^2
+    -\gamma^2\qty(E_y^2+E_z^2+\beta^2(B_y^2+B_z^2)+2\beta\qty(E_zB_y-E_yB_z))
+    \notag\\
+    &=B_x^2-E_x^2+\gamma^2\qty(\frac{B_y^2+B_z^2}{\gamma^2}-\frac{E_y^2+E_z^2}{\gamma^2})\notag\\
+    &=B^2-E^2.
+\end{align}
+So $B^2-E^2$ is invariant. In the first equality, we can see clearly
+how $E^2+B^2$ wouldn't be invariant, since if there is a positive
+instead of a negative sign in the last term, they would factor as
+$1+\beta^2$ instead of $1-\beta^2$, and would not cancel the $\gamma^2$
+in the front. Now, similarly,
+\begin{align}
+    \vb{E}'\vdot\vb{B}' 
+    &=E_xB_x+\gamma^2\qty(E_yB_y+\beta E_yE_z-\beta B_yB_z-\beta^2E_zB_z)
+    \notag\\
+    &\qquad+\gamma^2\qty(E_zB_z-\beta E_yE_z+\beta B_yB_z -\beta^2 E_yB_y)
+    \notag\\
+    &=E_xB_x+\gamma^2\qty(\frac{E_yB_y}{\gamma^2}+\frac{E_zB_z}{\gamma^2})\notag\\
+    &=\vb{E}\vdot\vb{B}.
+\end{align}
+So it is also invariant.
+
+(d) Suppose that there exists a velocity $\bm\beta$ such that the fields
+transform as in (11.149, Jackson). Now, suppose the un-primed frame has zero
+magnetic field and the primed frame has zero electric field. Then we can solve
+\begin{equation}
+    \vb{E}'=\gamma\vb{E}-\frac{\gamma^2}{\gamma+1}\bm\beta(\bm\beta\vdot\vb{E})
+    =\bm0\Rightarrow\vb{E}=\frac{\gamma}{\gamma+1}(\bm\beta\vdot\vb{E})\bm\beta.
+\end{equation}
+And the magnetic field in the primed frame must be
+\begin{equation}
+    \vb{B}' =\gamma\vb{E}\times\bm\beta.
+\end{equation}
+However, since $\vb{E}$ is parallel to $\bm\beta$, $\vb{E}\times\bm\beta=\bm0$,
+which is a contradiction. So there does not exist such a $\bm\beta$. If the
+electric field is zero in the un-primed frame, then the following must be true.
+\begin{subequations}
+    \begin{align}
+        \vb{E}'&=\gamma\bm\beta\times\vb{B}\label{p2d:1}\\
+        \vb{B}'&=\gamma\vb{B}-\frac{\gamma^2}{\gamma+1}\bm\beta(\bm\beta\vdot\vb{B})\label{p2d:2}
+    \end{align} 
+\end{subequations}
+Substituing \eqref{p2d:2} into \eqref{p2d:1}, we get
+\begin{equation}
+    \vb{E}'=\bm\beta\times\vb{B}'.
+\end{equation}
+So the electric field and magnetic field in any reference frame must follow this
+relationship, which depends on the relative velocity of that frame with the
+un-primed frame.
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{8.3}[A charged wire]
+An infinitely long straight wire of negligible cross-sectional area is at rest
+and has a uniform linear charge density $q_0$ in the inertial frame $K'$. The
+frame $K'$ (and the wire) move with a velocity $\vb{v}$ parallel to the
+direction of the wire with respect to the laboratory frame $K$.
+
+(a) Write down the electric and magnetic fields in cylindrical coordinates in
+the rest frame of the wire. Using the Lorentz transformation properties of the
+fields, find the components of the electric and magnetic fields in the
+laboratory.
+
+(b) What are the charge and current densities associated with the wire in its
+rest frame? In the laboratory?
+
+(c) From the laboratory charge and current densities, calculate directly the
+electric and magnetic fields in the laboratory. Compare with the results of part
+(a).
+\begin{solution}
+(a) First, \textit{let us call $q_0'$ the charge density in the inertial frame
+$K'$ for consistency}, since $K$ is the lab frame. Then, draw a cylindrical 
+Gaussian surface with length $L'$ along the wire in $K'$. By Gauss law, 
+$E'A=E'2\pi rL'=4\pi Q=4\pi q_0'L'$. Thus, by symmetry,
+\begin{equation}\label{p3a:E}
+    \vb{E}'=\frac{2q_0'}{r}\rhat.
+\end{equation}
+The system is electrostatic in $K'$. Thus, $\vb{B}'=\bm0$. Then, since $K$ moves
+with a relative velocity $\bm\beta=-(v/c)\zhat$ with respect to $K'$, the
+electric field transform as
+\begin{equation}
+    \vb{E}=\gamma\vb{E}'-\frac{\gamma^2}{\gamma+1}\bm\beta(\bm\beta\vdot\vb{E}') 
+    =\gamma\vb{E}'=\gamma\frac{2q_0'}{r}\rhat,
+\end{equation}
+since $\bm\beta\perp\vb{E}'$. Note that $\rhat$ is perpendicular to
+the Lorentz boost (in the $z$ direction), so $r$ is not contracted. Similarly,
+\begin{equation}
+    \vb{B}=\gamma\vb{E}' \times\bm\beta
+    =-\gamma\frac{2q_0'}{r}\beta\rhat\times\zhat
+    =\gamma\beta\frac{2q_0'}{r}\phihat.
+\end{equation}
+$\phihat$ is also perpendicular to $\zhat$, so there is no relativistic effect
+in the $\phi$ direction.
+
+(b) In $K'$, the charge density is given as $q_0'$ and there is no current
+density since it is electrostatic. In $K$, the length is contracted
+($L=L'/\gamma$). Thus, the charge density is $q_0=Q/L=\gamma Q/L'=\gamma q_0'$.
+The current density is, by definition, $\vb{J}=nQv\zhat$ where $n$ is the
+number density. Then the current is $I=\int\vb{J}\vdot d\vb{a}=q_0v$.
+
+(c) Similar to \eqref{p3a:E}, the electric field in the lab frame is
+\begin{equation}
+    \vb{E}=\frac{2q_0}{r}\rhat=\gamma\frac{2q_0}{r}\rhat=\gamma\vb{E}'.
+\end{equation}
+Now, draw a circular Amperian loop with the wire perpendicular and is centered 
+to its plane. Then by Ampere law,
+\begin{equation}
+    B2\pi r=\frac{4\pi I}{c}\Rightarrow
+    \vb{B}=\frac{2I}{cr}\phihat=\frac{2q_0v}{cr}\phihat
+    =\gamma\beta\frac{2q_0'}{r}\phihat.
+\end{equation}
+These results are the same as those in part (a).
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
