@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 12: Phys 7320 (Spring 2022)}
+\due{April 20, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{12.1}[The Lagrangian for a charged particle]
+The Lagrangian for a charged particle of mass $m$ and charge $e$ with position
+$\vb{r}$ and velocity $\vb{u}\equiv d\vb{r}/dt$ moving in scalar and vector
+potentials $\Phi$ and $\vb{A}$ is
+\begin{equation}
+    \LL=-mc^2\sqrt{1-\frac{u^2}{c^2}}-e\Phi+\frac{e}{c}\vb{u}\vdot\vb{A}.
+\end{equation}
+(a) Show that the Euler-Lagrange equations for this Lagrangian indeed give rise
+to the Lorentz force law. \textit{Hint}: I suggest using index notation, and
+remember the potentials $\Phi,\vb{A}$ can depend on both $\vb{r}$ and $t$, which
+as far as the particle is concerned means they depend on time in two ways:
+$\Phi(\vb{r}(t),t)$ and $\vb{A}(\vb{r}(t),t)$.
+
+(b) Go though the steps (12.13)-(12.17) in Jackson to derive the Hamiltonian
+\begin{equation}
+    \HH=\sqrt{(c\vb{P}-e\vb{A})^2+m^2c^4}+e\Phi. 
+\end{equation}
+Along the way derive the canonical/conjugate momentum $\vb{P}$ (which is
+different from the familiar ``kinematic momentum'' $\vb{p}=\gamma m\vb{u}$), and
+invert it to find an expression for $\vb{u}$ in terms of $\vb{P}$ and $\vb{A}$.
+
+If you want extra practice, you can show that Hamilton's equations for this
+Hamiltonian also give rise to the Lorentz force law, with some steps similar to
+part (a).
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{12.2}[Equivalent Lagrangians]
+(a) Use the Principle of Least Action (really the principle of extremal action)
+to show that if the Lagrangian $\LL$ is changed by adding the time derivative of
+some function of the coordinates and time, then the Euler-Lagrange equations are
+unchanged. The new and old Lagrangians are said to be \textit{equivalent}.
+Generalize this to a statement about what change to a Lagrangian
+\textit{density} $\LL$ leaves the EL equations unchanged.
+
+(b) Show that under a gauge transformation, the Lagrangian for a charged
+particle given in the previous problem becomes an equivalent Lagrangian, thus
+showing the equations of motion do not change.
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{12.3}[$SO(2)$ symmetry of two real scalar fields.]
+Consider the dynamics of two (real) scalar fields $\phi_1(\vb{x},t)$ and
+$\phi_2(\vb{x},t)$ specified by the Lagrangian density
+\begin{equation}
+    \LL=\frac12\partial_\mu\phi_1\partial^\mu\phi_1+\frac12\partial_\mu\phi_2\partial^\mu\phi_2-V(\phi_1,\phi_2), 
+\end{equation}
+where the potential $V$ depends only on the combination $\phi_1^2+\phi_2^2$. In
+class, we will study this case with the real scalars combined into a single
+compex scalar; here we will leave them as two real scalars. Let's make a
+definite choice for the potential:
+\begin{equation}
+    V(\phi_1,\phi_2)=\frac12m^2\phi_1^2+\frac12m^2\phi_2^2+\frac{\lambda}2\qty(\phi_1^2+\phi_2^2)^2. 
+\end{equation}
+
+(a) Calculate the equations of motion (Euler-Lagrange equations) for both
+$\phi_1$ and $\phi_2$.
+
+(b) Show that the $SO(2)$ transformation
+\begin{equation}
+    \mqty(\phi_1\\\phi_2)\mapsto\mqty(\phi_1'\\\phi_2')=\mqty(\cos\alpha&\sin\alpha\\-\sin\alpha&\cos\alpha)\mqty(\phi_1\\\phi_2), 
+\end{equation}
+where $\alpha$ is a constant, is a symmetry of the Lagrangian. Is this a
+rotation in physical space? What space does this ``rotation'' act on?
+
+(c) According to Noether's theorem, the existence of this symmetry means there
+is a corresponding conserved current $J^\mu$. Find $J^\mu$ in terms of $\phi_1$
+and $\phi_2$ (you may drop an overall constant $\alpha$) and show that it is
+conserved, $\partial_\mu J^\mu=0$, when you use the equations of motion.
+\begin{solution}
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
