@@ -15,6 +15,7 @@ potentials $\Phi$ and $\vb{A}$ is
 \begin{equation}
     \LL=-mc^2\sqrt{1-\frac{u^2}{c^2}}-e\Phi+\frac{e}{c}\vb{u}\vdot\vb{A}.
 \end{equation}
+
 (a) Show that the Euler-Lagrange equations for this Lagrangian indeed give rise
 to the Lorentz force law. \textit{Hint}: I suggest using index notation, and
 remember the potentials $\Phi,\vb{A}$ can depend on both $\vb{r}$ and $t$, which
@@ -33,6 +34,74 @@ If you want extra practice, you can show that Hamilton's equations for this
 Hamiltonian also give rise to the Lorentz force law, with some steps similar to
 part (a).
 \begin{solution}
+(a) First, we write $\LL$ in Einstein notation with $j\in\qty{x,y,z}$
+\begin{equation}
+    \LL=-mc^2\sqrt{1-\frac{u_j^2}{c^2}}-e\Phi+\frac{e}{c}u_jA_j. 
+\end{equation}
+Then it is clear that
+\begin{equation}\label{p1a:P}
+    \frac{\partial\LL}{\partial\dot{r}_i}
+    =\frac{\partial\LL}{\partial u_i}
+    =\frac{mu_i}{\sqrt{1-u_j^2/c^2}}+\frac{e}{c}A_i
+    \Rightarrow
+    \frac{\partial\LL}{\partial\dot{\vb{r}}}
+    =\gamma m\vb{u}+\frac{e}{c}\vb{A}
+    =\vb{p}+\frac{e}{c}\vb{A}.
+\end{equation}
+Thus, the LHS of Euler-Lagrange equation is
+\begin{equation}\label{p1a:LHS}
+    \frac{d}{dt}\frac{\partial\LL}{\partial\dot{\vb{r}}}
+    =\frac{\partial\vb{p}}{\partial t}
+    +\frac{e}{c}\frac{\partial\vb{A}}{\partial t}
+    +\frac{e}{c}(\vb{u}\vdot\grad)\vb{A}.
+\end{equation}
+Now, for the RHS of Euler-Lagrange equation, we can write
+\begin{equation}\label{p1a:RHS}
+    \grad\LL=-e\grad\Phi+\frac{e}{c}\grad(\vb{u}\vdot\vb{A}) 
+    =-e\grad\Phi+\frac{e}{c}\qty[(\vb{u}\vdot\grad)\vb{A}+\vb{u}\times(\curl{\vb{A}})],
+\end{equation}
+where we have used the vector calculus identity
+$\grad(\vb{A}\vdot\vb{B})=(\vb{A}\vdot\grad)\vb{B}+(\vb{B}\vdot\grad)\vb{A}+\vb{A}\times(\curl{\vb{B}})+\vb{B}\times(\curl{\vb{A}})$.
+Now, combining \eqref{p1a:LHS} and \eqref{p1a:RHS}, we can write
+\begin{equation}
+    \frac{\partial\vb{p}}{\partial t}
+    =e\qty(-\grad\Phi-\frac1c\frac{\partial\vb{A}}{\partial t})
+    +e\frac{\vb{u}}{c}\times(\curl{\vb{A}})
+    =e\qty(\vb{E}+\frac{\vb{u}}{c}\times\vb{B}),
+\end{equation}
+which is Lorentz force law.
+
+(b) From \eqref{p1a:P}, we have already found the canonical momentum
+\begin{equation}
+    \vb{P}=\gamma m\vb{u}+\frac{e}{c}\vb{A}. 
+\end{equation}
+Thus,
+\begin{equation}
+    \vb{u}=\frac{c\vb{P}-e\vb{A}}{\gamma mc}
+    \Rightarrow u^2=\frac{(c\vb{P}-e\vb{A})^2}{\gamma^2m^2c^2}.
+\end{equation}
+But also, the Lorentz factor by definition is
+\begin{equation}
+    \gamma^2=\frac{1}{1-u^2/c^2}=\frac{\gamma^2m^2c^4}{\gamma^2m^2c^4-(c\vb{P}-e\vb{A})^2}.
+\end{equation}
+Inverting, we get
+\begin{equation}
+    \gamma=\sqrt{1+\qty(\frac{\vb{P}}{mc}-\frac{e\vb{A}}{mc^2})^2}. 
+\end{equation}
+Thus, $\vb{u}$ in terms of $\vb{P}$ and $\vb{A}$ is
+\begin{equation}
+    \vb{u}=\frac{c\vb{P}-e\vb{A}}{\sqrt{m^2c^2+\qty(\vb{P}-e\vb{A}/c)^2}}.
+\end{equation}
+Then, starting from (12.15, Jackson),
+\begin{align}
+    \HH
+    &=\vb{P}\vdot\vb{u}-\LL\notag\\
+    &=\frac{\vb{u}}{c}\vdot\qty(c\vb{P}-e\vb{A})+\frac{mc^2}{\gamma}+e\Phi\notag\\
+    &=\frac{(c\vb{P}-e\vb{A})^2}{\sqrt{m^2c^4+(c\vb{P}-e\vb{A})^2}}
+    +\frac{m^2c^4}{\sqrt{m^2c^4+(c\vb{P}-e\vb{A})^2}}+e\Phi\notag\\
+    &=\sqrt{m^2c^4+(c\vb{P}-e\vb{A})^2}+e\Phi.
+\end{align}
+
 \end{solution}
 \end{problem}
 \newpage
