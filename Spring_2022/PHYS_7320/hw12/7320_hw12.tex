@@ -119,6 +119,46 @@ Generalize this to a statement about what change to a Lagrangian
 particle given in the previous problem becomes an equivalent Lagrangian, thus
 showing the equations of motion do not change.
 \begin{solution}
+(a) Writing the new Lagrangian as
+$\overline\LL=\LL+\partial\Gamma(\vb{r},t)/\partial t$, the
+action is
+\begin{equation}
+    \overline{S}
+    =\int_{t_i}^{t_f}dt\overline\LL
+    =\int_{t_i}^{t_f}dt\LL+\eval{\Gamma}_{t_i}^{t_f}
+    =S+\Gamma(\vb{r}_f,t_f)-\Gamma(\vb{r}_i,t_i).
+\end{equation}
+Thus,
+\begin{equation}
+    \frac{\delta\overline{S}}{\delta\vb{r}(t)} 
+    =\frac{\delta S}{\delta\vb{r}(t)}
+    =0,
+\end{equation}
+if the original action $S$ is extremized, since $\eval{\Gamma}_{t_i}^{t_f}$ is 
+constant under variations of the path $\vb{r}(t)$ such that $\delta
+\vb{r}(t_i)=\delta\vb{r}(t_f)=\vb{0}$.
+
+(b) Under the gauge transformation
+\begin{equation}
+    \vb{A}'=\vb{A}+\grad\Lambda
+    \qquad\t{and}\qquad
+    \Phi'=\Phi-\frac1c\frac{\partial\Lambda}{\partial t}
+\end{equation}
+such that $\Lambda$ follows (6.18, Jackson), the Lagrangian becomes
+\begin{align}
+    \LL
+    &=-mc^2\sqrt{1-\beta^2}-e\Phi+\frac{e}{c}\vb{u}\vdot\vb{A}\notag\\
+    &=-mc^2\sqrt{1-\beta^2}-e\Phi'+\frac{e}{c}\vb{u}\vdot\vb{A}'
+-\qty(\frac{\partial}{\partial
+t}+\vb{u}\vdot\grad)\qty(\frac{e}{c}\Lambda)\notag\\
+    &=\LL'-\frac{d\Gamma}{dt},
+\end{align}
+where $\Gamma=(e/c)\Lambda$, and the new Lagrangian is
+\begin{equation}
+    \LL'=-mc^2\sqrt{1-\beta^2}-e\Phi'+\frac{e}{c}\vb{u}\vdot\vb{A}'.
+\end{equation}
+Thus, $\LL'$ only differ from $\LL$ by $d\Gamma/dt$, and is equivalent to it,
+leaving the equation of motion unchanged.
 \end{solution}
 \end{problem}
 \newpage
