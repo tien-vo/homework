@@ -121,10 +121,58 @@ where we have done a label exchange $i\mapsto j$ and $j\mapsto i$ in the second
 term in the first equality. Writing the effective Weiss field as
 $\vb{B}_\t{eff}=\vb{B}+\frac1\mu\sum_jJ_{ij}\expval{\vb{S}_j}$, we get the same
 Hamiltonian (31) in the lecture notes
+\begin{align}
+    \HH_\t{mft}
+    &=\frac12\sum_{ij}J_{ij}\expval{\vb{S}_i}\vdot\expval{\vb{S}_j}-\mu\vb{B}_\t{eff}\vdot\sum_i\vb{S}_i\notag\\
+    &=\sum_{i=1}^N\qty[\frac12
+    \sum_{j=1}^N\qty(J_{ij}\expval{\vb{S}_i}\vdot\expval{\vb{S}_j})
+    -\mu\vb{B}_\t{eff}\vdot\vb{S}_i].
+\end{align}
+Now, assuming the magnetization doesn't depend on the lattice site
+$\vb{m}=n\mu\expval{\vb{S}_i}$, the energy eigenvalues are
 \begin{equation}
-    \HH_\t{mft}=\frac12\sum_{ij}J_{ij}\expval{\vb{S}_i}\vdot\expval{\vb{S}_j}-\mu\vb{B}_\t{eff}\vdot\sum_i\vb{S}_i.
+    E_\t{mft}
+    =\sum_{i=1}^N\qty(\frac{\lambda m^2}{2n}-\mu B_\t{eff}s_i),
 \end{equation}
-
+where $B_\t{eff}=B+\lambda m$ with $\lambda=J_0/n\mu^2$, $J_0=\sum_{j=1}^N
+J_{ij}$, and $s_i\in\qty{-S,-S+1,\hdots,S-1,S}$. The canonical partition function is
+\begin{align}
+    Z
+    &=\prod_{i=1}^N\qty[\sum_{s_i=-S}^S\exp\qty(\frac{-\beta\lambda
+    m^2}{2n}+\beta\mu B_\t{eff}s_i)]\notag\\
+    &=\qty[\exp\qty(-\frac{\beta \lambda m^2}{2n})\frac{\sinh[(2S+1)\mu
+    B_\t{eff}/2k_BT]}{\sinh(\mu B_\t{eff}/2k_BT)}]^N.
+\end{align}
+The free energy is thus as follows
+\begin{equation}\label{p2a:F}
+    F=-k_BT\ln Z
+    =\frac{N\lambda m^2}{2n}-Nk_BT\ln\qty[\frac{\sinh[(2S+1)\mu
+    B_\t{eff}/2k_BT]}{\sinh(\mu B_\t{eff}/2k_BT)}].
+\end{equation}
+Then, by definition, the magnetization is
+\begin{align}
+    m
+    &=-\frac1V\frac{\partial F}{\partial B}\notag\\
+    &=-\lambda m\frac{\partial m}{\partial B}
+    -\frac{n\mu}{2}\qty(1+\lambda\frac{\partial m}{\partial B})
+    \qty[\coth\qty(\frac{\mu B_\t{eff}}{2k_BT})-(1+2S)\coth\qty[\frac{(1+2S)\mu
+B_\t{eff}}{2k_BT}]]\notag\\
+    &=-\lambda m\frac{\partial m}{\partial B}
+    +n\mu S\qty(1+\lambda\frac{\partial m}{\partial B})
+    \Bigg[\qty(1+\frac{1}{2S})\coth\qty[\qty(1+\frac1{2S})\frac{S\mu
+    B_\t{eff}}{k_BT}]\notag\\
+    &\qquad\qquad-\frac1{2S}\coth\qty(\frac1{2S}\frac{S\mu
+B_\t{eff}}{k_BT})\Bigg]\notag\\
+    &=-\lambda m\frac{\partial m}{\partial B}
+    +n\mu S\qty(1+\lambda\frac{\partial m}{\partial B})
+    B_S\qty(\frac{S\mu B_\t{eff}}{k_BT}),
+\end{align}
+where $B_S$ is the Brillouin function. Simplifying further, we can write a
+transcendental equation in $m(T,B)$ as
+\begin{equation}\label{p2b:m}
+    m=n\mu SB_S\qty(\frac{S\mu B_\t{eff}}{k_BT})
+    =n\mu SB_S\qty[\frac{S\mu(B+\lambda m)}{k_BT}].
+\end{equation}
 \end{solution}
 
 (c) Plot both sides of the MFT equation as a function of $m$ for a range of
@@ -138,6 +186,34 @@ as a function of $B$ at $B=0$, at which the system jumps between two minima
 separated by a barrier. This is in contrast to the continuous second-order
 transition as a function of $T$ at $T_c$ for $B=0$, where $m>0$ develops
 continuously from $m=0$.
+\begin{solution}
+(i) For $B=0$, \eqref{p2b:m} becomes
+\begin{equation}\label{p2ci:m}
+    \frac{m}{n\mu}=SB_S\qty(\frac{3}{S+1}\frac{T_c}{T}\frac{m}{n\mu})
+    =SB_S(x), 
+\end{equation}
+where $T_c=S(S+1)J_0/3k_B$. Below, we plot the LHS (solid red line) and RHS 
+(black lines) for three values of $T/T_c$.
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{p2ci.png} 
+\end{center}
+Thus, \eqref{p2ci:m} has only one root at $m=0$ when $T\geq T_c$ and two extra
+non-trivial roots when $T<T_c$. This demonstrates the transition from PM to FM
+phase at $T=T_c$.
+
+(ii) Now, for arbitrary $B$, \eqref{p2b:m} is
+\begin{equation}
+    \frac{m}{n\mu}=SB_S\qty(S\frac{\mu
+    B}{k_BT_c}\frac{T_c}{T}+\frac{3}{S+1}\frac{T_c}{T}\frac{m}{n\mu}). 
+\end{equation}
+With a root-finding algorithm, we can then solve for $m(T,B)/n\mu$ and plot it
+below.
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{p2cii.png} 
+\end{center}
+For $T<T_c$, note that $m$ is discontinuous from $B<0$ ($m=-(1/2)n\mu$) to $B>0$
+($m=(1/2)n\mu$), but the solution is smooth for $T\geq T_c$.
+\end{solution}
 
 (d) As discussed in the lectures, appreciating that MFT equation for $m$ is
 actually a saddle-point equation for free-energy density $f(m,B,T)$ with respect
@@ -145,6 +221,24 @@ to $m$, i.e., $\partial f/\partial m=0$, calculate $f(m,B,T)$, plot it for a
 range of $T$ and $B$ (including $B=0$), demonstrating how its minima move with
 these parameters and thereby showing the PM-FM phase transition and its absence
 for $B=0$ and $B\neq 0$, respectively.
+\begin{solution}
+From \eqref{p2a:F}, we can write
+\begin{equation}
+    \frac{f}{nk_BT_c}=\frac{F}{Nk_BT_c}
+    =\frac{3}{2S(S+1)}\qty(\frac{m}{n\mu})^2-\ln\qty{\frac{\sinh\qty[\qty(1+\frac1{2S})\frac{S\mu
+    B_\t{eff}}{k_BT}]}{\sinh\qty(\frac1{2S}\frac{S\mu B_\t{eff}}{k_BT})}},
+\end{equation}
+where $S\mu B_\t{eff}/k_BT=S(\mu B/k_BT_c)(T_c/T)+3(T_c/T)(m/n\mu)/(S+1)$.
+Below, we plot $f(m,B,T)$ for given values of $B$ and $T$.
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{p2d.png} 
+\end{center}
+For $B<0$,the minimum of $f$ is always negative for all temperatures $T/T_c$,
+moving towards $m=0$ for larger $T$. On the other hand, for $B>0$, the minimum 
+of $f$ is always positive. At $B=0$, $f$ only has one minimum for
+$T/T_c\geq 1$ at $m=0$, but it has three extrema for $T/T_c<1$, and the one at
+$m=0$ is a local maximum.
+\end{solution}
 
 (e) By Taylor-expanding $f(m,B,T)$ for small $m$ (in fact it may be more
 convenient to expand the saddle-point MFT equation first and then integrate term
@@ -181,7 +275,7 @@ with
     \HH_\t{tr}=-\sum_{i=1}^Nb_i\sigma_i
 \end{equation}
 as the trial Hamiltonian of independent spins in the presence of $N$ local
-variationall parameter ``fields'' $b_i$, derive mean-field self-consistent
+variational parameter ``fields'' $b_i$, derive mean-field self-consistent
 (implicit) equations for the local magnetization $m_i(\qty{h_i/T})$, by
 determining variational parameters $b_i(\qty{h_i/T})$, that minimize
 $F_\t{var}(\qty{b_i})$. By eliminating $b_i$'s, show that for uniform $h=h_i$,
