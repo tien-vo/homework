@@ -202,7 +202,7 @@ non-trivial roots when $T<T_c$. This demonstrates the transition from PM to FM
 phase at $T=T_c$.
 
 (ii) Now, for arbitrary $B$, \eqref{p2b:m} is
-\begin{equation}
+\begin{equation}\label{p2c:m}
     \frac{m}{n\mu}=SB_S\qty(S\frac{\mu
     B}{k_BT_c}\frac{T_c}{T}+\frac{3}{S+1}\frac{T_c}{T}\frac{m}{n\mu}). 
 \end{equation}
@@ -211,8 +211,9 @@ below.
 \begin{center}
     \includegraphics[width=0.8\textwidth]{p2cii.png} 
 \end{center}
-For $T<T_c$, note that $m$ is discontinuous from $B<0$ ($m=-(1/2)n\mu$) to $B>0$
-($m=(1/2)n\mu$), but the solution is smooth for $T\geq T_c$.
+If $T<T_c$ (for example the dotted line), $m$ is discontinuous from at $B=0$ and
+has asymptotic values at $\pm n\mu S$, but it is smooth at all $B$ for $T\geq
+T_c$ (for example the dashed line).
 \end{solution}
 
 (d) As discussed in the lectures, appreciating that MFT equation for $m$ is
@@ -233,11 +234,13 @@ Below, we plot $f(m,B,T)$ for given values of $B$ and $T$.
 \begin{center}
     \includegraphics[width=0.8\textwidth]{p2d.png} 
 \end{center}
-For $B<0$,the minimum of $f$ is always negative for all temperatures $T/T_c$,
-moving towards $m=0$ for larger $T$. On the other hand, for $B>0$, the minimum 
-of $f$ is always positive. At $B=0$, $f$ only has one minimum for
-$T/T_c\geq 1$ at $m=0$, but it has three extrema for $T/T_c<1$, and the one at
-$m=0$ is a local maximum.
+For $B<0$, the \textit{global} minimum (black dots) of $f$ is always negative 
+for all temperatures $T/T_c$, shifting towards $m=0$ for larger $T$. On the 
+other hand, for $B>0$, the global minimum is always positive. At $B=0$, $f$ 
+only has one \textit{local} minimum for $T/T_c\geq 1$ at $m=0$. For $T/T_c>1$, 
+this becomes a \textit{local} maximum and there are 2 extra local minima at 
+$m=\pm m_0$. This indicates the first-order transition from $-m_0$ to $+m_0$ as 
+$B$ changes from negative to positive.
 \end{solution}
 
 (e) By Taylor-expanding $f(m,B,T)$ for small $m$ (in fact it may be more
@@ -245,11 +248,113 @@ convenient to expand the saddle-point MFT equation first and then integrate term
 by term to obtain the expanded $f(m,B,T)$), show that it exhibits the generic
 Landau ``$\phi$'' form (i.e., $m^4$ here, with $\phi=m$) and extract from it the
 PM-FM transition temperature $T_c$ in terms of the exchange constant $J_0$.
+\begin{solution}
+    For $S=1/2$, \eqref{p2c:m} becomes
+\begin{align}\label{p2e:m}
+    \frac{m}{n\mu}
+    &=\tanh\qty[\frac{\mu}{k_BT}\qty(B+\frac{J_0}{n\mu^2}m)] \notag\\
+    &\approx \qty(\frac{\mu B_\t{eff}}{k_BT})
+    -\frac13\qty(\frac{\mu B_\t{eff}}{k_BT})^3\notag\\
+    &=\frac{\mu B}{k_BT}+\frac{J_0}{k_BT}\frac{m}{n\mu}
+    -\frac13\qty(\frac{\mu B}{k_BT}+\frac{J_0}{k_BT}\frac{m}{n\mu})^3,
+\end{align}
+given that $\mu B/k_BT$ and $m/n\mu$ are both small. Expanding, we get
+\begin{align}
+    0
+    &\approx\frac13\qty(\frac{\mu B}{k_BT})^3-\frac{\mu B}{k_BT}
+    +\qty[1+\qty(\frac{\mu B}{k_BT})^2-\frac{J_0}{k_BT}]\frac{m}{n\mu}\notag\\
+    &\qquad+\qty(\frac{\mu
+    B}{k_BT})\qty(\frac{J_0}{k_BT})^2\qty(\frac{m}{n\mu})^2
+    +\frac13\qty(\frac{J_0}{k_BT})^3\qty(\frac{m}{n\mu})^3\notag\\
+    &\sim\frac{\partial f}{\partial m}.
+\end{align}
+Integrating, we can write the free energy as
+\begin{align}\label{p2e:f}
+    f
+    &\sim\qty[\frac13\qty(\frac{\mu B}{k_BT})^3-\frac{\mu B}{k_BT}]\frac{m}{n\mu}
+    +\frac12\qty[1+\qty(\frac{\mu
+    B}{k_BT})^2-\frac{J_0}{k_BT}]\qty(\frac{m}{n\mu})^2\notag\\
+    &\qquad+\frac13\qty(\frac{\mu B}{k_BT})\qty(\frac{J_0}{k_BT})^2
+    \qty(\frac{m}{n\mu})^3
+    +\frac1{12}\qty(\frac{J_0}{k_BT})^3\qty(\frac{m}{n\mu})^4,
+\end{align}
+which has the Landau $m^4$ form. Note 
+that if the external field $B=0$, then the odd power terms vanish and $f$ 
+behaves as
+\begin{equation}\label{p2e:fB0}
+    f\sim\frac12\qty(1-\frac{J_0}{k_BT})\qty(\frac{m}{n\mu})^2
+    +\frac1{12}\qty(\frac{J_0}{k_BT})^3\qty(\frac{m}{n\mu})^4,
+\end{equation}
+in agreement with (42) in the lecture notes. Note that if $1-J_0/k_BT<0$, then 
+$f$ has three extrema. If $1-J_0/k_BT\geq 0$, then $f$ only has one minimum at 
+$m=0$. Thus, $T_c=J_0/k_B$ is the temperature at which phase transition occurs.
+\end{solution}
 
 (f) By minimizing this Landau $\phi^4$ form of $f(m,B,T)$, derive (i) the
 spontaneous magnetization $m_0(T<T_c,B=0)$, (ii) $m_0(T_c,B\to0)$, (iii)
 $\chi(T)$, thereby extracting the MF critical exponents $\beta,\delta,\gamma$
 defined in the lecture notes.
+
+\begin{solution}
+(i) From \eqref{p2e:fB0}, the magnetization that minimizes $f$ when $B=0$
+satisfies
+\begin{equation}
+    n\mu\frac{\partial f}{\partial m}
+    =\qty(1-\frac{T_c}{T})\qty(\frac{m}{n\mu})
+    +\frac13\qty(\frac{T_c}{T})^3\qty(\frac{m}{n\mu})^3=0.
+\end{equation}
+Ignoring the smooth change in $b=(1/3)(T_c/T)^3$, the magnetization
+\begin{equation}
+    m_0(T<T_c,B=0)\sim\sqrt{\frac{T_c}{T}-1}\sim\sqrt{T_c-T}.
+\end{equation}
+Thus, $\beta=1/2$.
+
+(ii) From \eqref{p2e:f}, at $T_c=T$, the free energy is
+\begin{equation}
+    f\sim\qty[\frac13\qty(\frac{\mu B}{k_BT})^3-\frac{\mu
+    B}{k_BT}]\frac{m}{n\mu}
+    +\frac12\qty(\frac{\mu B}{k_BT})^2\qty(\frac{m}{n\mu})^2
+    +\frac13\qty(\frac{\mu B}{k_BT})\qty(\frac{m}{n\mu})^3
+    +\frac1{12}\qty(\frac{m}{n\mu})^4.
+\end{equation}
+Finding the magnetization minimizing $f$, keeping only first-order terms in 
+$B$, we get
+\begin{equation}
+    \frac{\partial f}{\partial m}
+    =\frac{\mu B}{k_BT_c}\qty[1-\qty(\frac{m}{n\mu})^2]
+    +\frac13\qty(\frac{m}{n\mu})^3=0.
+\end{equation}
+Thus, the magnetic field is
+\begin{equation}
+    \frac{\mu B}{k_BT_c}
+    =\frac13\frac{(m/n\mu)^3}{1-(m/n\mu)^2}
+    \approx\frac13\qty(\frac{m}{n\mu})^3.
+\end{equation}
+So the spontaneous magnetization is
+\begin{equation}
+    m_0(T_c,B\to0)\sim B^{1/3}, 
+\end{equation}
+and $\delta=3$.
+
+(iii) Minimizing the full $f$, the magnetization satisfies
+\begin{equation}
+    0=\frac13\qty(\frac{\mu B}{k_BT})^3-\frac{\mu B}{k_BT}
+    +\qty[1+\qty(\frac{\mu B}{k_BT})^2-\frac{T_c}{T}]\frac{m}{n\mu}
+    +\qty(\frac{\mu B}{k_BT})\qty(\frac{T_c}{T}^2)\qty(\frac{m}{n\mu})^2
+    +\frac13\qty(\frac{T_c}{T})^3\qty(\frac{m}{n\mu})^3.
+\end{equation}
+Keeping only linear terms in $m$ and $B$, we can solve for $m$
+\begin{equation}
+    \frac{m}{n\mu}=\qty(1-\frac{T_c}{T})^{-1}\frac{\mu B}{k_BT}
+    =\frac{\mu B}{k_B(T-T_c)}.
+\end{equation}
+So the susceptibility
+\begin{equation}
+    \chi=\frac{\partial m}{\partial B}
+    \sim(T-T_c)^{-1},
+\end{equation}
+resulting in $\gamma=1$.
+\end{solution}
 
 (g) Sketch qualitative behavior of the resulting $m(T,B=0)$ and $m(T,B\neq0)$ as
 a function of $T$ through the PM-FM transition.
@@ -259,6 +364,15 @@ $d$ and therefore for $d=1$ are in conflict with the exact 1d prediction we
 found in problem 1 via transfer matrix method. Thus, this should give you
 caution on noncritically accepting the predictions of MFT approximation.
 \begin{solution}
+Similar to the figure in part (c), we plot $m/n\mu S$ for some values of $B$
+below.
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{p2g.png} 
+\end{center}
+For $B=0$, $m$ is zero for $T\geq T_c$ and is not well-defined at $T<T_c$, 
+since for these temperatures, the magnetization is discontinous around $B=0$.
+For $B\neq 0$, we observe the expected FM-PM transition (that depends
+on the sign of $B$) between $T<T_c$ and $T\geq T_c$.
 \end{solution}
 \end{problem}
 \newpage
@@ -282,6 +396,70 @@ $F_\t{var}(\qty{b_i})$. By eliminating $b_i$'s, show that for uniform $h=h_i$,
 the self-consistent equation reproduces the Weiss mean-field theory equation for
 $m(h/T)$.
 \begin{solution}
+Focusing on the FM phase, we let $b_i=b$ to be homogeneous across all lattice
+sites and write the trial Hamiltonian as
+\begin{equation}
+    \HH_\t{tr}=-b\sum_{i=1}^N\sigma_i.
+\end{equation}
+The corresponding partition function is
+\begin{equation}
+    Z_\t{tr}=\sum_\qty{\sigma}\prod_{i=1}^N\exp(\beta b\sigma_i)
+    =\prod_{i=1}^N\sum_{\sigma_i=\pm1}\exp\qty(\beta b\sigma_i)
+    =\qty[2\cosh(\beta b)]^N,
+\end{equation}
+and the trial free energy is
+\begin{equation}
+    F_\t{tr}=-k_BT\ln Z_\t{tr}
+    =-Nk_BT\ln\qty[2\cosh(\beta b)].
+\end{equation}
+Now, we need to calculate
+\begin{equation}
+    \expval{\HH-\HH_\t{tr}}_\t{tr}
+    =-\sum_{i=1}^N\qty[
+    J\expval{\sigma_i\sigma_{i+1}}_\t{tr}
+    +(h-b)\expval{\sigma_i}_\t{tr}],
+\end{equation}
+which requires the calculation of correlation functions
+$\expval{\sigma_i},\expval{\sigma_i\sigma_{i+1}}$. By definition,
+\begin{align}\label{p3:sig}
+    \expval{\sigma_i}_\t{tr}
+    =\frac1{Z_\t{tr}}\sum_\qty{\sigma}\sigma_i\prod_{j=1}^N\exp(\beta b\sigma_j)
+    =\frac1{2\cosh(\beta b)}\sum_{\sigma_i=\pm 1}\sigma_i\exp(\beta b\sigma_i)
+    =\tanh(\beta b),
+\end{align}
+and similarly,
+\begin{align}
+    \expval{\sigma_i\sigma_{i+1}}
+    =\frac1{4\cosh^2(\beta b)}
+    \sum_{\sigma_i=\pm 1}\sigma_i\exp(\beta b\sigma_i)
+    \sum_{\sigma_{i+1}=\pm 1}\sigma_{i+1}\exp(\beta b\sigma_{i+1})
+    =\tanh^2(\beta b).
+\end{align}
+Thus, the variational free energy is
+\begin{equation}
+    F_\t{var}
+    =F_\t{tr}+\expval{\HH-\HH_\t{tr}}_\t{tr}
+    =-Nk_BT\ln[2\cosh(\beta b)]
+    -N\qty[J\tanh^2(\beta b)+(h-b)\tanh(\beta b)].
+\end{equation}
+Then, the $b$ that minimizes $F_\t{var}$ satisfies
+\begin{equation}
+    \frac{F_\t{var}}{\partial b}
+    =N\beta\sech^2(\beta b)\qty[b-h-2 J\tanh(\beta b)]=0.
+\end{equation}
+Thus, $b$ satisfies the following transcendental equation
+\begin{equation}\label{p3:b}
+    b=h+2J\tanh(\beta b). 
+\end{equation}
+Recall from \eqref{p3:sig} that $\tanh(\beta b)=\expval\sigma=m$. \eqref{p3:b}
+thus turns into
+\begin{equation}
+    \tanh^{-1}(m)=\frac{h}{k_BT}+\frac{2J}{k_BT}m
+    \Rightarrow
+    m=\tanh\qty(\frac{h+2Jm}{k_BT}),
+\end{equation}
+which resembles the Weiss MFT solution with $\mu B_\t{eff}=h+zJm$, where $z=2$ 
+is the number of neighboring lattices for the 1d case.
 \end{solution}
 \end{problem}
 \newpage
@@ -294,7 +472,7 @@ Heisenberg ($O(N=3)$) models naturally generalizes to $O(N)$ model $N$ component
 field $\bm\phi$ ($O(N)$ stands for orthogonal group of rotations, $\bm\phi\to
 R\vdot\bm\phi$ under which the model is invariant).
 \begin{equation}
-    H_{O(N)}(\bm\phi)=\int_{\vb{x}}\qty[\frac12K(\grad\bm\phi)^2+\frac12t\abs{\bm\phi}^2+\frac12u\abs{\bm\phi}^4+\hdots], 
+    H_{O(N)}(\bm\phi)=\int_{\vb{x}}\qty[\frac12K(\grad\bm\phi)^2+\frac12t\abs{\bm\phi}^2+\frac14u\abs{\bm\phi}^4+\hdots], 
 \end{equation}
 An external field $\vb{h}$ \textit{explicitly} breaks this $O(N)$ rotational
 symmetric through a Zeeman term $H_Z=-\int_{\vb{x}}\vb{h}\vdot\bm\phi$,
@@ -309,6 +487,28 @@ regime where $\bm\phi$ is spatially uniform, i.e., ignoring the gradient
 
 \textit{Note}: In zero field, its direction is arbitrary and ony its magnitude
 is determined by above minimization.
+\begin{solution}
+For $\vb{h}=\vb{0}$, the Landau Hamiltonian is
+\begin{equation}
+    \HH=\int_{\vb{x}}\qty[\frac12t\abs{\phi}^2+\frac14u\abs{\phi}^4],
+\end{equation}
+given that $\phi$ is spatially uniform. Minimizing $\HH$,
+ we find that $\phi=\phi_0$ satisfies
+ \begin{equation}
+    t\phi_0+u\phi_0^3=0. 
+ \end{equation}
+For the disordered state ($t>0$, or $T>T_c$), $\phi_0$ takes on the trivial 
+root, while for the ordered state ($t<0$, or $T\leq T_c$), $\phi_0$ takes on the
+non-trivial one.
+\begin{equation}
+    \phi_0(t)=\begin{cases}
+        0&t>0\\
+        \pm\sqrt{\frac{-t}{u}}&t<0.
+    \end{cases}
+\end{equation}
+Since the direction is unimportant for zero external field, we can then write
+$\bm\phi_0=\phi_0\hat{e}$ where $\hat{\vb{e}}$ is the arbitrary unit direction.
+\end{solution}
 
 (b) Note that in the disordered, PM ($T>T_c$) state $\bm\phi$ fluctuates around
 0 and thus a harmonic (quadratic) approximation for the effective Landau
@@ -318,10 +518,26 @@ curvature $t$ of the excitations is sometimes referred to as the
 $\Delta^2$ (nomenclature going back to application of the $O(N)$ model for
 quantum phase transitions and in particle physics, where the description
 corresponds to the Klein-Gordon euqation, where it is a mass of a bosonic
-particle, like the Higgs field). Note that in the PM state $\Delta_>^2=t$ (>
+particle, like the Higgs field). Note that in the PM state $\Delta_>^2=t$ ($>$
 denotes $t>0$, i.e., for $T>T_c$). Using this simple harmonic approximation,
 calculate the \textit{linear} (uniform) susceptibility $\chi$ of $\bm\phi$
 response to small $\vb{h}$ in this PM state.
+\begin{solution}
+In the PM state, the harmonic Hamiltonian with the Zeeman term is
+\begin{equation}
+    H_>\approx\frac12t\phi^2-h\phi. 
+\end{equation}
+Minimizing this, we find that $\phi_0$ satisfies
+\begin{equation}
+    \eval{\frac{\delta H_>}{\delta\phi}}_{\phi=\phi_0}=t\phi_0-h=0 
+    \Rightarrow\phi_0=\frac{h}{t}.
+\end{equation}
+Then the linear susceptibility is
+\begin{equation}
+    \chi_l=\eval{\frac{\partial\phi}{\partial h}}_{h=0}
+    =\frac{1}{t}.
+\end{equation}
+\end{solution}
 
 (c) In the ordered FM state, the average order parameter
 $\expval{\bm\phi}_<=\bm\phi_0$ is spontaneously nonzero (with arbitrary
@@ -338,6 +554,27 @@ rotational symmetry in the spontaneously ordered FM state. Components of these
 transverse oscillations are the Goldstone modes of the PM-FM ``spontaneous
 symmetry breaking'' of the $O(N)$ symmetry of the PM state down to $O(N-1)$
 remaining symmetry of the FM state.
+\begin{solution}
+Writing $\delta\bm\phi=\delta\bm\phi_T+\delta\bm\phi_L$ such that
+$\delta\bm\phi_L\vdot\delta\bm\phi_T=0$ and $\bm\phi=\bm\phi_0+\delta\bm\phi$,
+, the Hamiltonian is (up to quadratic terms in $\delta\bm\phi_{T/L}$)
+\begin{align}
+    H
+    &=\frac14\qty[t\phi_0^2-4t\abs{\delta\bm\phi}^2
+    +4u\bm\phi_0\vdot\delta\bm\phi_L\abs{\delta\bm\phi}^2] \notag\\
+    &=\frac{t}{4}\phi_0^2-t\abs{\delta\bm\phi_L}^2
+    +\qty(-t+u\bm\phi_0\vdot\delta\bm\phi_L)\abs{\delta\bm\phi_T}^2\notag\\
+    &=H_0+H_L+H_T,
+\end{align}
+where
+$H_L=-t\abs{\delta\bm\phi_L}^2=\abs{t}\abs{\delta\bm\phi_L}^2=\Delta_>^2\abs{\delta\bm\phi_L}^2=(1/2)\Delta_<^2\abs{\delta\bm\phi_L}^2$
+and $H_T$ is the last term (quadratic in $\delta\bm\phi_T$). (i) It then 
+follows that $H_L$ is massive, so the longitudinal
+oscillation $\abs{\delta\phi_L}^2\sim -\order{t/u}$ and 
+$u\bm\phi_0\vdot\delta\bm\phi_L\sim \pm \order{t}$. (ii) Thus, $H_T\sim(-t\pm
+\order{t})\abs{\delta\bm\phi_T}^2\ll H_L$, meaning the transverse fluctuations 
+are massless compared to the longitudinal fluctuations.
+\end{solution}
 
 (d) By considering the case of $N=2$ and $N=3$ explicitly and thinking
 geometrically about these oscillations in terms of the ``Mexican hat''
@@ -350,6 +587,9 @@ of Goldstone modes, typically [but with some prominent exceptions, e.g.,
 quantum ferromagnets, that we will discuss later] is the dimension of the coset
 space $G/H$.)
 \begin{solution}
+For $N=2$, there is one tranverse Goldstone mode. For $N=3$ there are two
+transverse Goldstone modes. Thus, generally, for arbitrary $N$, there are $N-1$
+Goldstone modes.
 \end{solution}
 \end{problem}
 \newpage
@@ -378,12 +618,33 @@ start out with a rotationally invariant Landau free energy for the XY model and
 introduce additional terms that appropriately break the spin rotational
 symmetry, down to a rectangular one.
 
+\begin{solution}
+Recall that the Landau free energy for an Ising model is
+\begin{equation}
+    f(m)=\frac12tm^2+\frac14um^4, 
+\end{equation}
+where the PM-FM transition occurs from $t>0$ to $t<0$ and $u$ is a positive
+definite smooth function of temperature, such that $f(-m)=f(m)$. Then it 
+follows that the Landau free energy for two independent axes $x$ and $y$ is
+\begin{equation}
+    f(m_x,m_y)
+    =\frac12t_xm_x^2+\frac12t_ym_y^2+\frac14u_xm_x^4+\frac14u_ym_y^4
+    +\frac12u_{xy}m_x^2m_y^2,
+\end{equation}
+where $u_{xy}$ is the lowest-order coupling coefficient between $x$ and $y$,
+such that $f(-m_x,m_y)=f(m_x,m_y)=f(m_x,-m_y)=f(-m_x,-m_y)$.
+\end{solution}
+
 (b) Give a reason why, given the symmetries of the physical system described
 above, the coupling such as for example $\delta
 f_\t{couple}^\t{forbidden}=2v_{xy}m_xm_y$ is \textit{not} allowed.
+\begin{solution}
+The term $2v_{xy}m_xm_y$ is forbidden because it is antisymmetric under
+$m_x\mapsto-m_x$ or $m_y\mapsto-m_y$. 
+\end{solution}
 
 (c) Explore the phase diagram of this model for the quartic couplings satisfying
-$u_xuy>u_{xy}^2$. That is,
+$u_xu_y>u_{xy}^2$. That is,
 
 \begin{enumerate}[label=(\roman*)]
     \item make the standard assumption of Landau theory that $t_x=a(T-T_{cx})$
@@ -399,9 +660,68 @@ $u_xuy>u_{xy}^2$. That is,
         phases.
 \end{enumerate}
 
+\begin{solution}
+First, make the assumptions as suggested in (i). Now, without loss of
+generality, assume $T_{cx}<T_{cy}$. Then this partitions the temperature into
+three disjoint ranges: (1) $[0, T_{cx}]$, (2) $(T_{cx},T_{cy}]$, and (3)
+$(T_{cy},\infty)$. In order, the order parameters have the following values:
+(1) $m_x\neq0,m_y\neq0$, (2) $m_x=0,m_y\neq0$, and (3) $m_x=m_y=0$. (iii) The 
+2D phase diagram would appear as follows
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{p6.jpg} 
+\end{center}
+The top-left quadrant is not applicable since it is not possible for $t_y>0$
+($T>T_{cy}$) and $t_x<0$ ($T<T_{cx}$), by assumption.
+
+(iv) First, consider the first phase (1) ($t_x<0$ and $t_y<0$). Minimizing $f$ 
+with respect to $m_x$ and $m_y$, we attain the following system of equations
+\begin{equation}\label{p6c:m}
+    \mqty(u_x&u_{xy}\\u_{xy}&u_y)\mqty(m_{x1}^2\\m_{y1}^2)=\mqty(\abs{t_x}\\\abs{t_y}),
+\end{equation}
+By assumption, the 2x2 matrix is non-singular, so it is invertible.
+\begin{equation}
+    \mqty(m_{x1}^2\\m_{y1}^2)=\frac1{u_xu_y-u_{xy}^2}\mqty(u_y&-u_{xy}\\-u_{xy}&u_x)\mqty(\abs{t_x}\\\abs{t_y}). 
+\end{equation}
+It follows that
+\begin{equation}
+    m_{x1}(t_x,t_y)=\pm\sqrt{\frac{u_y\abs{t_x}-u_{xy}\abs{t_y}}{u_xu_y-u_{xy}^2}}
+    ,\qquad\t{and}\qquad
+    m_{x2}(t_x,t_y)=\pm\sqrt{\frac{u_x\abs{t_y}-u_{xy}\abs{t_x}}{u_xu_y-u_{xy}^2}}.
+\end{equation}
+Note that the constraints $\abs{t_x}>(u_{xy}/u_y)\abs{t_y}$ and
+$\abs{t_y}>(u_{xy}/u_x)\abs{t_x}$ are automatically satisfied if
+$u_xu_y>u_{xy}^2$. Now, in the second phase (2), $t_x>0$ and $t_y<0$. So 
+$m_x=0$ and the free energy reduces to that of a single Ising model in $y$
+\begin{equation}
+    f(m_y)=\frac12t_ym_y^2+\frac14u_ym_y^4, 
+\end{equation}
+and we know from previous results that
+\begin{equation}\label{p6c:m2}
+    m_{y2}(t_x,t_y)=\pm\sqrt{\frac{\abs{t_y}}{u_y}}. 
+\end{equation}
+For the last phase, it is trivial that the system is paramagnetic in both $x$
+and $y$ (meaning $m_{x3}=m_{y3}=0$).
+\end{solution}
+
 (d) Repeat above analysis (order parameters, phase diagram) for the case of
 $u_xu_y<u_{xy}^2$, but still in the range so that the system is stable.
 \begin{solution}
+Retain the assumptions in (i) and (ii) of part (c). Then the phase diagram
+(iii) remains the same as that in part (c). Now, we consider the first phase (1)
+($t_x<0$ and $t_y<0$), the same system of equations \eqref{p6c:m} follows from 
+minimizing $f$. Now, assume $u_xu_y<u_{xy}^2$. So the determinant of the 2x2
+matrix is still non-zero, making it invertible. Then the magnetizations are
+\begin{equation}
+    m_{x1}(t_x,t_y)=\pm\sqrt{\frac{u_{xy}\abs{t_y}-u_y\abs{t_x}}{u_{xy}^2-u_xu_y}},
+    \qquad\t{and}\qquad 
+    m_{x2}(t_x,t_y)=\pm\sqrt{\frac{u_{xy}\abs{t_x}-u_x\abs{t_y}}{u_{xy}^2-u_xu_y}}.
+\end{equation}
+Now, the constraints $\abs{t_y}>(u_y/u_{xy})\abs{t_x}$ and
+$\abs{t_x}>(u_x/u_{xy})\abs{t_y}$ are automatically satisfied by the assumption
+that $u_{xy}^2>u_xu_y$. In the second phase (2), $f$ reduces to that of the
+Ising model in $y$. So magnetization is still given by \eqref{p6c:m2}. And in
+the third phase (3), $m_{x3}=m_{y3}=0$ trivially (because both $x$ and $y$ are
+in paramagnetic).
 \end{solution}
 \end{problem}
 \newpage
