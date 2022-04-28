@@ -1,0 +1,305 @@
+\documentclass[12pt]{article}
+
+\input{../../../hw_packages.tex}
+
+\title{Homework 13: Phys 7320 (Spring 2022)}
+\due{April 27, 2022}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{13.1}[Noether currents for rotations and boosts]
+
+(0) An infinitesimal rotation or Lorentz boost can be written in the form
+\begin{equation}\label{p10:xp}
+    x'^\mu=x^\mu+L^\mu_\nu x^\nu, 
+\end{equation}
+where $L^\mu_\nu$ is constant, small and obeys $L_{\mu\nu}=-L_{\nu\mu}$ (this is
+Jackson's (11.89) in tensor notation; $L$ is proportional to either the
+rotation angle $\theta$ or the boost parameter $\zeta$). Take a general
+Lagrangian density $\LL$ with no particular form depending on some fields
+$\phi_i$, and show that the Lagrangian density $\LL(x)$ changes by a total
+derivative under these transformations. (Compare to what we did in class to
+derive the Noether currents for translations.) Then show the associated Noether
+current takes the form (up to a possible constant factor)
+\begin{equation}
+    J^\mu=L_{\nu\rho}M^{\mu\nu\rho}, 
+\end{equation}
+with $M^{\mu\nu\rho}$ as in Jackson (12.109),
+\begin{equation}
+    M^{\mu\nu\rho}=T^{\mu\nu}x^\rho-T^{\mu\rho} x^\nu. 
+\end{equation}
+We have now motivated the form of Jackson's (12.109) for a general Lagrangian.
+Now when you do Jackson's part (a) and (b), use the improved form of the
+electromagnetic energy-momentum tensor (12.113) in the expression for
+$M^{\mu\nu\rho}$ as in (12.117).
+
+Consider the various conservation laws that are contained in the integral of
+$\partial_\alpha M^{\alpha\beta\gamma}=0$ over all space, where
+$M^{\alpha\beta\gamma}$ is defined in (12.117).
+
+(a) Show that when $\beta$ and $\gamma$ are both space indices conservation of
+the total field angular momentum follows.
+
+(b) Show that when $\beta=0$ the conservation law is
+\begin{equation}
+    \frac{d\vb{X}}{dt}=\frac{c^2\vb{P}_\t{em}}{E_\t{em}}, 
+\end{equation}
+where $\vb{X}$ is the coordinate of the center of mass of the electromagnetic
+fields, defined by
+\begin{equation}
+    \vb{X}\int ud^3x=\int \vb{x}ud^3x ,
+\end{equation}
+where $u$ is the electromagnetic energy density and $E_\t{em}$ and
+$\vb{P}_\t{em}$ re the total energy and momentum of the fields.
+\begin{solution}
+(0) First, the Jacobian of the transformation \eqref{p10:xp} is
+\begin{equation}
+    \frac{\partial x'^\mu}{\partial x^\nu}
+    =\delta^\mu_\nu+L_\nu^\mu.
+\end{equation}
+Expanding $\LL(x')$ to first order in $\epsilon^\mu=L_\nu^\mu x^\nu$, we get
+\begin{equation}
+    \LL(x')=\LL(x)+\epsilon^\mu\partial_\mu \LL(x)+\order{\epsilon^2}. 
+\end{equation}
+Writing $K^\mu=L_\nu^\mu x^\nu\LL$ and using the product rule, we 
+get
+\begin{equation}
+    \partial_\mu K^\mu=L_\nu^\mu \delta^\nu_\mu\LL+L_\nu^\mu
+    x^\nu\partial_\mu\LL
+    =\delta\LL,
+\end{equation}
+where $L_\nu^\mu \delta_\mu^\nu=L_\mu^\mu=0$, since $L$ is antisymmetric. So the
+Lagrangian density $\LL$ changes by a total derivative of $K$. Also, the scalar
+fields $\phi_i(x)$ transform as
+\begin{equation}
+    \phi_i(x')=\phi_i(x)+\epsilon^\mu\partial_\mu\phi_i(x)+\order{\epsilon^2}.
+\end{equation}
+So $\delta\phi_i=L_\nu^\mu x^\nu\partial_\mu\phi_i$. The current associated with
+these changes is defined as
+\begin{align}
+    J^\mu
+    &=\frac{\partial\LL}{\partial(\partial_\mu\phi_i)}\delta\phi_i-K^\mu\notag\\
+    &=\frac{\partial\LL}{\partial(\partial_\mu\phi_i)}L_\rho^\nu
+    x^\rho\partial_\nu \phi_i-L_\rho^\mu x^\rho\LL\notag\\
+    &=\frac{\partial\LL}{\partial(\partial_\mu\phi_i)}L_{\nu\rho}x^\rho\partial^\nu\phi_i-g^{\mu\nu}L_{\nu\rho}x^\rho\LL\notag\\
+    &=L_{\nu\rho}\qty[\frac{\partial\LL}{\partial(\partial_\mu\phi_i)}\partial^\nu\phi_i-g^{\mu\nu}\LL]x^\rho\notag\\
+    &=L_{\nu\rho}T^{\mu\nu}x^\rho.
+\end{align}
+By a change of indices ($\nu\mapsto\rho$ and $\rho\mapsto\nu$), we can also
+write
+\begin{equation}
+    L_{\nu\rho}T^{\mu\nu}x^\rho
+    =L_{\rho\nu}T^{\mu\rho}x^\nu
+    =-L_{\nu\rho}T^{\mu\rho}x^\nu.
+\end{equation}
+Thus, the current can be written as
+\begin{equation}
+    J^{\mu}=\frac12L_{\nu\rho}\qty(T^{\mu\nu}x^\rho-T^{\mu\rho}x^\nu)
+    \sim L_{\nu\rho}M^{\mu\nu\rho}, 
+\end{equation}
+up to a factor of 1/2.
+
+(a) First, by definition, we note that
+\begin{align}
+    M^{0ij}&=\Theta^{0i}x^j-\Theta^{0j}x^i\notag\\
+    &=\frac1{4\pi}\qty[(\vb{E}\times\vb{B})^ix^j-(\vb{E}\times\vb{B})^jx^i]
+    \tag{from (12.114, Jackson)}\\
+    &=-\frac1{4\pi}\epsilon^{ijk}\qty[\vb{x}\times(\vb{E}\times\vb{B})]^k.
+\end{align}
+This is just proportional to the field angular momentum density. Thus,
+\begin{equation}
+    \int d^3xM^{0ij}=-\frac1{4\pi}\epsilon^{ijk}\int d^3x
+\qty[\vb{x}\times\qty(\vb{E}\times\vb{B})]^k
+=-c\epsilon^{ijk}L_\t{field}^k.
+\end{equation}
+Then, since $\partial_\mu M^{\mu ij}=0$, we can write
+\begin{equation}
+    \int d^3x\partial_0 M^{0ij}
+    =-c\epsilon^{ijk}\partial_0L_\t{field}^k=\int d^3x\partial_k M^{kij}
+    \Rightarrow\epsilon^{ijk}\frac{\partial L_\t{field}^k}{\partial t}
+    =-\int d^3x\partial_kM^{kij}.
+\end{equation}
+This is a sort of continuity equation for the field angular momentum, where the
+RHS (by Gauss divergence law) is a surface integral of the Maxwell stress 
+tensor, according to (12.115, Jackson). Thus, this conservation law states that
+the change of the field angular momentum is balanced by the \textit{flux} of 
+electromagnetic force on a given surface.
+
+(b) Setting $\beta=0$, we consider
+\begin{equation}
+    M^{00i}=\Theta^{00}x^i-\Theta^{0i}x^0
+    =\frac{E^2+B^2}{8\pi}x^i-\frac1{4\pi}\qty(\vb{E}\times\vb{B})^ix^0
+    =2ux^i-2cg^ix^0.
+\end{equation}
+Integrating, we get
+\begin{equation}
+    \int d^3xM^{00i}=2\int d^3xx^iu-2cx^0d^3x g^i
+    =2X^iE_\t{em}-2cx^0P_\t{em}^i,
+\end{equation}
+where $E_\t{em}=\int d^3x u$ is the total field energy and $\vb{P}_\t{em}=\int
+d^3x\vb{g}$ is the total field momentum. If $M^{00i}$ is a conserved charge,
+then
+\begin{equation}
+    \frac{dX^i}{dt}E_\t{em}-c^2P_\t{em}^i=0
+    \Rightarrow\frac{d\vb{X}}{dt}=\frac{c^2\vb{P}_\t{em}}{E_\t{em}},
+\end{equation}
+where we have also assumed energy and momentum conservation $dE_\t{em}=0$ and
+$d\vb{P}_\t{em}/dt=0$.
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{problem}{13.2}[Proca equation.]
+The Proca equation for a ``massive'' vector field $A_\mu(x)$ coupled to a
+current $J^\nu$ is
+\begin{equation}
+    \partial_\mu F^{\mu\nu}+\mu^2A^\nu=\frac{4\pi}{c}J^\nu. 
+\end{equation}
+Due to the ``mass'' term $\mu^2A^\nu$, this equation has no gauge invariance.
+The Proca equation is obeyed by massive spin-1 fields like the fields of the
+W-boson and Z-boson, and also describes the photon when it is superconducting.
+
+(a) Assuming the parameter $\mu\neq0$ and the current is conserved, show that
+the Proca equation implies the vanishing 4-divergence
+\begin{equation}
+    \partial_\mu A^\mu=0. 
+\end{equation}
+Note this is not a gauge condition (there is no gauge invariance for massive
+$A_\mu$) but a consequence of the Proca equation. Then show the Proca equation
+becomes
+\begin{equation}
+    (\partial_\mu\partial^\mu+\mu^2)A^\nu=\frac{4\pi}{c}J^\nu, 
+\end{equation}
+which is a Klein-Gordon equation for each component $A^\nu$ with mass parameter
+$\mu$, sourced by the current $J^\nu$.
+
+(b) Consider Proca waves in a region with no current, $J^\nu=0$. Use a plane
+wave ansatz of the form
+\begin{equation}
+    A_\mu=\epsilon_\mu e^{-ik\vdot x}, 
+\end{equation}
+where $k\vdot x$ is a 4-vector dot product involving a 4-wavevector
+$k^\mu=(\omega/c,\vb{k})$, and $\epsilon_\mu$ is a constant polarization vector.
+Using the results of part (a), first find the relationship between $\omega$ and
+$\vb{k}$, showing that $k^\mu$ is a timelike wavevector, not null, and so the
+waves travel at less than the speed of light.
+
+Then find a constraint relating $\epsilon_\mu$ and $k^\mu$. Since there is no
+gauge invariance, this is the only constraint obeyed by $\epsilon_\mu$. Since
+$k^\mu$ is timelike, you may choose a frame where $k^\mu=(\omega/c,\vb{0})$;
+what directions may $\epsilon_\mu$ point in this frame? We see there are three
+possible polarizations for the (massive) Proca wave, unlike the ordinary
+(massless) Maxwell electromagnetic wave which has two.
+
+(c) Consider a time-independent delta-function charge at the origin
+$\rho(x)=q\delta^3(\vb{x})$, and show the Proca equation is solved by the Yukawa
+potential,
+\begin{equation}
+    \Phi(x)=q\frac{e^{-\mu r}}{r}, 
+\end{equation}
+with $\vb{A}=\vb{0}$. Thus the force fied for a massive vector field is
+exponentially suppressed, explaining why we don't see long-range forces from the
+W-boson and Z-boson.
+
+\textit{Hint}: Recall that the 3D Laplacian acting on $1/r$ gives a delta
+function, as is needed for the case of the usual Coulomb potential (which is the
+$\mu\to0$ limit of the Yukawa potential). The other pieces can be treated by
+looking at the Laplacian in spherical coordinates.
+\begin{solution}
+(a) By definition, $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$, so
+\begin{align}
+    \partial_{\mu\nu} F^{\mu\nu} 
+    =\partial_{\mu\nu}\partial^\mu A^\nu-\partial_{\mu\nu}\partial^\nu A^\mu
+    =\partial_\mu\partial^\mu(\partial_\nu A^\nu)
+    -\partial_\nu\partial^\nu(\partial_\mu A^\mu)
+    =\square(\partial_\nu A^\nu-\partial_\mu A^\mu)
+    =0,
+\end{align}
+where $\square=\partial_\mu\partial^\mu$ is the 4-Laplacian. Thus, the
+derivative of the Proca equation becomes
+\begin{equation}
+    \partial_{\mu\nu}F^{\mu\nu}+\mu^2\partial_\nu A^\nu
+    =\mu^2\partial_\nu A^\nu=\frac{4\pi}{c}\partial_\nu J^\nu=0,
+\end{equation}
+since the current $J^\mu$ is conserved. This implies that $\partial_\nu A^\nu=0$
+if $\mu\neq0$. Then, expanding the Proca equation, we can write
+\begin{equation}
+    \partial_\mu F^{\mu\nu}+\mu^2A^\nu=\partial_\mu\partial^\mu A^\nu
+    -\partial^\nu\partial_\mu A^\mu+\mu^2A^\nu
+    =\qty(\partial_\mu\partial^\mu+\mu^2)A^\nu=\frac{4\pi}{c}J^\nu.
+\end{equation}
+
+(b) From the previous result, assuming $J^\mu=0$,
+\begin{equation}
+    \qty(\partial_\mu\partial^\mu+\mu^2)A^\nu
+    =\epsilon^\nu\qty(-k_\mu k^\mu+\mu^2)e^{-ik\vdot x}=0.
+\end{equation}
+Since $\epsilon^\nu\neq0$, it follows that
+\begin{equation}
+    k_\mu k^\mu=\qty(\frac{\omega}{c})^2-k^2=\mu^2>0. 
+\end{equation}
+So $k^\mu$ is timelike. Also, the dispersion relation is
+\begin{equation}
+    \omega^2=c^2k^2+c^2\mu^2. 
+\end{equation}
+The phase velocity is
+\begin{equation}
+    \frac{\omega}{k}=c\sqrt{1+\frac{\mu^2}{k^2}}, 
+\end{equation}
+and the group velocity is
+\begin{equation}
+    \frac{d\omega}{dk}=\frac{c^2}{\omega/k} 
+    =\frac{c}{\sqrt{1+\mu^2/k^2}}.
+\end{equation}
+Since the denominator is always larger than unity because $\mu>0$, $d\omega/dk$
+is less than the speed of light. Also, since $\partial_\mu A^\mu=0$, it follows
+that
+\begin{equation}
+    \partial_\mu A^\mu=-ik_\mu\epsilon^\mu e^{-ik_\nu x^\nu}=0
+    \Rightarrow k_\mu \epsilon^\mu=0.
+\end{equation}
+
+Without loss of generality, assume $\vb{k}=k\xhat$ and let the Lorentz boost
+be along $\xhat$
+\begin{equation}
+    \Lambda=\mqty(\frac{\omega^2}{c^2\mu^2}&-\frac{k\omega}{c\mu^2}&0&0\\
+    -\frac{k\omega}{c\mu^2}&\frac{\omega^2}{c^2\mu^2}&0&0\\
+    0&0&1&0\\
+    0&0&0&1).
+\end{equation}
+Then it follows that
+\begin{equation}
+    k'^\mu
+    =\Lambda_\nu^\mu k^\nu=\mqty(\omega/c\\\vb{0}).
+\end{equation}
+From the above constraint that $k_\mu\epsilon^\mu=0$. The transformed
+$\epsilon'^\mu$ must also be perpendicular with $k'^\mu$. So it can point in any
+of the three space-like directions, resulting in 3 possible polarizations.
+
+(c) We expand the LHS of the Proca equation for $A^0=\Phi$, since 
+$A^i=0$.
+\begin{align}
+    \t{LHS}&=(-\grad^2+\mu^2)\Phi \notag\\
+           &=\mu^2\Phi-q\qty[\frac1r\grad^2\qty(e^{-\mu r})+e^{-\mu
+           r}\grad^2\qty(\frac1r)+2\grad\qty(e^{-\mu r})\vdot\grad\qty(\frac1r)]
+           \notag\\
+           &=\mu^2\Phi-q\qty[\frac{\mu^2}{r}e^{-\mu r}-\frac{2\mu}{r}e^{-\mu
+           r}-4\pi\delta(\vb{x})e^{-\mu r}+2\frac{\mu}{r^2}e^{-\mu r}]\notag\\
+           &=4\pi q\delta^3(\vb{x})\notag\\
+           &=\t{RHS},
+\end{align}
+where we have used the familiar results
+\begin{equation}
+    \grad^2\qty(\frac1r)=-4\pi\delta^3(\vb{x}),\qquad\t{and}\qquad
+    \grad\qty(\frac1r)=-\frac{\rhat}{r^2},
+\end{equation}
+and also, we have recognized that $J^0=c\rho(\vb{x})=cq\delta^3(\vb{x})$. Thus,
+the Yukawa potential solves the Proca equation.
+\end{solution}
+\end{problem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
